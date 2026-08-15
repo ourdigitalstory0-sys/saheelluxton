@@ -1,14 +1,58 @@
+# ==============================================================================
+# Canonical Robots.txt for Saheel Luxton Wakad (https://www.saheeluxton.in)
+# Designed for Global Search Engine Dominance (Google, Bing, Yahoo, Yandex, Baidu, Apple, AI)
+# ==============================================================================
+
 User-agent: *
 Allow: /
+Allow: /assets/
+Allow: /site.webmanifest
 
-# Canonical Sitemaps for www.saheeluxton.in
-Sitemap: https://www.saheeluxton.in/sitemap.xml
-
-# Googlebot specific directives
+# Search Engine Specific Optimization
 User-agent: Googlebot
 Allow: /
 Allow: /uploads/
 Allow: /assets/
 
-# Crawl-delay
-Crawl-delay: 1
+User-agent: Googlebot-Image
+Allow: /uploads/
+Allow: /assets/
+
+User-agent: Bingbot
+Allow: /
+Allow: /uploads/
+Allow: /assets/
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: Yandex
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+# Next-Gen AI & LLM Search Crawlers (ChatGPT Search, Perplexity, Claude, Copilot)
+User-agent: GPTBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+# Global Sitemaps Index
+Sitemap: https://www.saheeluxton.in/sitemap.xml
