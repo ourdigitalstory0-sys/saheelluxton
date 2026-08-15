@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, useScroll, useSpring } from 'framer-motion';
 import { Navbar } from './components/Navbar';
+import { GlobalRegionBar } from './components/GlobalRegionBar';
 import { Hero } from './components/Hero';
 import { Overview } from './components/Overview';
 import { Highlights } from './components/Highlights';
@@ -61,6 +62,11 @@ export const App: React.FC = () => {
       <motion.div
         style={{ scaleX }}
         className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-champagne-400 via-champagne-600 to-amber-500 origin-left z-[60] shadow-sm"
+      />
+
+      {/* Enterprise Global Region & Currency Selector Bar */}
+      <GlobalRegionBar
+        onOpenBooking={openBooking}
       />
 
       {/* Top Navbar with Gliding Pill Navigation */}
