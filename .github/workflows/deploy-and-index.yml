@@ -34,15 +34,16 @@ jobs:
       - name: Validate TypeScript & Build Production Bundle
         run: npm run build
 
-      - name: Trigger Instant Search Engine IndexNow Submissions
+      - name: Trigger Instant Search Engine IndexNow & Google Indexing Submissions
+        env:
+          GOOGLE_SA_KEY: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
         run: |
+          if [ -n "$GOOGLE_SA_KEY" ]; then
+            echo "$GOOGLE_SA_KEY" > service-account.json
+            echo "✅ Authenticated Google Cloud Service Account for Indexing API."
+          fi
           node scripts/indexnow-submit.js || true
           node scripts/google-indexing-api.js || true
-
-      - name: Ping Google & Bing Search Engines
-        run: |
-          curl -s "https://www.google.com/ping?sitemap=https://www.saheeluxton.in/sitemap.xml" || true
-          curl -s "https://www.bing.com/ping?sitemap=https://www.saheeluxton.in/sitemap.xml" || true
 
       - name: Setup GitHub Pages Artifact
         uses: actions/upload-pages-artifact@v3
