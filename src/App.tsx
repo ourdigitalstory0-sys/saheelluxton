@@ -154,11 +154,6 @@ export const App: React.FC = () => {
           onSelectArticle={(art) => setSelectedArticle(art)}
         />
 
-        {/* Homebuyer & Investor FAQ Section (Schema-Optimized) */}
-        <FAQSection
-          onOpenBooking={openBooking}
-        />
-
         {/* Saheel Properties Master Project Universe & Keyword Explorer */}
         <SaheelEcosystemHub
           onOpenBooking={openBooking}
@@ -200,6 +195,11 @@ export const App: React.FC = () => {
 
         {/* Why Luxton Outclasses Ordinary Pune Projects (Pre-Footer) */}
         <LuxuryComparison
+          onOpenBooking={openBooking}
+        />
+
+        {/* Homebuyer & Investor FAQ Section (Schema-Optimized) */}
+        <FAQSection
           onOpenBooking={openBooking}
         />
 
