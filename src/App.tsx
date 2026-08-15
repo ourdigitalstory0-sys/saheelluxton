@@ -8,6 +8,7 @@ import { Highlights } from './components/Highlights';
 import { InteractiveTowerExplorer } from './components/InteractiveTowerExplorer';
 import { Amenities } from './components/Amenities';
 import { FloorPlans } from './components/FloorPlans';
+import { UnitAvailabilityMatrix } from './components/UnitAvailabilityMatrix';
 import { PricingCalculator } from './components/PricingCalculator';
 import { LocationMatrix } from './components/LocationMatrix';
 import { TransitDistanceCalculator } from './components/TransitDistanceCalculator';
@@ -119,6 +120,12 @@ export const App: React.FC = () => {
           onOpenBooking={openBooking}
           onOpenBrochure={openBrochure}
           onSelectPlanForZoom={(plan) => setZoomedPlan(plan)}
+        />
+
+        {/* Live Tower & Unit Inventory Configuration Matrix */}
+        <UnitAvailabilityMatrix
+          onOpenBooking={openBooking}
+          onOpenBrochure={openBrochure}
         />
 
         {/* Interactive Solar Trajectory & 100% Vastu Orientation Simulator */}
