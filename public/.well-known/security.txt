@@ -1,0 +1,7 @@
+# Security Policy for Saheel Luxton (https://www.saheeluxton.in)
+Contact: mailto:concierge@saheelproperties.com
+Expires: 2027-12-31T23:59:59.000Z
+Preferred-Languages: en, hi, mr
+Canonical: https://www.saheeluxton.in/.well-known/security.txt
+Policy: https://www.saheeluxton.in/
+Acknowledgments: https://www.saheeluxton.in/#faqs

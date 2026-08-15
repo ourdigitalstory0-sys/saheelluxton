@@ -24,6 +24,7 @@ import { SaheelEcosystemHub } from './components/SaheelEcosystemHub';
 import { Virtual360Tour } from './components/Virtual360Tour';
 import { NRICalculator } from './components/NRICalculator';
 import { ConstructionTracker } from './components/ConstructionTracker';
+import { TrustGovernance } from './components/TrustGovernance';
 import { VastuSunlightSimulator } from './components/VastuSunlightSimulator';
 import { PrintableCostSheetModal } from './components/PrintableCostSheetModal';
 import { FloatingHUD } from './components/FloatingHUD';
@@ -155,6 +156,12 @@ export const App: React.FC = () => {
         {/* Developer Legacy: Saheel Properties */}
         <DeveloperLegacy
           onOpenBooking={openBooking}
+        />
+
+        {/* Institutional Trust, Statutory Clearances & Banking Consortium */}
+        <TrustGovernance
+          onOpenBooking={openBooking}
+          onOpenBrochure={openBrochure}
         />
 
         {/* Why Luxton Outclasses Ordinary Pune Projects (Pre-Footer) */}
