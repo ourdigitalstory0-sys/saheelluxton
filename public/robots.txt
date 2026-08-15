@@ -1,8 +1,8 @@
 User-agent: *
 Allow: /
 
-# Sitemaps
-Sitemap: https://saheelluxton.in/sitemap.xml
+# Canonical Sitemaps for www.saheeluxton.in
+Sitemap: https://www.saheeluxton.in/sitemap.xml
 
 # Googlebot specific directives
 User-agent: Googlebot

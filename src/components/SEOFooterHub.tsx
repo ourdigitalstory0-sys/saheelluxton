@@ -44,11 +44,11 @@ export const SEOFooterHub: React.FC = () => {
   ];
 
   const breadcrumbs = [
-    { name: "Home", url: "https://saheelluxton.in/" },
-    { name: "Maharashtra Real Estate", url: "https://saheelluxton.in/#pune" },
-    { name: "Pune Properties", url: "https://saheelluxton.in/#location" },
-    { name: "Wakad Luxury Projects", url: "https://saheelluxton.in/#overview" },
-    { name: "Saheel Luxton (MahaRERA PM1260002502043)", url: "https://saheelluxton.in/#plans" }
+    { name: "Home", url: "https://www.saheeluxton.in/" },
+    { name: "Maharashtra Real Estate", url: "https://www.saheeluxton.in/#pune" },
+    { name: "Pune Properties", url: "https://www.saheeluxton.in/#location" },
+    { name: "Wakad Luxury Projects", url: "https://www.saheeluxton.in/#overview" },
+    { name: "Saheel Luxton (MahaRERA PM1260002502043)", url: "https://www.saheeluxton.in/#plans" }
   ];
 
   return (
