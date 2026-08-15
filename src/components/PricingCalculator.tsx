@@ -6,9 +6,10 @@ import { projectData } from '../data/projectData';
 interface PricingCalculatorProps {
   onOpenBooking: () => void;
   onOpenBrochure: () => void;
+  onOpenCostSheet?: () => void;
 }
 
-export const PricingCalculator: React.FC<PricingCalculatorProps> = ({ onOpenBooking, onOpenBrochure }) => {
+export const PricingCalculator: React.FC<PricingCalculatorProps> = ({ onOpenBooking, onOpenBrochure, onOpenCostSheet }) => {
   const [propertyPrice, setPropertyPrice] = useState(9700000); // 97 Lakhs default (2 BHK)
   const [downPaymentPercent, setDownPaymentPercent] = useState(20);
   const [interestRate, setInterestRate] = useState(8.5);
@@ -359,10 +360,11 @@ export const PricingCalculator: React.FC<PricingCalculatorProps> = ({ onOpenBook
                 <motion.button
                   whileHover={{ scale: 1.03, y: -2 }}
                   whileTap={{ scale: 0.97 }}
-                  onClick={onOpenBrochure}
+                  onClick={onOpenCostSheet || onOpenBrochure}
                   className="btn-auric-outline py-3.5 rounded-full text-xs font-bold tracking-wider uppercase flex items-center justify-center gap-1.5 cursor-pointer"
                 >
-                  Download Price Sheet
+                  <Calculator className="w-3.5 h-3.5" />
+                  Itemized Cost Sheet
                 </motion.button>
                 <motion.button
                   whileHover={{ scale: 1.03, y: -2 }}

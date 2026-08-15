@@ -24,6 +24,8 @@ import { SaheelEcosystemHub } from './components/SaheelEcosystemHub';
 import { Virtual360Tour } from './components/Virtual360Tour';
 import { NRICalculator } from './components/NRICalculator';
 import { ConstructionTracker } from './components/ConstructionTracker';
+import { VastuSunlightSimulator } from './components/VastuSunlightSimulator';
+import { PrintableCostSheetModal } from './components/PrintableCostSheetModal';
 import { FloatingHUD } from './components/FloatingHUD';
 import { Footer } from './components/Footer';
 import { UnitPlan } from './types/project';
@@ -33,12 +35,14 @@ export const App: React.FC = () => {
   const [isBookingModalOpen, setIsBookingModalOpen] = useState<boolean>(false);
   const [isBrochureModalOpen, setIsBrochureModalOpen] = useState<boolean>(false);
   const [isVideoModalOpen, setIsVideoModalOpen] = useState<boolean>(false);
+  const [isCostSheetOpen, setIsCostSheetOpen] = useState<boolean>(false);
   const [zoomedPlan, setZoomedPlan] = useState<UnitPlan | null>(null);
   const [selectedArticle, setSelectedArticle] = useState<SEOArticle | null>(null);
 
   const openBooking = () => setIsBookingModalOpen(true);
   const openBrochure = () => setIsBrochureModalOpen(true);
   const openVideo = () => setIsVideoModalOpen(true);
+  const openCostSheet = () => setIsCostSheetOpen(true);
 
   return (
     <div className="min-h-screen bg-[#FAF8F5] text-slate-900 selection:bg-[#FDE18A] selection:text-slate-900">
@@ -92,10 +96,16 @@ export const App: React.FC = () => {
           onSelectPlanForZoom={(plan) => setZoomedPlan(plan)}
         />
 
+        {/* Interactive Solar Trajectory & 100% Vastu Orientation Simulator */}
+        <VastuSunlightSimulator
+          onOpenBooking={openBooking}
+        />
+
         {/* Pricing & Financial Planner */}
         <PricingCalculator
           onOpenBooking={openBooking}
           onOpenBrochure={openBrochure}
+          onOpenCostSheet={openCostSheet}
         />
 
         {/* Multi-Currency NRI Investment & High-Yield ROI Calculator */}
@@ -196,6 +206,12 @@ export const App: React.FC = () => {
         onClose={() => setSelectedArticle(null)}
         onOpenBooking={openBooking}
         onOpenBrochure={openBrochure}
+      />
+
+      <PrintableCostSheetModal
+        isOpen={isCostSheetOpen}
+        onClose={() => setIsCostSheetOpen(false)}
+        onOpenBooking={openBooking}
       />
     </div>
   );
