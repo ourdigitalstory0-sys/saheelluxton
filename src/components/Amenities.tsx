@@ -43,8 +43,8 @@ export const Amenities: React.FC<AmenitiesProps> = ({ onOpenBooking }) => {
             transition={{ delay: 0.1, duration: 0.7 }}
             className="text-3xl sm:text-4xl lg:text-5xl font-bold font-cinzel text-slate-900 tracking-tight leading-tight"
           >
-            Designed to Elevate <br />
-            <span className="gold-gradient-text">Every Leisure & Living Moment</span>
+            5-Star Amenities at <br />
+            <span className="gold-gradient-text">Saheel Luxton Wakad</span>
           </motion.h2>
           
           <motion.p 

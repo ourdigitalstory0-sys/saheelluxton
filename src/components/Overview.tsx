@@ -46,8 +46,8 @@ export const Overview: React.FC<OverviewProps> = ({ onOpenBooking, onOpenBrochur
             transition={{ delay: 0.1, duration: 0.7 }}
             className="text-3xl sm:text-4xl lg:text-5xl font-bold font-cinzel text-slate-900 tracking-tight leading-tight"
           >
-            Crafted for Those Who <br />
-            <span className="gold-gradient-text">Demand Exclusivity</span>
+            Saheel Luxton Wakad: <br />
+            <span className="gold-gradient-text">Crafted for Elite Luxury Living</span>
           </motion.h2>
           
           <motion.div 

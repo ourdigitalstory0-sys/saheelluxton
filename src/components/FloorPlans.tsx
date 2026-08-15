@@ -53,8 +53,8 @@ export const FloorPlans: React.FC<FloorPlansProps> = ({ onOpenBooking, onOpenBro
             transition={{ delay: 0.1, duration: 0.7 }}
             className="text-3xl sm:text-4xl lg:text-5xl font-bold font-cinzel text-slate-900 tracking-tight leading-tight"
           >
-            Curated Layouts Engineered <br />
-            <span className="gold-gradient-text">For Maximum Space & Sunlight</span>
+            Saheel Luxton Wakad: <br />
+            <span className="gold-gradient-text">2, 3 & 4 BHK Floor Plans & Blueprints</span>
           </motion.h2>
           
           <motion.p 

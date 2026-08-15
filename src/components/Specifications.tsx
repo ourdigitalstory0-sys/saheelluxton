@@ -51,8 +51,8 @@ export const Specifications: React.FC<SpecificationsProps> = ({ onOpenBrochure }
             transition={{ delay: 0.1, duration: 0.7 }}
             className="text-3xl sm:text-4xl lg:text-5xl font-bold font-cinzel text-slate-900 tracking-tight leading-tight"
           >
-            Superior Specifications & <br />
-            <span className="gold-gradient-text">Flawless Craftsmanship</span>
+            Saheel Luxton Wakad: <br />
+            <span className="gold-gradient-text">Specifications & Construction Standards</span>
           </motion.h2>
           
           <motion.p 

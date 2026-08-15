@@ -77,8 +77,8 @@ export const LuxuryComparison: React.FC<LuxuryComparisonProps> = ({ onOpenBookin
             transition={{ delay: 0.1, duration: 0.7 }}
             className="text-3xl sm:text-4xl lg:text-5xl font-bold font-cinzel text-slate-900 tracking-tight leading-tight"
           >
-            Why Luxton Outclasses <br />
-            <span className="gold-gradient-text">Ordinary Pune Developments</span>
+            Why Saheel Luxton Wakad <br />
+            <span className="gold-gradient-text">Outclasses Ordinary Pune Developments</span>
           </motion.h2>
           
           <motion.p 

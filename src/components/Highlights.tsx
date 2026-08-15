@@ -44,8 +44,8 @@ export const Highlights: React.FC<HighlightsProps> = ({ onOpenBooking }) => {
             transition={{ delay: 0.1, duration: 0.7 }}
             className="text-3xl sm:text-4xl lg:text-5xl font-bold font-cinzel text-slate-900 tracking-tight leading-tight"
           >
-            Highlights Shaped by <br />
-            <span className="gold-gradient-text">Architectural Mastery</span>
+            Signature Highlights of <br />
+            <span className="gold-gradient-text">Saheel Luxton Wakad</span>
           </motion.h2>
           
           <motion.p 
