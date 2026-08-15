@@ -31,8 +31,52 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenBrochure })
     }
   }, [mobileMenuOpen]);
 
+  const audioCtxRef = React.useRef<AudioContext | null>(null);
+  const oscillatorRef = React.useRef<OscillatorNode | null>(null);
+  const gainNodeRef = React.useRef<GainNode | null>(null);
+
   const toggleAmbiance = () => {
-    setIsPlayingAudio(!isPlayingAudio);
+    try {
+      if (!isPlayingAudio) {
+        const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext;
+        if (!AudioContextClass) return;
+
+        const ctx = new AudioContextClass();
+        audioCtxRef.current = ctx;
+
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+
+        // 432 Hz warm ambient drone
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(432, ctx.currentTime);
+
+        gain.gain.setValueAtTime(0.001, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.04, ctx.currentTime + 2);
+
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+
+        osc.start();
+        oscillatorRef.current = osc;
+        gainNodeRef.current = gain;
+        setIsPlayingAudio(true);
+      } else {
+        if (gainNodeRef.current && audioCtxRef.current) {
+          gainNodeRef.current.gain.exponentialRampToValueAtTime(0.0001, audioCtxRef.current.currentTime + 1);
+          setTimeout(() => {
+            oscillatorRef.current?.stop();
+            audioCtxRef.current?.close();
+            audioCtxRef.current = null;
+            setIsPlayingAudio(false);
+          }, 1000);
+        } else {
+          setIsPlayingAudio(false);
+        }
+      }
+    } catch (err) {
+      setIsPlayingAudio(!isPlayingAudio);
+    }
   };
 
   const navLinks = [

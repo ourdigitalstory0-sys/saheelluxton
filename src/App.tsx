@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion, useScroll, useSpring } from 'framer-motion';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { Overview } from './components/Overview';
@@ -47,8 +48,21 @@ export const App: React.FC = () => {
   const openVideo = () => setIsVideoModalOpen(true);
   const openCostSheet = () => setIsCostSheetOpen(true);
 
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
   return (
     <div className="min-h-screen bg-[#FAF8F5] text-slate-900 selection:bg-[#FDE18A] selection:text-slate-900">
+      {/* Top Gold Scroll Progress Indicator */}
+      <motion.div
+        style={{ scaleX }}
+        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-champagne-400 via-champagne-600 to-amber-500 origin-left z-[60] shadow-sm"
+      />
+
       {/* Top Navbar with Gliding Pill Navigation */}
       <Navbar
         onOpenBooking={openBooking}
