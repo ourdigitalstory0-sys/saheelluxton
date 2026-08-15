@@ -28,6 +28,7 @@ import { TrustGovernance } from './components/TrustGovernance';
 import { RealEstateGlossary } from './components/RealEstateGlossary';
 import { VastuSunlightSimulator } from './components/VastuSunlightSimulator';
 import { PrintableCostSheetModal } from './components/PrintableCostSheetModal';
+import { LuxuryConciergeChat } from './components/LuxuryConciergeChat';
 import { FloatingHUD } from './components/FloatingHUD';
 import { Footer } from './components/Footer';
 import { UnitPlan } from './types/project';
@@ -188,6 +189,12 @@ export const App: React.FC = () => {
 
       {/* Sticky Floating Quick Actions HUD */}
       <FloatingHUD
+        onOpenBooking={openBooking}
+        onOpenBrochure={openBrochure}
+      />
+
+      {/* 24/7 AI Luxury Concierge Chatbot */}
+      <LuxuryConciergeChat
         onOpenBooking={openBooking}
         onOpenBrochure={openBrochure}
       />
