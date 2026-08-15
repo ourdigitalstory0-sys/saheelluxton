@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://saheelluxton.in/sitemap.xml
+
+# Googlebot specific directives
+User-agent: Googlebot
+Allow: /
+Allow: /uploads/
+Allow: /assets/
+
+# Crawl-delay
+Crawl-delay: 1
