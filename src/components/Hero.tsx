@@ -242,6 +242,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onOpenBrochure, onOpe
                     transition={{ duration: 0.7, ease: "easeInOut" }}
                     src={currentSlide.image}
                     alt={currentSlide.title}
+                    fetchPriority="high"
+                    decoding="async"
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                   />
                 </AnimatePresence>
