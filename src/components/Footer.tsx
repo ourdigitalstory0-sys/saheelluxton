@@ -120,14 +120,28 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking, onOpenBrochure })
               Navigation
             </h4>
             <ul className="space-y-2 text-slate-600 font-medium">
-              <li><a href="#overview" className="hover:text-champagne-700 transition-colors">Architectural Overview</a></li>
-              <li><a href="#highlights" className="hover:text-champagne-700 transition-colors">Signature Highlights</a></li>
-              <li><a href="#amenities" className="hover:text-champagne-700 transition-colors">5-Star Rooftop Amenities</a></li>
-              <li><a href="#plans" className="hover:text-champagne-700 transition-colors">Floor Plans & Blueprints</a></li>
-              <li><a href="#pricing" className="hover:text-champagne-700 transition-colors">Pricing & EMI Calculator</a></li>
-              <li><a href="#location" className="hover:text-champagne-700 transition-colors">Strategic Location & Map</a></li>
-              <li><a href="#gallery" className="hover:text-champagne-700 transition-colors">Cinematic Gallery</a></li>
-              <li><a href="#specs" className="hover:text-champagne-700 transition-colors">Technical Specifications</a></li>
+              {[
+                { label: 'Architectural Overview', id: 'overview' },
+                { label: 'Signature Highlights', id: 'highlights' },
+                { label: '5-Star Rooftop Amenities', id: 'amenities' },
+                { label: 'Floor Plans & Blueprints', id: 'plans' },
+                { label: 'Pricing & EMI Calculator', id: 'pricing' },
+                { label: 'Strategic Location & Map', id: 'location' },
+                { label: 'Cinematic Gallery', id: 'gallery' },
+                { label: 'Technical Specifications', id: 'specs' }
+              ].map((item) => (
+                <li key={item.id}>
+                  <button
+                    onClick={() => {
+                      document.getElementById(item.id)?.scrollIntoView({ behavior: 'smooth' });
+                      window.history.replaceState(null, '', window.location.pathname);
+                    }}
+                    className="hover:text-champagne-700 transition-colors text-left cursor-pointer"
+                  >
+                    {item.label}
+                  </button>
+                </li>
+              ))}
             </ul>
           </div>
 

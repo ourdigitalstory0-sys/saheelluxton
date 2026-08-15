@@ -79,6 +79,19 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenBrochure })
     }
   };
 
+  const handleNavClick = (e: React.MouseEvent, href: string) => {
+    e.preventDefault();
+    const targetId = href.replace('#', '');
+    const element = document.getElementById(targetId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+    if (mobileMenuOpen) {
+      setMobileMenuOpen(false);
+    }
+    window.history.replaceState(null, '', window.location.pathname);
+  };
+
   const navLinks = [
     { label: 'Overview', href: '#overview' },
     { label: 'Highlights', href: '#highlights' },
@@ -102,7 +115,15 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenBrochure })
       <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
         
         {/* Brand Logo */}
-        <a href="#" className="flex items-center gap-3 group min-h-[44px]">
+        <a 
+          href="/" 
+          onClick={(e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            window.history.replaceState(null, '', window.location.pathname);
+          }}
+          className="flex items-center gap-3 group min-h-[44px]"
+        >
           <motion.div 
             whileHover={{ scale: 1.08 }}
             className="w-10 h-10 rounded-2xl bg-gradient-to-br from-champagne-400 via-champagne-600 to-champagne-800 p-0.5 flex items-center justify-center shadow-gold-glow shrink-0"
@@ -132,6 +153,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenBrochure })
               <a
                 key={link.label}
                 href={link.href}
+                onClick={(e) => handleNavClick(e, link.href)}
                 onMouseEnter={() => setHoveredIndex(idx)}
                 className={`relative px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider transition-colors z-10 ${
                   isHovered ? 'text-slate-950 font-extrabold' : 'text-slate-700 hover:text-slate-900'
@@ -230,7 +252,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenBrochure })
                   <a
                     key={link.label}
                     href={link.href}
-                    onClick={() => setMobileMenuOpen(false)}
+                    onClick={(e) => handleNavClick(e, link.href)}
                     className="min-h-[48px] px-4 py-3 rounded-2xl bg-white border border-slate-200/80 hover:border-champagne-500 active:bg-champagne-100 text-slate-900 font-bold uppercase tracking-wider text-xs transition-all flex items-center justify-between shadow-sm"
                   >
                     <span>{link.label}</span>

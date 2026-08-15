@@ -6,20 +6,8 @@
 import https from 'https';
 
 const TARGET_URLS = [
-  'https://www.saheeluxton.in/',
-  'https://www.saheeluxton.in/#overview',
-  'https://www.saheeluxton.in/#highlights',
-  'https://www.saheeluxton.in/#tower-explorer',
-  'https://www.saheeluxton.in/#virtual-360',
-  'https://www.saheeluxton.in/#amenities',
-  'https://www.saheeluxton.in/#plans',
-  'https://www.saheeluxton.in/#pricing',
-  'https://www.saheeluxton.in/#nri-hub',
-  'https://www.saheeluxton.in/#location',
-  'https://www.saheeluxton.in/#pune-real-estate-insights',
-  'https://www.saheeluxton.in/#faqs',
-  'https://www.saheeluxton.in/#saheel-ecosystem',
-  'https://www.saheeluxton.in/#construction-milestones'
+  'https://saheeluxton.in/',
+  'https://www.saheeluxton.in/'
 ];
 
 /**

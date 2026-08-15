@@ -45,10 +45,10 @@ export const SEOFooterHub: React.FC = () => {
 
   const breadcrumbs = [
     { name: "Home", url: "https://www.saheeluxton.in/" },
-    { name: "Maharashtra Real Estate", url: "https://www.saheeluxton.in/#pune" },
-    { name: "Pune Properties", url: "https://www.saheeluxton.in/#location" },
-    { name: "Wakad Luxury Projects", url: "https://www.saheeluxton.in/#overview" },
-    { name: "Saheel Luxton (MahaRERA PM1260002502043)", url: "https://www.saheeluxton.in/#plans" }
+    { name: "Maharashtra Real Estate", url: "https://www.saheeluxton.in/" },
+    { name: "Pune Properties", url: "https://www.saheeluxton.in/" },
+    { name: "Wakad Luxury Projects", url: "https://www.saheeluxton.in/" },
+    { name: "Saheel Luxton (MahaRERA PM1260002502043)", url: "https://www.saheeluxton.in/" }
   ];
 
   return (
