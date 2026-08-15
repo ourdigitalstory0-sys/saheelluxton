@@ -1,14 +1,17 @@
 # ==============================================================================
 # Canonical Robots.txt for Saheel Luxton Wakad (https://www.saheeluxton.in)
-# Designed for Global Search Engine Dominance (Google, Bing, Yahoo, Yandex, Baidu, Apple, AI)
+# Universal Global Search Engine & AI Crawler Dominance Protocol
 # ==============================================================================
 
 User-agent: *
 Allow: /
 Allow: /assets/
+Allow: /uploads/
 Allow: /site.webmanifest
+Allow: /opensearch.xml
+Allow: /llms.txt
 
-# Search Engine Specific Optimization
+# --- Global & North America Search Engines ---
 User-agent: Googlebot
 Allow: /
 Allow: /uploads/
@@ -17,6 +20,9 @@ Allow: /assets/
 User-agent: Googlebot-Image
 Allow: /uploads/
 Allow: /assets/
+
+User-agent: Googlebot-News
+Allow: /
 
 User-agent: Bingbot
 Allow: /
@@ -29,17 +35,61 @@ Allow: /
 User-agent: DuckDuckBot
 Allow: /
 
-User-agent: Baiduspider
+User-agent: AskJeeves
 Allow: /
 
+User-agent: Teoma
+Allow: /
+
+# --- European & Privacy-Focused Search Engines ---
 User-agent: Yandex
 Allow: /
 
-User-agent: Applebot
+User-agent: YandexImages
 Allow: /
 
-# Next-Gen AI & LLM Search Crawlers (ChatGPT Search, Perplexity, Claude, Copilot)
+User-agent: Qwantify
+Allow: /
+
+User-agent: SeznamBot
+Allow: /
+
+User-agent: MojeekBot
+Allow: /
+
+User-agent: Ecosia
+Allow: /
+
+User-agent: BraveBot
+Allow: /
+
+# --- Asian Search Engines (China, South Korea, Japan, Global Mobile) ---
+User-agent: Baiduspider
+Allow: /
+
+User-agent: Baiduspider-image
+Allow: /
+
+User-agent: Sogou spider
+Allow: /
+
+User-agent: Yeti
+Allow: /
+
+User-agent: NaverBot
+Allow: /
+
+User-agent: Daum
+Allow: /
+
+User-agent: PetalBot
+Allow: /
+
+# --- Next-Gen AI & LLM Search Answer Engines ---
 User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
 Allow: /
 
 User-agent: PerplexityBot
@@ -51,10 +101,22 @@ Allow: /
 User-agent: anthropic-ai
 Allow: /
 
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
 User-agent: CCBot
 Allow: /
 
-# Global Sitemaps Index & Feeds
+User-agent: YouBot
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+# --- Global Master Sitemap Index & Child Feeds ---
 Sitemap: https://www.saheeluxton.in/sitemap.xml
 Sitemap: https://www.saheeluxton.in/sitemap-main.xml
 Sitemap: https://www.saheeluxton.in/sitemap-images.xml
