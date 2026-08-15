@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Calculator, ShieldCheck, Sparkles, PieChart, CheckCircle2 } from 'lucide-react';
+import { Calculator, ShieldCheck, Sparkles, PieChart, CheckCircle2, TrendingDown } from 'lucide-react';
 import { projectData } from '../data/projectData';
+import { EMIAmortizationModal } from './EMIAmortizationModal';
 
 interface PricingCalculatorProps {
   onOpenBooking: () => void;
@@ -14,6 +15,7 @@ export const PricingCalculator: React.FC<PricingCalculatorProps> = ({ onOpenBook
   const [downPaymentPercent, setDownPaymentPercent] = useState(20);
   const [interestRate, setInterestRate] = useState(8.5);
   const [tenureYears, setTenureYears] = useState(20);
+  const [isAmortizationOpen, setIsAmortizationOpen] = useState(false);
 
   // Financial calculations
   const downPaymentAmount = (propertyPrice * downPaymentPercent) / 100;
@@ -356,33 +358,54 @@ export const PricingCalculator: React.FC<PricingCalculatorProps> = ({ onOpenBook
               </div>
 
               {/* CTAs */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
-                <motion.button
-                  whileHover={{ scale: 1.03, y: -2 }}
-                  whileTap={{ scale: 0.97 }}
-                  onClick={onOpenCostSheet || onOpenBrochure}
-                  className="btn-auric-outline py-3.5 rounded-full text-xs font-bold tracking-wider uppercase flex items-center justify-center gap-1.5 cursor-pointer"
+              <div className="space-y-2 pt-1">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  <motion.button
+                    whileHover={{ scale: 1.03, y: -2 }}
+                    whileTap={{ scale: 0.97 }}
+                    onClick={onOpenCostSheet || onOpenBrochure}
+                    className="btn-auric-outline py-3.5 rounded-full text-xs font-bold tracking-wider uppercase flex items-center justify-center gap-1.5 cursor-pointer"
+                  >
+                    <Calculator className="w-3.5 h-3.5" />
+                    Itemized Cost Sheet
+                  </motion.button>
+                  <motion.button
+                    whileHover={{ scale: 1.03, y: -2 }}
+                    whileTap={{ scale: 0.97 }}
+                    onClick={onOpenBooking}
+                    className="btn-auric py-3.5 rounded-full text-xs font-bold tracking-wider uppercase flex items-center justify-center gap-1.5 shadow-gold-glow cursor-pointer"
+                  >
+                    <Sparkles className="w-4 h-4" />
+                    Bank Offers & Visit
+                  </motion.button>
+                </div>
+
+                <button
+                  onClick={() => setIsAmortizationOpen(true)}
+                  className="w-full py-2.5 rounded-2xl bg-milky-100 hover:bg-champagne-100 border border-champagne-400/40 text-[11px] font-bold text-champagne-900 transition flex items-center justify-center gap-1.5 cursor-pointer shadow-sm"
                 >
-                  <Calculator className="w-3.5 h-3.5" />
-                  Itemized Cost Sheet
-                </motion.button>
-                <motion.button
-                  whileHover={{ scale: 1.03, y: -2 }}
-                  whileTap={{ scale: 0.97 }}
-                  onClick={onOpenBooking}
-                  className="btn-auric py-3.5 rounded-full text-xs font-bold tracking-wider uppercase flex items-center justify-center gap-1.5 shadow-gold-glow cursor-pointer"
-                >
-                  <Sparkles className="w-4 h-4" />
-                  Bank Offers & Visit
-                </motion.button>
+                  <TrendingDown className="w-3.5 h-3.5 text-champagne-700" />
+                  View Year-by-Year Amortization & Tax Schedule
+                </button>
               </div>
 
             </motion.div>
 
           </div>
+
         </motion.div>
 
       </div>
+      
+      {/* Full Amortization & Tax Schedule Modal */}
+      <EMIAmortizationModal
+        isOpen={isAmortizationOpen}
+        onClose={() => setIsAmortizationOpen(false)}
+        loanAmountLakhs={Math.round(loanAmount / 100000)}
+        interestRate={interestRate}
+        tenureYears={tenureYears}
+        onOpenBooking={onOpenBooking}
+      />
     </section>
   );
 };
