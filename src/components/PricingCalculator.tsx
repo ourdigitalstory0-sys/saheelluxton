@@ -8,7 +8,7 @@ interface PricingCalculatorProps {
   onOpenBrochure: () => void;
 }
 
-export const PricingCalculator: React.FC<PricingCalculatorProps> = ({ onOpenBooking }) => {
+export const PricingCalculator: React.FC<PricingCalculatorProps> = ({ onOpenBooking, onOpenBrochure }) => {
   const [propertyPrice, setPropertyPrice] = useState(9700000); // 97 Lakhs default (2 BHK)
   const [downPaymentPercent, setDownPaymentPercent] = useState(20);
   const [interestRate, setInterestRate] = useState(8.5);
@@ -355,15 +355,23 @@ export const PricingCalculator: React.FC<PricingCalculatorProps> = ({ onOpenBook
               </div>
 
               {/* CTAs */}
-              <div className="space-y-2 pt-1">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
                 <motion.button
-                  whileHover={{ scale: 1.04, y: -2 }}
+                  whileHover={{ scale: 1.03, y: -2 }}
+                  whileTap={{ scale: 0.97 }}
+                  onClick={onOpenBrochure}
+                  className="btn-auric-outline py-3.5 rounded-full text-xs font-bold tracking-wider uppercase flex items-center justify-center gap-1.5 cursor-pointer"
+                >
+                  Download Price Sheet
+                </motion.button>
+                <motion.button
+                  whileHover={{ scale: 1.03, y: -2 }}
                   whileTap={{ scale: 0.97 }}
                   onClick={onOpenBooking}
-                  className="w-full btn-auric py-3.5 rounded-full text-xs font-bold tracking-wider uppercase flex items-center justify-center gap-2 shadow-gold-glow cursor-pointer"
+                  className="btn-auric py-3.5 rounded-full text-xs font-bold tracking-wider uppercase flex items-center justify-center gap-1.5 shadow-gold-glow cursor-pointer"
                 >
                   <Sparkles className="w-4 h-4" />
-                  Get Detailed Cost Sheet & Bank Offers
+                  Bank Offers & Visit
                 </motion.button>
               </div>
 
