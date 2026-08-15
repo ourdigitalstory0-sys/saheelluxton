@@ -10,6 +10,7 @@ import { Amenities } from './components/Amenities';
 import { FloorPlans } from './components/FloorPlans';
 import { PricingCalculator } from './components/PricingCalculator';
 import { LocationMatrix } from './components/LocationMatrix';
+import { TransitDistanceCalculator } from './components/TransitDistanceCalculator';
 import { MicroMarketInsights } from './components/MicroMarketInsights';
 import { FAQSection } from './components/FAQSection';
 import { GalleryModal } from './components/GalleryModal';
@@ -139,6 +140,11 @@ export const App: React.FC = () => {
 
         {/* Strategic Location & Connectivity */}
         <LocationMatrix
+          onOpenBooking={openBooking}
+        />
+
+        {/* Phase 3: Interactive Commute Time & Strategic Distance Calculator */}
+        <TransitDistanceCalculator
           onOpenBooking={openBooking}
         />
 
