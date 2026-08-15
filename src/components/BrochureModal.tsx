@@ -16,12 +16,35 @@ export const BrochureModal: React.FC<BrochureModalProps> = ({ isOpen, onClose })
   });
   const [isDownloaded, setIsDownloaded] = useState(false);
 
+  React.useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isOpen) {
+        setIsDownloaded(false);
+        onClose();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   const handleDownload = (e: React.FormEvent) => {
     e.preventDefault();
     setIsDownloaded(true);
     
+    try {
+      const existingLeads = JSON.parse(localStorage.getItem('saheel_leads') || '[]');
+      existingLeads.push({
+        ...formData,
+        type: 'BROCHURE_DOWNLOAD',
+        timestamp: new Date().toISOString()
+      });
+      localStorage.setItem('saheel_leads', JSON.stringify(existingLeads));
+    } catch (err) {
+      // Safe fallback
+    }
+
     // Trigger actual download of official brochure PDF
     const link = document.createElement('a');
     link.href = projectData.brochurePdfUrl;

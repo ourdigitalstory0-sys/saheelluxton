@@ -23,9 +23,31 @@ export const VIPBookingModal: React.FC<VIPBookingModalProps> = ({ isOpen, onClos
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
+  React.useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isOpen) {
+        resetAndClose();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen]);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+
+    try {
+      const existingLeads = JSON.parse(localStorage.getItem('saheel_leads') || '[]');
+      existingLeads.push({
+        ...formData,
+        type: 'VIP_BOOKING',
+        timestamp: new Date().toISOString()
+      });
+      localStorage.setItem('saheel_leads', JSON.stringify(existingLeads));
+    } catch (err) {
+      // Safe fallback
+    }
 
     setTimeout(() => {
       setIsSubmitting(false);
