@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+  <ShortName>Saheel Luxton</ShortName>
+  <Description>Search Saheel Luxton Wakad 2, 3 &amp; 4 BHK Luxury Residences in Pune</Description>
+  <InputEncoding>UTF-8</InputEncoding>
+  <Image width="16" height="16" type="image/svg+xml">https://backend.saheelproperties.com/uploads/Vector_9421f72212.svg</Image>
+  <Url type="text/html" template="https://www.saheeluxton.in/?q={searchTerms}"/>
+</OpenSearchDescription>

@@ -25,6 +25,7 @@ import { Virtual360Tour } from './components/Virtual360Tour';
 import { NRICalculator } from './components/NRICalculator';
 import { ConstructionTracker } from './components/ConstructionTracker';
 import { TrustGovernance } from './components/TrustGovernance';
+import { RealEstateGlossary } from './components/RealEstateGlossary';
 import { VastuSunlightSimulator } from './components/VastuSunlightSimulator';
 import { PrintableCostSheetModal } from './components/PrintableCostSheetModal';
 import { FloatingHUD } from './components/FloatingHUD';
@@ -162,6 +163,12 @@ export const App: React.FC = () => {
         <TrustGovernance
           onOpenBooking={openBooking}
           onOpenBrochure={openBrochure}
+        />
+
+        {/* Real Estate Intelligence & Google Knowledge Entity Glossary */}
+        <RealEstateGlossary
+          onOpenBrochure={openBrochure}
+          onOpenBooking={openBooking}
         />
 
         {/* Why Luxton Outclasses Ordinary Pune Projects (Pre-Footer) */}
