@@ -11,7 +11,7 @@ Allow: /site.webmanifest
 Allow: /opensearch.xml
 Allow: /llms.txt
 
-# --- Global & North America Search Engines ---
+# --- Global Search Engines ---
 User-agent: Googlebot
 Allow: /
 Allow: /uploads/
@@ -35,42 +35,10 @@ Allow: /
 User-agent: DuckDuckBot
 Allow: /
 
-User-agent: AskJeeves
-Allow: /
-
-User-agent: Teoma
-Allow: /
-
-# --- European & Privacy-Focused Search Engines ---
 User-agent: Yandex
 Allow: /
 
-User-agent: YandexImages
-Allow: /
-
-User-agent: Qwantify
-Allow: /
-
-User-agent: SeznamBot
-Allow: /
-
-User-agent: MojeekBot
-Allow: /
-
-User-agent: Ecosia
-Allow: /
-
-User-agent: BraveBot
-Allow: /
-
-# --- Asian Search Engines (China, South Korea, Japan, Global Mobile) ---
 User-agent: Baiduspider
-Allow: /
-
-User-agent: Baiduspider-image
-Allow: /
-
-User-agent: Sogou spider
 Allow: /
 
 User-agent: Yeti
@@ -79,10 +47,7 @@ Allow: /
 User-agent: NaverBot
 Allow: /
 
-User-agent: Daum
-Allow: /
-
-User-agent: PetalBot
+User-agent: Applebot
 Allow: /
 
 # --- Next-Gen AI & LLM Search Answer Engines ---
@@ -101,9 +66,6 @@ Allow: /
 User-agent: anthropic-ai
 Allow: /
 
-User-agent: Applebot
-Allow: /
-
 User-agent: Applebot-Extended
 Allow: /
 
@@ -113,11 +75,5 @@ Allow: /
 User-agent: YouBot
 Allow: /
 
-User-agent: Meta-ExternalAgent
-Allow: /
-
-# --- Global Master Sitemap Index & Child Feeds ---
+# --- Primary Global Sitemap ---
 Sitemap: https://www.saheeluxton.in/sitemap.xml
-Sitemap: https://www.saheeluxton.in/sitemap-main.xml
-Sitemap: https://www.saheeluxton.in/sitemap-images.xml
-Sitemap: https://www.saheeluxton.in/sitemap-articles.xml
