@@ -20,6 +20,7 @@ import { BrochureModal } from './components/BrochureModal';
 import { PlanZoomModal } from './components/PlanZoomModal';
 import { VideoModal } from './components/VideoModal';
 import { SEOArticlesModal } from './components/SEOArticlesModal';
+import { SaheelEcosystemHub } from './components/SaheelEcosystemHub';
 import { FloatingHUD } from './components/FloatingHUD';
 import { Footer } from './components/Footer';
 import { UnitPlan } from './types/project';
@@ -103,6 +104,12 @@ export const App: React.FC = () => {
         {/* Homebuyer & Investor FAQ Section (Schema-Optimized) */}
         <FAQSection
           onOpenBooking={openBooking}
+        />
+
+        {/* Saheel Properties Master Project Universe & Keyword Explorer */}
+        <SaheelEcosystemHub
+          onOpenBooking={openBooking}
+          onOpenBrochure={openBrochure}
         />
 
         {/* Cinematic Virtual Gallery */}
