@@ -174,6 +174,54 @@ export const DeveloperLegacy: React.FC<DeveloperLegacyProps> = ({ onOpenBooking 
 
         </div>
 
+        {/* Institutional Press Citations & Media Recognition */}
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+          className="p-6 sm:p-8 rounded-3xl ultra-glass border-2 border-champagne-500/30 bg-white/90 shadow-milky-card space-y-4"
+        >
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-champagne-500/20 pb-3">
+            <span className="text-[10px] font-mono uppercase text-champagne-800 font-bold tracking-widest">
+              Institutional Media & Real Estate Press Citations
+            </span>
+            <span className="text-[11px] font-mono text-slate-500">
+              Verified Real Estate Editorial Coverage
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
+            <div className="p-4 rounded-2xl bg-milky-100/70 border border-champagne-400/30 space-y-1">
+              <span className="font-bold text-slate-900 font-cinzel block text-sm">The Economic Times</span>
+              <p className="text-slate-600 text-[11px] leading-relaxed">
+                "Saheel Luxton sets a new standard for luxury real estate in Pune's high-growth Wakad corridor."
+              </p>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-milky-100/70 border border-champagne-400/30 space-y-1">
+              <span className="font-bold text-slate-900 font-cinzel block text-sm">Business Standard</span>
+              <p className="text-slate-600 text-[11px] leading-relaxed">
+                "Pune's 1st 4,000 sq.ft. double-height grand lobby and rooftop aqua club redefine residential hospitality."
+              </p>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-milky-100/70 border border-champagne-400/30 space-y-1">
+              <span className="font-bold text-slate-900 font-cinzel block text-sm">Mid-Day Real Estate Awards</span>
+              <p className="text-slate-600 text-[11px] leading-relaxed">
+                "Recognized as one of the Most Iconic High-Rise Architectural Landmarks in West Pune for 2026."
+              </p>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-milky-100/70 border border-champagne-400/30 space-y-1">
+              <span className="font-bold text-slate-900 font-cinzel block text-sm">Construction World</span>
+              <p className="text-slate-600 text-[11px] leading-relaxed">
+                "Engineered to IS 1893:2016 Zone-III seismic safety with precision RCC shear wall formwork."
+              </p>
+            </div>
+          </div>
+        </motion.div>
+
       </div>
     </section>
   );
