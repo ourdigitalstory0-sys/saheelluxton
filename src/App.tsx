@@ -21,6 +21,9 @@ import { PlanZoomModal } from './components/PlanZoomModal';
 import { VideoModal } from './components/VideoModal';
 import { SEOArticlesModal } from './components/SEOArticlesModal';
 import { SaheelEcosystemHub } from './components/SaheelEcosystemHub';
+import { Virtual360Tour } from './components/Virtual360Tour';
+import { NRICalculator } from './components/NRICalculator';
+import { ConstructionTracker } from './components/ConstructionTracker';
 import { FloatingHUD } from './components/FloatingHUD';
 import { Footer } from './components/Footer';
 import { UnitPlan } from './types/project';
@@ -72,6 +75,11 @@ export const App: React.FC = () => {
           onOpenBrochure={openBrochure}
         />
 
+        {/* Virtual 360 Immersion & Day/Night Lighting Visualizer */}
+        <Virtual360Tour
+          onOpenBooking={openBooking}
+        />
+
         {/* 5-Star Amenities Showcase */}
         <Amenities
           onOpenBooking={openBooking}
@@ -86,6 +94,12 @@ export const App: React.FC = () => {
 
         {/* Pricing & Financial Planner */}
         <PricingCalculator
+          onOpenBooking={openBooking}
+          onOpenBrochure={openBrochure}
+        />
+
+        {/* Multi-Currency NRI Investment & High-Yield ROI Calculator */}
+        <NRICalculator
           onOpenBooking={openBooking}
           onOpenBrochure={openBrochure}
         />
@@ -119,6 +133,12 @@ export const App: React.FC = () => {
 
         {/* Technical Specifications */}
         <Specifications
+          onOpenBrochure={openBrochure}
+        />
+
+        {/* MahaRERA Audited Construction Progress Roadmap */}
+        <ConstructionTracker
+          onOpenBooking={openBooking}
           onOpenBrochure={openBrochure}
         />
 
