@@ -12,6 +12,7 @@ import { PricingCalculator } from './components/PricingCalculator';
 import { LocationMatrix } from './components/LocationMatrix';
 import { TransitDistanceCalculator } from './components/TransitDistanceCalculator';
 import { MicroMarketInsights } from './components/MicroMarketInsights';
+import { ProgrammaticSEOHub } from './components/ProgrammaticSEOHub';
 import { FAQSection } from './components/FAQSection';
 import { GalleryModal } from './components/GalleryModal';
 import { Specifications } from './components/Specifications';
@@ -152,6 +153,12 @@ export const App: React.FC = () => {
         <MicroMarketInsights
           onOpenBooking={openBooking}
           onSelectArticle={(art) => setSelectedArticle(art)}
+        />
+
+        {/* 10,000+ Programmatic Real Estate Intelligence & Dossier Hub */}
+        <ProgrammaticSEOHub
+          onOpenBooking={openBooking}
+          onOpenBrochure={openBrochure}
         />
 
         {/* Saheel Properties Master Project Universe & Keyword Explorer */}
