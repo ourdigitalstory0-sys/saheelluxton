@@ -37,6 +37,7 @@ import { PrintableCostSheetModal } from './components/PrintableCostSheetModal';
 import { LuxuryConciergeChat } from './components/LuxuryConciergeChat';
 import { FloatingHUD } from './components/FloatingHUD';
 import { Footer } from './components/Footer';
+import { DynamicPageRenderer } from './components/DynamicPageRenderer';
 import { UnitPlan } from './types/project';
 import { SEOArticle } from './data/seoArticlesData';
 
@@ -47,6 +48,7 @@ export const App: React.FC = () => {
   const [isCostSheetOpen, setIsCostSheetOpen] = useState<boolean>(false);
   const [zoomedPlan, setZoomedPlan] = useState<UnitPlan | null>(null);
   const [selectedArticle, setSelectedArticle] = useState<SEOArticle | null>(null);
+  const [currentPath, setCurrentPath] = useState<string>(window.location.pathname);
 
   const openBooking = () => setIsBookingModalOpen(true);
   const openBrochure = () => setIsBrochureModalOpen(true);
@@ -79,154 +81,169 @@ export const App: React.FC = () => {
         onOpenBrochure={openBrochure}
       />
 
-      {/* Hero Section */}
-      <Hero
-        onOpenBooking={openBooking}
-        onOpenBrochure={openBrochure}
-        onOpenVideo={openVideo}
-      />
-
-      {/* Main Content Sections */}
-      <main>
-        {/* Project Overview & Vision */}
-        <Overview
-          onOpenBooking={openBooking}
-          onOpenBrochure={openBrochure}
-          onOpenVideo={openVideo}
-        />
-
-        {/* Signature Highlights */}
-        <Highlights
-          onOpenBooking={openBooking}
-        />
-
-        {/* Interactive 30-Storey Tower Explorer */}
-        <InteractiveTowerExplorer
+      {/* Dynamic Programmatic SEO Page Route vs Master Landing Page */}
+      {currentPath.startsWith('/p/') ? (
+        <DynamicPageRenderer
+          slug={currentPath.replace('/p/', '')}
+          onGoHome={() => {
+            window.history.pushState(null, '', '/');
+            setCurrentPath('/');
+          }}
           onOpenBooking={openBooking}
           onOpenBrochure={openBrochure}
         />
+      ) : (
+        <>
+          {/* Master Landing Page Hero Section with 30-Storey Elevation */}
+          <Hero
+            onOpenBooking={openBooking}
+            onOpenBrochure={openBrochure}
+            onOpenVideo={openVideo}
+          />
 
-        {/* Virtual 360 Immersion & Day/Night Lighting Visualizer */}
-        <Virtual360Tour
-          onOpenBooking={openBooking}
-        />
+          {/* Main Content Sections */}
+          <main id="main-content" className="relative z-10" role="main">
+            {/* Project Overview & Vision */}
+            <Overview
+              onOpenBooking={openBooking}
+              onOpenBrochure={openBrochure}
+              onOpenVideo={openVideo}
+            />
 
-        {/* 5-Star Amenities Showcase */}
-        <Amenities
-          onOpenBooking={openBooking}
-        />
+            {/* Signature Highlights */}
+            <Highlights
+              onOpenBooking={openBooking}
+            />
 
-        {/* Interactive Floor Plans & Blueprints */}
-        <FloorPlans
-          onOpenBooking={openBooking}
-          onOpenBrochure={openBrochure}
-          onSelectPlanForZoom={(plan) => setZoomedPlan(plan)}
-        />
+            {/* Interactive 30-Storey Tower Explorer */}
+            <InteractiveTowerExplorer
+              onOpenBooking={openBooking}
+              onOpenBrochure={openBrochure}
+            />
 
-        {/* Live Tower & Unit Inventory Configuration Matrix */}
-        <UnitAvailabilityMatrix
-          onOpenBooking={openBooking}
-          onOpenBrochure={openBrochure}
-        />
+            {/* Virtual 360 Immersion & Day/Night Lighting Visualizer */}
+            <Virtual360Tour
+              onOpenBooking={openBooking}
+            />
 
-        {/* Interactive Solar Trajectory & 100% Vastu Orientation Simulator */}
-        <VastuSunlightSimulator
-          onOpenBooking={openBooking}
-        />
+            {/* 5-Star Amenities Showcase */}
+            <Amenities
+              onOpenBooking={openBooking}
+            />
 
-        {/* Pricing & Financial Planner */}
-        <PricingCalculator
-          onOpenBooking={openBooking}
-          onOpenBrochure={openBrochure}
-          onOpenCostSheet={openCostSheet}
-        />
+            {/* Interactive Floor Plans & Blueprints */}
+            <FloorPlans
+              onOpenBooking={openBooking}
+              onOpenBrochure={openBrochure}
+              onSelectPlanForZoom={(plan) => setZoomedPlan(plan)}
+            />
 
-        {/* Multi-Currency NRI Investment & High-Yield ROI Calculator */}
-        <NRICalculator
-          onOpenBooking={openBooking}
-          onOpenBrochure={openBrochure}
-        />
+            {/* Live Tower & Unit Inventory Configuration Matrix */}
+            <UnitAvailabilityMatrix
+              onOpenBooking={openBooking}
+              onOpenBrochure={openBrochure}
+            />
 
-        {/* Strategic Location & Connectivity */}
-        <LocationMatrix
-          onOpenBooking={openBooking}
-        />
+            {/* Interactive Solar Trajectory & 100% Vastu Orientation Simulator */}
+            <VastuSunlightSimulator
+              onOpenBooking={openBooking}
+            />
 
-        {/* Phase 3: Interactive Commute Time & Strategic Distance Calculator */}
-        <TransitDistanceCalculator
-          onOpenBooking={openBooking}
-        />
+            {/* Pricing & Financial Planner */}
+            <PricingCalculator
+              onOpenBooking={openBooking}
+              onOpenBrochure={openBrochure}
+              onOpenCostSheet={openCostSheet}
+            />
 
-        {/* Pune Real Estate Micro-Market Intelligence & Research Dossiers */}
-        <MicroMarketInsights
-          onOpenBooking={openBooking}
-          onSelectArticle={(art) => setSelectedArticle(art)}
-        />
+            {/* Multi-Currency NRI Investment & High-Yield ROI Calculator */}
+            <NRICalculator
+              onOpenBooking={openBooking}
+              onOpenBrochure={openBrochure}
+            />
 
-        {/* 10,000+ Programmatic Real Estate Intelligence & Dossier Hub */}
-        <ProgrammaticSEOHub
-          onOpenBooking={openBooking}
-          onOpenBrochure={openBrochure}
-        />
+            {/* Strategic Location & Connectivity */}
+            <LocationMatrix
+              onOpenBooking={openBooking}
+            />
 
-        {/* Dynamic Multi-Dimensional Programmatic SEO Permutation Generator */}
-        <DynamicProgrammaticGenerator
-          onOpenBooking={openBooking}
-          onOpenBrochure={openBrochure}
-        />
+            {/* Phase 3: Interactive Commute Time & Strategic Distance Calculator */}
+            <TransitDistanceCalculator
+              onOpenBooking={openBooking}
+            />
 
-        {/* Saheel Properties Master Project Universe & Keyword Explorer */}
-        <SaheelEcosystemHub
-          onOpenBooking={openBooking}
-          onOpenBrochure={openBrochure}
-        />
+            {/* Pune Real Estate Micro-Market Intelligence & Research Dossiers */}
+            <MicroMarketInsights
+              onOpenBooking={openBooking}
+              onSelectArticle={(art) => setSelectedArticle(art)}
+            />
 
-        {/* Cinematic Virtual Gallery */}
-        <GalleryModal
-          onOpenBooking={openBooking}
-        />
+            {/* 10,000+ Programmatic Real Estate Intelligence & Dossier Hub */}
+            <ProgrammaticSEOHub
+              onOpenBooking={openBooking}
+              onOpenBrochure={openBrochure}
+            />
 
-        {/* Technical Specifications */}
-        <Specifications
-          onOpenBrochure={openBrochure}
-        />
+            {/* Dynamic Multi-Dimensional Programmatic SEO Permutation Generator */}
+            <DynamicProgrammaticGenerator
+              onOpenBooking={openBooking}
+              onOpenBrochure={openBrochure}
+            />
 
-        {/* MahaRERA Audited Construction Progress Roadmap */}
-        <ConstructionTracker
-          onOpenBooking={openBooking}
-          onOpenBrochure={openBrochure}
-        />
+            {/* Saheel Properties Master Project Universe & Keyword Explorer */}
+            <SaheelEcosystemHub
+              onOpenBooking={openBooking}
+              onOpenBrochure={openBrochure}
+            />
 
-        {/* Developer Legacy: Saheel Properties */}
-        <DeveloperLegacy
-          onOpenBooking={openBooking}
-        />
+            {/* Cinematic Virtual Gallery */}
+            <GalleryModal
+              onOpenBooking={openBooking}
+            />
 
-        {/* Institutional Trust, Statutory Clearances & Banking Consortium */}
-        <TrustGovernance
-          onOpenBooking={openBooking}
-          onOpenBrochure={openBrochure}
-        />
+            {/* Technical Specifications */}
+            <Specifications
+              onOpenBrochure={openBrochure}
+            />
 
-        {/* Real Estate Intelligence & Google Knowledge Entity Glossary */}
-        <RealEstateGlossary
-          onOpenBrochure={openBrochure}
-          onOpenBooking={openBooking}
-        />
+            {/* MahaRERA Audited Construction Progress Roadmap */}
+            <ConstructionTracker
+              onOpenBooking={openBooking}
+              onOpenBrochure={openBrochure}
+            />
 
-        {/* Why Luxton Outclasses Ordinary Pune Projects (Pre-Footer) */}
-        <LuxuryComparison
-          onOpenBooking={openBooking}
-        />
+            {/* Developer Legacy: Saheel Properties */}
+            <DeveloperLegacy
+              onOpenBooking={openBooking}
+            />
 
-        {/* Homebuyer & Investor FAQ Section (Schema-Optimized) */}
-        <FAQSection
-          onOpenBooking={openBooking}
-        />
+            {/* Institutional Trust, Statutory Clearances & Banking Consortium */}
+            <TrustGovernance
+              onOpenBooking={openBooking}
+              onOpenBrochure={openBrochure}
+            />
 
-        {/* SEO Power Hub with Keyword Clusters & Google Ecosystem Integration */}
-        <SEOFooterHub />
-      </main>
+            {/* Real Estate Intelligence & Google Knowledge Entity Glossary */}
+            <RealEstateGlossary
+              onOpenBrochure={openBrochure}
+              onOpenBooking={openBooking}
+            />
+
+            {/* Why Luxton Outclasses Ordinary Pune Projects (Pre-Footer) */}
+            <LuxuryComparison
+              onOpenBooking={openBooking}
+            />
+
+            {/* Homebuyer & Investor FAQ Section (Schema-Optimized) */}
+            <FAQSection
+              onOpenBooking={openBooking}
+            />
+
+            {/* SEO Power Hub with Keyword Clusters & Google Ecosystem Integration */}
+            <SEOFooterHub />
+          </main>
+        </>
+      )}
 
       {/* Footer */}
       <Footer

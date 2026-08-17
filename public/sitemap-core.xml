@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://saheeluxton.in/</loc>
+    <lastmod>2026-08-17T11:00:00+05:30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://saheeluxton.in/" />
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://saheeluxton.in/" />
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://saheeluxton.in/" />
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://saheeluxton.in/" />
+    <xhtml:link rel="alternate" hreflang="en-AE" href="https://saheeluxton.in/" />
+    <xhtml:link rel="alternate" hreflang="en-SG" href="https://saheeluxton.in/" />
+
+    <image:image>
+      <image:loc>https://backend.saheelproperties.com/uploads/Chembur_Rameshwar_Day_View_Final_1_1_1_5dd5da3a34.png</image:loc>
+      <image:title>Saheel Luxton 30 Storey Architectural Day Elevation Wakad Pune</image:title>
+      <image:caption>Signature 30-Storey Landmark Tower by Saheel Properties in Wakad Pune</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://backend.saheelproperties.com/uploads/Luxton_Desktop_Banner_19a7b369f6.webp</image:loc>
+      <image:title>Luxton by Saheel Official Horizon Master Banner</image:title>
+      <image:caption>Ultra-Luxury 2 BHK, 3 BHK and 4 BHK Residences Wakad Pune</image:caption>
+    </image:image>
+  </url>
+</urlset>
