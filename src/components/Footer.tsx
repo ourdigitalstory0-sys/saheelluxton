@@ -67,7 +67,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking, onOpenBrochure })
           
           {/* Col 1: Brand & Overview */}
           <div className="space-y-4">
-            <a href="#" className="flex items-center gap-3.5 group">
+            <a href="/" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); window.history.replaceState(null, '', window.location.pathname); }} className="flex items-center gap-3.5 group">
               <motion.div 
                 whileHover={{ scale: 1.08 }}
                 className="w-11 h-11 rounded-2xl bg-gradient-to-br from-champagne-400 to-champagne-800 p-0.5 flex items-center justify-center shadow-sm"
@@ -205,9 +205,9 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking, onOpenBrochure })
               © {new Date().getFullYear()} Saheel Properties. All Rights Reserved. | <span className="text-champagne-800 font-bold">Luxton by Saheel (MahaRERA: {projectData.reraNo})</span>
             </div>
             <div className="flex items-center gap-4">
-              <a href="#" className="hover:underline">Privacy Policy</a>
+              <span className="hover:text-champagne-700 cursor-pointer">Privacy Policy</span>
               <span>•</span>
-              <a href="#" className="hover:underline">Terms of Service</a>
+              <span className="hover:text-champagne-700 cursor-pointer">Terms of Service</span>
               <span>•</span>
               <a href="https://maharera.mahaonline.gov.in" target="_blank" rel="noopener noreferrer" className="text-champagne-700 hover:underline font-bold">MahaRERA Verification</a>
             </div>

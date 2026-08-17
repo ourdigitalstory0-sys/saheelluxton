@@ -79,10 +79,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenBrochure })
     }
   };
 
-  const handleNavClick = (e: React.MouseEvent, href: string) => {
+  const handleNavClick = (e: React.MouseEvent, sectionId: string) => {
     e.preventDefault();
-    const targetId = href.replace('#', '');
-    const element = document.getElementById(targetId);
+    const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
@@ -93,17 +92,17 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenBrochure })
   };
 
   const navLinks = [
-    { label: 'Overview', href: '#overview' },
-    { label: 'Highlights', href: '#highlights' },
-    { label: 'Tower', href: '#tower-explorer' },
-    { label: 'Amenities', href: '#amenities' },
-    { label: 'Floor Plans', href: '#plans' },
-    { label: 'Pricing & EMI', href: '#pricing' },
-    { label: 'Location', href: '#location' },
-    { label: 'Market Insights', href: '#pune-real-estate-insights' },
-    { label: 'FAQs', href: '#faqs' },
-    { label: 'Gallery', href: '#gallery' },
-    { label: 'Why Luxton', href: '#comparison' }
+    { label: 'Overview', id: 'overview' },
+    { label: 'Highlights', id: 'highlights' },
+    { label: 'Tower', id: 'tower-explorer' },
+    { label: 'Amenities', id: 'amenities' },
+    { label: 'Floor Plans', id: 'plans' },
+    { label: 'Pricing & EMI', id: 'pricing' },
+    { label: 'Location', id: 'location' },
+    { label: 'Market Insights', id: 'pune-real-estate-insights' },
+    { label: 'FAQs', id: 'faqs' },
+    { label: 'Gallery', id: 'gallery' },
+    { label: 'Why Luxton', id: 'comparison' }
   ];
 
   return (
@@ -152,8 +151,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenBrochure })
             return (
               <a
                 key={link.label}
-                href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
+                href="/"
+                onClick={(e) => handleNavClick(e, link.id)}
                 onMouseEnter={() => setHoveredIndex(idx)}
                 className={`relative px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider transition-colors z-10 ${
                   isHovered ? 'text-slate-950 font-extrabold' : 'text-slate-700 hover:text-slate-900'
@@ -251,8 +250,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenBrochure })
                 {navLinks.map((link) => (
                   <a
                     key={link.label}
-                    href={link.href}
-                    onClick={(e) => handleNavClick(e, link.href)}
+                    href="/"
+                    onClick={(e) => handleNavClick(e, link.id)}
                     className="min-h-[48px] px-4 py-3 rounded-2xl bg-white border border-slate-200/80 hover:border-champagne-500 active:bg-champagne-100 text-slate-900 font-bold uppercase tracking-wider text-xs transition-all flex items-center justify-between shadow-sm"
                   >
                     <span>{link.label}</span>
