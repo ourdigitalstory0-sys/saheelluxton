@@ -1,10 +1,5 @@
-/**
- * Saheel Luxton Enterprise Service Worker
- * Fast offline-first caching, edge asset acceleration, and background synchronization
- */
-
-const CACHE_NAME = 'saheel-luxton-v1.0.0';
-const OFFLINE_URLS = [
+const CACHE_NAME = 'saheel-luxton-cache-v1';
+const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
   '/site.webmanifest',
@@ -14,7 +9,7 @@ const OFFLINE_URLS = [
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(OFFLINE_URLS);
+      return cache.addAll(ASSETS_TO_CACHE);
     })
   );
   self.skipWaiting();
@@ -22,11 +17,11 @@ self.addEventListener('install', (event) => {
 
 self.addEventListener('activate', (event) => {
   event.waitUntil(
-    caches.keys().then((cacheNames) => {
+    caches.keys().then((keys) => {
       return Promise.all(
-        cacheNames.map((name) => {
-          if (name !== CACHE_NAME) {
-            return caches.delete(name);
+        keys.map((key) => {
+          if (key !== CACHE_NAME) {
+            return caches.delete(key);
           }
         })
       );
@@ -36,26 +31,22 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
+  // Only handle GET requests
   if (event.request.method !== 'GET') return;
 
-  const url = new URL(event.request.url);
-
-  // Stale-While-Revalidate Strategy for HTML and Assets
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {
-      const fetchPromise = fetch(event.request).then((networkResponse) => {
-        if (networkResponse && networkResponse.status === 200) {
-          const responseToCache = networkResponse.clone();
-          caches.open(CACHE_NAME).then((cache) => {
-            cache.put(event.request, responseToCache);
-          });
-        }
+      if (cachedResponse) {
+        return cachedResponse;
+      }
+      return fetch(event.request).then((networkResponse) => {
         return networkResponse;
       }).catch(() => {
-        return cachedResponse;
+        // Fallback
+        if (event.request.destination === 'document') {
+          return caches.match('/');
+        }
       });
-
-      return cachedResponse || fetchPromise;
     })
   );
 });
