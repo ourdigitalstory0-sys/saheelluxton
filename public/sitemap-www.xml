@@ -3,20 +3,20 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
-  <!-- Canonical Property: https://saheeluxton.in/ -->
+  <!-- Canonical Property: https://www.saheeluxton.in/ -->
   <url>
-    <loc>https://saheeluxton.in/</loc>
+    <loc>https://www.saheeluxton.in/</loc>
     <lastmod>2026-08-17T11:00:00+05:30</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
     
     <!-- International Hreflang Tags -->
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://saheeluxton.in/" />
-    <xhtml:link rel="alternate" hreflang="en-IN" href="https://saheeluxton.in/" />
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://saheeluxton.in/" />
-    <xhtml:link rel="alternate" hreflang="en-GB" href="https://saheeluxton.in/" />
-    <xhtml:link rel="alternate" hreflang="en-AE" href="https://saheeluxton.in/" />
-    <xhtml:link rel="alternate" hreflang="en-SG" href="https://saheeluxton.in/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saheeluxton.in/" />
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://www.saheeluxton.in/" />
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.saheeluxton.in/" />
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://www.saheeluxton.in/" />
+    <xhtml:link rel="alternate" hreflang="en-AE" href="https://www.saheeluxton.in/" />
+    <xhtml:link rel="alternate" hreflang="en-SG" href="https://www.saheeluxton.in/" />
 
     <!-- Google Image Search Schema: 30 Storey Architectural Day View -->
     <image:image>
