@@ -78,7 +78,7 @@ export const Overview: React.FC<OverviewProps> = ({ onOpenBooking, onOpenBrochur
               <div className="relative aspect-[16/10] rounded-2xl overflow-hidden bg-slate-100">
                 <img
                   src={projectData.heroMedia.dayElevation}
-                  alt="Saheel Luxton Day Elevation"
+                  alt="Saheel Luxton 30-Storey Architectural Day View Elevation in Wakad Pune by Saheel Properties"
                   className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700"
                 />
                 

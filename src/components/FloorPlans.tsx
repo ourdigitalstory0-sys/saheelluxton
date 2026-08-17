@@ -147,7 +147,7 @@ export const FloorPlans: React.FC<FloorPlansProps> = ({ onOpenBooking, onOpenBro
                     whileHover={{ scale: 1.06 }}
                     transition={{ duration: 0.5 }}
                     src={activePlan.image}
-                    alt={activePlan.title}
+                    alt={`${activePlan.title} (${activePlan.carpet}) RERA Usable Carpet Floor Plan Blueprint - Saheel Luxton Wakad`}
                     className="max-h-full max-w-full object-contain"
                   />
                 </div>

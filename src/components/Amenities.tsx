@@ -131,7 +131,7 @@ export const Amenities: React.FC<AmenitiesProps> = ({ onOpenBooking }) => {
                       whileHover={{ scale: 1.12 }}
                       transition={{ duration: 0.7, ease: "easeOut" }}
                       src={amenity.image}
-                      alt={amenity.title}
+                      alt={`${amenity.title} (${amenity.tag}) - 5-Star Rooftop and Lifestyle Amenity at Saheel Luxton Wakad`}
                       className="w-full h-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent"></div>

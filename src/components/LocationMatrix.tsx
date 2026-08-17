@@ -206,7 +206,7 @@ export const LocationMatrix: React.FC<LocationMatrixProps> = ({ onOpenBooking })
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.7 }}
                   src={projectData.locationData.mapImage}
-                  alt="Saheel Luxton Location Map"
+                  alt="Saheel Luxton S. No. 111 Shankar Kalat Nagar Wakad Pune Location and Connectivity Map"
                   className="w-full h-full object-cover"
                 />
 

@@ -135,7 +135,7 @@ export const GalleryModal: React.FC<GalleryModalProps> = ({ onOpenBooking }) => 
                     whileHover={{ scale: 1.12 }}
                     transition={{ duration: 0.7 }}
                     src={item.image}
-                    alt={item.title}
+                    alt={`${item.title} (${item.category}) - Saheel Luxton Wakad Pune 30-Storey Landmark`}
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-80 group-hover:opacity-60 transition-opacity"></div>
@@ -244,7 +244,7 @@ export const GalleryModal: React.FC<GalleryModalProps> = ({ onOpenBooking }) => 
               <div className="relative rounded-2xl overflow-hidden border border-champagne-500/40 shadow-2xl bg-black">
                 <img
                   src={filteredRenders[activeLightboxIndex].image}
-                  alt={filteredRenders[activeLightboxIndex].title}
+                  alt={`${filteredRenders[activeLightboxIndex].title} - ${filteredRenders[activeLightboxIndex].caption} | Saheel Luxton Wakad Pune`}
                   className="max-h-[70vh] max-w-full object-contain"
                 />
               </div>

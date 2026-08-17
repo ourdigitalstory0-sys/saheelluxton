@@ -86,7 +86,7 @@ export const Highlights: React.FC<HighlightsProps> = ({ onOpenBooking }) => {
                     whileHover={{ scale: 1.12 }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
                     src={item.image}
-                    alt={item.title}
+                    alt={`${item.title} - Saheel Luxton 30-Storey Ultra-Luxury Landmark in Wakad Pune by Saheel Properties`}
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent"></div>
@@ -103,7 +103,7 @@ export const Highlights: React.FC<HighlightsProps> = ({ onOpenBooking }) => {
                     whileHover={{ rotate: 8, scale: 1.15 }}
                     className="absolute bottom-3 right-4 w-12 h-12 rounded-2xl bg-white border border-champagne-500/40 p-2.5 flex items-center justify-center shadow-md group-hover:border-champagne-600 transition-all"
                   >
-                    <img src={item.icon} alt="icon" className="w-full h-full object-contain filter invert-0" />
+                    <img src={item.icon} alt={`${item.title} architectural amenity feature icon - Saheel Luxton Wakad`} className="w-full h-full object-contain filter invert-0" />
                   </motion.div>
                 </div>
 

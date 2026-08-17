@@ -193,7 +193,7 @@ export const InteractiveTowerExplorer: React.FC<InteractiveTowerExplorerProps> =
                   <div className="relative aspect-[16/10] rounded-2xl overflow-hidden bg-slate-950 shadow-inner group">
                     <img
                       src={activeData.image}
-                      alt={activeData.title}
+                      alt={`${activeData.title} (${activeData.floors}) - Saheel Luxton 30-Storey Tower Wakad Pune`}
                       className="w-full h-full object-cover group-hover:scale-106 transition-transform duration-700"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>

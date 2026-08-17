@@ -50,7 +50,7 @@ export const PlanZoomModal: React.FC<PlanZoomModalProps> = ({ plan, onClose, onO
         <div className="my-4 relative rounded-2xl bg-white p-4 sm:p-6 flex items-center justify-center overflow-auto max-h-[60vh] border border-slate-200 shadow-inner">
           <img
             src={plan.image}
-            alt={plan.title}
+            alt={`${plan.title} (${plan.carpet}) Usable Carpet Floor Plan Blueprint - Saheel Luxton Wakad Pune`}
             className="max-h-[55vh] max-w-full object-contain"
           />
         </div>

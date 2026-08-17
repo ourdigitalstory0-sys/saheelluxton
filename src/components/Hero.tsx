@@ -241,7 +241,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onOpenBrochure, onOpe
                     exit={{ opacity: 0, scale: 0.96 }}
                     transition={{ duration: 0.7, ease: "easeInOut" }}
                     src={currentSlide.image}
-                    alt={currentSlide.title}
+                    alt={`${currentSlide.title} - ${currentSlide.caption} | Saheel Luxton Wakad Pune 30-Storey Elevation`}
                     fetchPriority="high"
                     decoding="async"
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
@@ -298,7 +298,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onOpenBrochure, onOpe
                   >
                     <img 
                       src={slide.image} 
-                      alt={slide.tag} 
+                      alt={`${slide.tag} Architectural Thumbnail Preview - Saheel Luxton Wakad`} 
                       className="w-full h-full object-cover"
                     />
                     <div className="absolute inset-0 bg-black/20"></div>
