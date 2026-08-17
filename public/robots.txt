@@ -1,37 +1,56 @@
 # ==============================================================================
-# Canonical Robots.txt for Saheel Luxton Wakad (https://www.saheeluxton.in)
-# Universal Global Search Engine & AI Crawler Dominance Protocol
+# Master Robots.txt for Saheel Luxton Wakad (https://www.saheeluxton.in & https://saheeluxton.in)
+# MahaRERA Registration: PM1260002502043
+# Universal Search Engine, Googlebot & Next-Gen AI Crawler Dominance Protocol
 # ==============================================================================
 
 User-agent: *
 Allow: /
+Allow: /p/
+Allow: /sitemaps/
+Allow: /sitemap.xml
+Allow: /sitemap-core.xml
+Allow: /sitemap-index.xml
 Allow: /assets/
 Allow: /uploads/
 Allow: /site.webmanifest
 Allow: /opensearch.xml
 Allow: /llms.txt
 
-# --- Global Search Engines ---
+# --- Google Search Ecosystem Crawlers ---
 User-agent: Googlebot
 Allow: /
+Allow: /p/
+Allow: /sitemaps/
 Allow: /uploads/
 Allow: /assets/
 
 User-agent: Googlebot-Image
+Allow: /
 Allow: /uploads/
 Allow: /assets/
 
 User-agent: Googlebot-News
 Allow: /
 
+User-agent: Google-Extended
+Allow: /
+
+User-agent: GoogleOther
+Allow: /
+
+# --- Microsoft Bing & Yahoo Ecosystem ---
 User-agent: Bingbot
 Allow: /
+Allow: /p/
+Allow: /sitemaps/
 Allow: /uploads/
 Allow: /assets/
 
 User-agent: Slurp
 Allow: /
 
+# --- Other Global Search Engines ---
 User-agent: DuckDuckBot
 Allow: /
 
@@ -50,11 +69,17 @@ Allow: /
 User-agent: Applebot
 Allow: /
 
-# --- Next-Gen AI & LLM Search Answer Engines ---
+User-agent: Applebot-Extended
+Allow: /
+
+# --- Next-Gen Generative AI & LLM Search Engines ---
 User-agent: GPTBot
 Allow: /
 
 User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
 Allow: /
 
 User-agent: PerplexityBot
@@ -66,7 +91,7 @@ Allow: /
 User-agent: anthropic-ai
 Allow: /
 
-User-agent: Applebot-Extended
+User-agent: Meta-ExternalAgent
 Allow: /
 
 User-agent: CCBot
@@ -75,5 +100,8 @@ Allow: /
 User-agent: YouBot
 Allow: /
 
-# --- Primary Global Sitemap ---
+# --- Master XML Sitemaps Hierarchy ---
 Sitemap: https://www.saheeluxton.in/sitemap.xml
+Sitemap: https://www.saheeluxton.in/sitemap-index.xml
+Sitemap: https://saheeluxton.in/sitemap.xml
+Sitemap: https://saheeluxton.in/sitemap-index.xml
