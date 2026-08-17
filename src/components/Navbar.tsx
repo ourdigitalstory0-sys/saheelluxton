@@ -231,45 +231,72 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenBrochure })
         </button>
       </div>
 
-      {/* Full-Screen Mobile Drawer with Smooth Backdrop */}
+      {/* Full-Screen Mobile Navigation Overlay */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div 
-            initial={{ opacity: 0, y: -15 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -15 }}
-            transition={{ duration: 0.3 }}
-            className="xl:hidden fixed inset-x-0 top-[60px] bottom-0 bg-[#FAF8F5]/98 backdrop-blur-2xl px-6 py-6 overflow-y-auto space-y-6 flex flex-col justify-between border-t border-champagne-500/20 shadow-2xl safe-bottom z-50"
+            initial={{ opacity: 0, x: '100%' }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: '100%' }}
+            transition={{ type: "spring", damping: 25, stiffness: 200 }}
+            className="xl:hidden fixed inset-0 bg-[#FAF8F5] z-[100] flex flex-col justify-between overflow-y-auto"
           >
-            {/* Nav Links Grid with 48px Touch Targets */}
-            <div className="space-y-1.5">
-              <span className="text-[10px] font-mono text-champagne-700 uppercase tracking-widest font-bold block mb-2">
-                Quick Navigation
+            {/* Top Bar inside Mobile Drawer */}
+            <div className="p-4 sm:p-6 border-b border-champagne-500/20 flex items-center justify-between bg-white/90 backdrop-blur-md sticky top-0 z-20">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-champagne-400 via-champagne-600 to-champagne-800 p-0.5 flex items-center justify-center shadow-gold-glow">
+                  <div className="w-full h-full bg-white rounded-[14px] flex items-center justify-center">
+                    <span className="font-cinzel text-xl font-black gold-gradient-text">L</span>
+                  </div>
+                </div>
+                <div>
+                  <span className="font-cinzel text-lg font-black tracking-widest text-slate-900 block leading-none">
+                    LUXTON
+                  </span>
+                  <span className="text-[9px] uppercase tracking-[0.25em] text-champagne-700 font-extrabold block mt-0.5">
+                    BY SAHEEL • WAKAD
+                  </span>
+                </div>
+              </div>
+
+              <button
+                onClick={() => setMobileMenuOpen(false)}
+                className="w-11 h-11 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-800 flex items-center justify-center cursor-pointer transition"
+                aria-label="Close Mobile Navigation"
+              >
+                <X className="w-6 h-6 text-slate-900" />
+              </button>
+            </div>
+
+            {/* Scrollable Nav Links Grid */}
+            <div className="px-6 py-6 space-y-2 flex-1">
+              <span className="text-[10px] font-mono text-champagne-800 uppercase tracking-widest font-bold block mb-3">
+                Quick Navigation Directory
               </span>
-              <div className="grid grid-cols-1 gap-1">
+              <div className="grid grid-cols-1 gap-1.5">
                 {navLinks.map((link) => (
                   <a
                     key={link.label}
                     href="/"
                     onClick={(e) => handleNavClick(e, link.id)}
-                    className="min-h-[48px] px-4 py-3 rounded-2xl bg-white border border-slate-200/80 hover:border-champagne-500 active:bg-champagne-100 text-slate-900 font-bold uppercase tracking-wider text-xs transition-all flex items-center justify-between shadow-sm"
+                    className="min-h-[52px] px-5 py-3.5 rounded-2xl bg-white border border-slate-200/90 active:bg-champagne-100 text-slate-900 font-bold uppercase tracking-wider text-xs transition-all flex items-center justify-between shadow-sm cursor-pointer"
                   >
-                    <span>{link.label}</span>
-                    <span className="text-champagne-600 font-bold">→</span>
+                    <span className="font-cinzel">{link.label}</span>
+                    <span className="text-champagne-700 font-bold text-base">→</span>
                   </a>
                 ))}
               </div>
             </div>
 
-            {/* Direct Quick Actions for Mobile */}
-            <div className="space-y-3 pt-2">
+            {/* Direct Mobile Quick Actions Bar */}
+            <div className="p-6 border-t border-champagne-500/20 bg-white/95 space-y-3 sticky bottom-0 z-20">
               <div className="grid grid-cols-2 gap-2.5">
                 <button
                   onClick={() => {
                     setMobileMenuOpen(false);
                     onOpenBrochure();
                   }}
-                  className="min-h-[48px] btn-auric-outline rounded-2xl text-xs font-bold tracking-wider uppercase flex items-center justify-center gap-2"
+                  className="min-h-[48px] btn-auric-outline rounded-2xl text-xs font-bold tracking-wider uppercase flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <Download className="w-4 h-4 text-champagne-600" />
                   Brochure
@@ -279,18 +306,18 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenBrochure })
                     setMobileMenuOpen(false);
                     onOpenBooking();
                   }}
-                  className="min-h-[48px] btn-auric rounded-2xl text-xs font-extrabold tracking-wider uppercase flex items-center justify-center gap-2 shadow-gold-glow"
+                  className="min-h-[48px] btn-auric rounded-2xl text-xs font-extrabold tracking-wider uppercase flex items-center justify-center gap-2 shadow-gold-glow cursor-pointer text-slate-950"
                 >
                   <Sparkles className="w-4 h-4" />
                   VIP Visit
                 </button>
               </div>
 
-              {/* Direct WhatsApp and Phone Mobile Triggers */}
+              {/* Direct Phone and WhatsApp */}
               <div className="grid grid-cols-2 gap-2.5">
                 <a
                   href={`tel:${projectData.contactPhone}`}
-                  className="min-h-[48px] rounded-2xl bg-white border border-slate-200 text-slate-900 text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow-sm"
+                  className="min-h-[48px] rounded-2xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-900 text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow-sm"
                 >
                   <Phone className="w-4 h-4 text-champagne-600" />
                   Direct Call
@@ -299,7 +326,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenBrochure })
                   href={`https://wa.me/${projectData.whatsappPhone}?text=${encodeURIComponent("Hello Saheel Properties, I am interested in Luxton by Saheel Wakad.")}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="min-h-[48px] rounded-2xl bg-emerald-600 text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow-sm"
+                  className="min-h-[48px] rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow-sm"
                 >
                   <MessageCircle className="w-4 h-4" />
                   WhatsApp
@@ -307,16 +334,17 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenBrochure })
               </div>
 
               {/* RERA and Location Badge */}
-              <div className="p-3.5 rounded-2xl bg-white/80 border border-champagne-500/30 text-center text-xs text-slate-700 space-y-1">
-                <div className="flex items-center justify-center gap-1.5 font-bold text-slate-900">
-                  <ShieldCheck className="w-4 h-4 text-champagne-600" />
-                  MahaRERA: <span className="font-mono text-champagne-700 font-black">{projectData.reraNo}</span>
+              <div className="p-2.5 rounded-xl bg-milky-50 border border-champagne-500/20 text-center text-xs text-slate-700 space-y-0.5">
+                <div className="flex items-center justify-center gap-1.5 font-bold text-slate-900 text-[11px]">
+                  <ShieldCheck className="w-3.5 h-3.5 text-champagne-600" />
+                  MahaRERA: <span className="font-mono text-champagne-800 font-bold">{projectData.reraNo}</span>
                 </div>
-                <div className="text-[11px] text-slate-500 flex items-center justify-center gap-1">
-                  <MapPin className="w-3.5 h-3.5 text-champagne-600" /> S. No. 111, Near Phoenix Mall, Wakad
+                <div className="text-[10px] text-slate-500 flex items-center justify-center gap-1">
+                  <MapPin className="w-3 h-3 text-champagne-600" /> S. No. 111, Near Phoenix Mall, Wakad
                 </div>
               </div>
             </div>
+
           </motion.div>
         )}
       </AnimatePresence>
