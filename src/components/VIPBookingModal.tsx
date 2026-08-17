@@ -4,6 +4,8 @@ import { X, CheckCircle2, ShieldCheck, Sparkles, Phone, User, Mail, Calendar, Cl
 import confetti from 'canvas-confetti';
 import { projectData } from '../data/projectData';
 
+import { dispatchLeadToEmail } from '../utils/leadDispatcher';
+
 interface VIPBookingModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -33,38 +35,37 @@ export const VIPBookingModal: React.FC<VIPBookingModalProps> = ({ isOpen, onClos
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
+    // Dispatch lead immediately to propsmartrealty@gmail.com
+    await dispatchLeadToEmail({
+      name: formData.name,
+      phone: formData.phone,
+      email: formData.email,
+      leadType: 'VIP_VISIT',
+      configuration: formData.configuration,
+      preferredDate: formData.preferredDate,
+      preferredTime: formData.preferredTime,
+      requireCabPickup: formData.requireCabPickup,
+      notes: `VIP Site Visit requested for ${formData.configuration} with cab pickup: ${formData.requireCabPickup ? 'YES' : 'NO'}`
+    });
+
+    setIsSubmitting(false);
+    setIsSubmitted(true);
+    
+    // Trigger gold luxury confetti celebration
     try {
-      const existingLeads = JSON.parse(localStorage.getItem('saheel_leads') || '[]');
-      existingLeads.push({
-        ...formData,
-        type: 'VIP_BOOKING',
-        timestamp: new Date().toISOString()
+      confetti({
+        particleCount: 80,
+        spread: 70,
+        origin: { y: 0.6 },
+        colors: ['#D4A017', '#B8860B', '#FAF8F5', '#1E293B']
       });
-      localStorage.setItem('saheel_leads', JSON.stringify(existingLeads));
     } catch (err) {
       // Safe fallback
     }
-
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-      
-      // Trigger gold luxury confetti celebration
-      try {
-        confetti({
-          particleCount: 80,
-          spread: 70,
-          origin: { y: 0.6 },
-          colors: ['#D4A017', '#B8860B', '#FAF8F5', '#1E293B']
-        });
-      } catch (err) {
-        // Safe fallback
-      }
-    }, 1000);
   };
 
   const resetAndClose = () => {

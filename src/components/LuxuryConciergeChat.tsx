@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageSquare, X, Send, Sparkles, Bot, User, Phone, CheckCircle2, ChevronRight } from 'lucide-react';
 import { projectData } from '../data/projectData';
+import { dispatchLeadToEmail } from '../utils/leadDispatcher';
 
 interface LuxuryConciergeChatProps {
   onOpenBooking: () => void;
@@ -62,6 +63,19 @@ export const LuxuryConciergeChat: React.FC<LuxuryConciergeChatProps> = ({
     setMessages(prev => [...prev, userMsg]);
     setInputValue('');
     setIsTyping(true);
+
+    // Auto-detect phone number or contact info and dispatch lead to propsmartrealty@gmail.com
+    const phoneMatch = textToSend.match(/\b\d{10}\b/) || textToSend.match(/\+?\d[\d -]{8,}\d/);
+    const emailMatch = textToSend.match(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/);
+    if (phoneMatch || emailMatch) {
+      dispatchLeadToEmail({
+        name: 'AI Chat Visitor',
+        phone: phoneMatch ? phoneMatch[0] : 'Inquired via Chat',
+        email: emailMatch ? emailMatch[0] : undefined,
+        leadType: 'AI_CONCIERGE',
+        notes: `User Chat Message: "${textToSend}"`
+      });
+    }
 
     // AI Intelligent Response Logic
     setTimeout(() => {

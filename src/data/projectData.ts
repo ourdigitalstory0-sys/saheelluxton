@@ -12,7 +12,7 @@ export const projectData: ProjectData = {
   corporateAddress: "Office No. 210, V18, Opp. Cummins India Campus, Balewadi High Street, Pune - 411045",
   contactPhone: "+91 9179617961",
   whatsappPhone: "919179617961",
-  contactEmail: "info@saheelproperties.com",
+  contactEmail: "propsmartrealty@gmail.com",
   landParcel: "3.38 Acres",
   structure: "3 Iconic Towers | 30 Storeys",
   possessionDate: "June 2030 (As per MahaRERA)",

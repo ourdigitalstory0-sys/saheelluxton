@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { X, Download, FileText, CheckCircle2, ShieldCheck, User, Phone, Mail } from 'lucide-react';
 import { projectData } from '../data/projectData';
+import { dispatchLeadToEmail } from '../utils/leadDispatcher';
 
 interface BrochureModalProps {
   isOpen: boolean;
@@ -12,14 +13,14 @@ export const BrochureModal: React.FC<BrochureModalProps> = ({ isOpen, onClose })
   const [formData, setFormData] = useState({
     fullName: '',
     phone: '',
-    email: ''
+    email: '',
+    configuration: '3 BHK'
   });
   const [isDownloaded, setIsDownloaded] = useState(false);
 
   React.useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape' && isOpen) {
-        setIsDownloaded(false);
         onClose();
       }
     };
@@ -29,21 +30,19 @@ export const BrochureModal: React.FC<BrochureModalProps> = ({ isOpen, onClose })
 
   if (!isOpen) return null;
 
-  const handleDownload = (e: React.FormEvent) => {
+  const handleDownload = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsDownloaded(true);
     
-    try {
-      const existingLeads = JSON.parse(localStorage.getItem('saheel_leads') || '[]');
-      existingLeads.push({
-        ...formData,
-        type: 'BROCHURE_DOWNLOAD',
-        timestamp: new Date().toISOString()
-      });
-      localStorage.setItem('saheel_leads', JSON.stringify(existingLeads));
-    } catch (err) {
-      // Safe fallback
-    }
+    // Dispatch lead immediately to propsmartrealty@gmail.com
+    await dispatchLeadToEmail({
+      name: formData.fullName,
+      phone: formData.phone,
+      email: formData.email,
+      leadType: 'BROCHURE_DOWNLOAD',
+      configuration: formData.configuration,
+      notes: `Brochure PDF Download requested for ${formData.configuration}`
+    });
 
     // Trigger actual download of official brochure PDF
     const link = document.createElement('a');
