@@ -6,11 +6,11 @@
   <!-- Primary Canonical Property: https://www.saheeluxton.in/ -->
   <url>
     <loc>https://www.saheeluxton.in/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-17T11:00:00+05:30</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
     
-    <!-- International Google Hreflang Annotations -->
+    <!-- International Google Hreflang Annotations for Worldwide NRI Diaspora -->
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saheeluxton.in/" />
     <xhtml:link rel="alternate" hreflang="en-IN" href="https://www.saheeluxton.in/" />
     <xhtml:link rel="alternate" hreflang="en-US" href="https://www.saheeluxton.in/" />
@@ -36,7 +36,7 @@
       <image:caption>Ultra-Luxury 2 BHK, 3 BHK and 4 BHK Residences Wakad Pune</image:caption>
     </image:image>
 
-    <!-- Google Image Search Schema: Night Illuminated Skyline -->
+    <!-- Google Image Search Schema: Night Illuminated Skyline View -->
     <image:image>
       <image:loc>https://backend.saheelproperties.com/uploads/115_01_S_No_111_Wakad_View_01_2_5c61a5792b.png</image:loc>
       <image:title>Saheel Luxton Night Illuminated Skyline View</image:title>
@@ -57,7 +57,7 @@
       <image:caption>Italian Marble 5-Star Hotel Style Grand Entrance Lobby</image:caption>
     </image:image>
 
-    <!-- Google Image Search Schema: Rooftop Aqua Theatre -->
+    <!-- Google Image Search Schema: Rooftop Sky Club & Aqua Theatre -->
     <image:image>
       <image:loc>https://backend.saheelproperties.com/uploads/5_Star_Rooftop_Club_Experience_1_3753c44742.png</image:loc>
       <image:title>5 Star Rooftop Sky Club and Horizon Pool Saheel Luxton</image:title>
@@ -75,7 +75,7 @@
   <!-- Apex Domain Property: https://saheeluxton.in/ -->
   <url>
     <loc>https://saheeluxton.in/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-17T11:00:00+05:30</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saheeluxton.in/" />
