@@ -1,23 +1,11 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, BookOpen, MapPin, Building, Train, Globe, DollarSign, CheckCircle2, ChevronRight, X, Sparkles, ArrowRight, ShieldCheck } from 'lucide-react';
-import { projectData } from '../data/projectData';
+import { Search, BookOpen, MapPin, Building, Train, Globe, DollarSign, CheckCircle2, ChevronRight, X, Sparkles, ArrowRight, ShieldCheck, TrendingUp, Download } from 'lucide-react';
+import { programmaticDossiers, ProgrammaticDossier } from '../data/puneProgrammaticSEOData';
 
 interface ProgrammaticSEOHubProps {
   onOpenBooking: () => void;
   onOpenBrochure: () => void;
-}
-
-interface SEOArticleHub {
-  id: string;
-  category: 'micro-markets' | 'transit' | 'typologies' | 'nri-investment' | 'legal-finance';
-  title: string;
-  subtitle: string;
-  targetKeywords: string[];
-  readTime: string;
-  summary: string;
-  fullContent: string[];
-  keyHighlights: { label: string; value: string }[];
 }
 
 export const ProgrammaticSEOHub: React.FC<ProgrammaticSEOHubProps> = ({
@@ -26,159 +14,32 @@ export const ProgrammaticSEOHub: React.FC<ProgrammaticSEOHubProps> = ({
 }) => {
   const [activeTab, setActiveTab] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
-  const [selectedArticle, setSelectedArticle] = useState<SEOArticleHub | null>(null);
-
-  const articleHubs: SEOArticleHub[] = [
-    {
-      id: 'wakad-shankar-kalat-phoenix-mall',
-      category: 'micro-markets',
-      title: "Why S. No. 111 Shankar Kalat Nagar is Wakad's #1 Luxury Residential Corridor",
-      subtitle: "Comprehensive Micro-Market Analysis of Wakad's High-Growth Lifestyle Belt",
-      targetKeywords: ["Saheel Luxton Shankar Kalat Nagar", "luxury flats near Phoenix Mall Wakad", "Wakad S No 111 real estate", "best locality to live in Wakad"],
-      readTime: "6 Min Read",
-      summary: "An in-depth analysis of why Shankar Kalat Nagar in Wakad commands the highest livability quotient in West Pune due to its 5-minute proximity to Phoenix Mall of the Millennium, rapid access to Hinjawadi Phase 1, and wide 24-meter DP roads.",
-      keyHighlights: [
-        { label: "Distance to Phoenix Mall", value: "1.8 km (4 Mins)" },
-        { label: "Road Infrastructure", value: "24-Meter Arterial DP Road" },
-        { label: "5-Yr Capital Appreciation", value: "14.2% Annualized CAGR" },
-        { label: "MahaRERA Status", value: "Registered: PM1260002502043" }
-      ],
-      fullContent: [
-        "Shankar Kalat Nagar has emerged as the premier residential enclave within Wakad, driven by its strategic location at the confluence of urban lifestyle retail and the Hinjawadi IT corridor.",
-        "Saheel Luxton, situated at S. No. 111, represents the crown jewel of this micro-market. Featuring Pune's first 4,000 sq.ft double-height Italian marble grand lobby and a 30-storey iconic elevation, the project sets a new benchmark for luxury living in PCMC.",
-        "With Phoenix Mall of the Millennium operating just 1.8 km away, residents enjoy immediate access to over 300 international retail brands, 15 fine-dining restaurants, and multiplex cinema experiences without highway congestion.",
-        "Infrastructure advancements including underground cabling, 24/7 dedicated water supply lines, and storm-water drainage networks make this pocket virtually immune to urban bottlenecks."
-      ]
-    },
-    {
-      id: 'metro-line-3-wakad-chowk-impact',
-      category: 'transit',
-      title: "Pune Metro Line 3 (Hinjawadi to Shivajinagar): Capital Value Multiplier for Wakad",
-      subtitle: "Transit-Oriented Real Estate Capital Growth Forecast (2026 – 2030)",
-      targetKeywords: ["Pune Metro Line 3 Wakad Chowk Station", "flats near Hinjawadi Metro line", "Wakad property price appreciation 2026", "Saheel Luxton metro connectivity"],
-      readTime: "7 Min Read",
-      summary: "Detailed transit-oriented development report examining how the 23.3 km elevated Pune Metro Line 3 directly impacts rental yields and asset valuation for luxury high-rises situated near the Wakad Chowk interchange.",
-      keyHighlights: [
-        { label: "Nearest Station", value: "Wakad Chowk (1.2 km / 3 Mins)" },
-        { label: "Commute to Hinjawadi Ph 1", value: "6 Mins via Metro" },
-        { label: "Commute to Shivajinagar", value: "28 Mins Non-Stop" },
-        { label: "Projected Appreciation", value: "+22% Post Operational Run" }
-      ],
-      fullContent: [
-        "Pune Metro Line 3 is the most consequential infrastructure project in West Pune's history. Connecting the massive 500,000+ workforce of Rajiv Gandhi Infotech Park directly to central Pune, the line transforms Wakad from a suburban node into a hyper-connected core.",
-        "Saheel Luxton is positioned just 1.2 km from the upcoming Wakad Chowk Metro station, allowing residents to commute to Infosys, Wipro, and TCS campuses in under 7 minutes, completely bypassing surface traffic.",
-        "Global transit real estate studies indicate that residential properties located within 1.5 km of rapid mass transit stations achieve 18% to 25% higher rental yields and commanding resale liquidity compared to distant developments.",
-        "For homebuyers and investors, securing a residence at Saheel Luxton during pre-metro construction offers optimal entry valuations before the full operational premium takes effect."
-      ]
-    },
-    {
-      id: 'walk-in-closets-4000-lobby-engineering',
-      category: 'typologies',
-      title: "Architectural Deep Dive: Pune's 1st 4,000 Sq. Ft. Lobby & Designer Walk-In Dressing Closets",
-      subtitle: "Why Saheel Luxton's Floor Plans Outclass Conventional Pune 2, 3 & 4 BHKs",
-      targetKeywords: ["Pune first 4000 sq ft grand lobby", "apartments with walk in closets Pune", "Saheel Luxton 3 BHK floor plan", "luxury 4 BHK Wakad price"],
-      readTime: "8 Min Read",
-      summary: "A technical architectural review of Saheel Luxton's zero-wastage carpet floor plates, monolithic RCC shear wall construction, 5-star double-height arrival lobby, and dedicated private dressing corridors.",
-      keyHighlights: [
-        { label: "Grand Lobby Scale", value: "4,000 Sq. Ft. Double-Height" },
-        { label: "Walk-In Closets", value: "Included in 2, 3 & 4 BHKs" },
-        { label: "Seismic Safety", value: "IS 1893:2016 Zone-III RCC" },
-        { label: "Acoustic Glazing", value: "DGU Sound-Dampening Glass" }
-      ],
-      fullContent: [
-        "Modern luxury is defined by spatial volume and sensory arrival. While most Pune developments allocate minimal carpet to entrance foyers, Saheel Luxton introduces an unprecedented 4,000 sq.ft Double-Height Grand Lobby clad in Italian Statuario marble.",
-        "Inside each residence, the master suites feature dedicated walk-in dressing corridors. This private buffer isolates wardrobe spaces from the sleeping sanctuary, enhancing acoustic privacy, luxury aesthetic, and wardrobe organization.",
-        "The structural engineering incorporates precision monolithic RCC shear wall formwork, providing superior seismic resilience, seamless wall finishes, and enhanced usable RERA carpet efficiency without awkward beam intrusions.",
-        "With Double Glazed Unit (DGU) acoustic windows, external road ambient sound is reduced by up to 35 decibels, creating tranquil sanctuaries in the heart of bustling Wakad."
-      ]
-    },
-    {
-      id: 'nri-investment-guide-dubai-usa-pune',
-      category: 'nri-investment',
-      title: "The Global NRI Investment Blueprint: Why Tech Expats in UAE, USA & UK Choose Wakad",
-      subtitle: "High-Yield Rental ROI (5.2%+), FEMA Repatriation & Capital Appreciation Model",
-      targetKeywords: ["NRI property investment Pune West", "buy flat in Pune from Dubai UAE", "FEMA compliant real estate Pune", "Saheel Luxton NRI desk"],
-      readTime: "9 Min Read",
-      summary: "Comprehensive guide for Non-Resident Indians (NRIs) in Dubai, Silicon Valley, London, and Singapore on investing in high-yield luxury real estate in Pune with 100% legal repatriation and clear title governance.",
-      keyHighlights: [
-        { label: "Gross Rental Yield", value: "5.2% – 6.1% Annually" },
-        { label: "Foreign Currency Base", value: "USD, AED, GBP, SGD Desks" },
-        { label: "Legal Framework", value: "100% FEMA & RBI Compliant" },
-        { label: "Tenant Demographics", value: "IT CXOs, Directors, Tech Leads" }
-      ],
-      fullContent: [
-        "West Pune's real estate corridor represents the highest-conviction asset class for Non-Resident Indians seeking inflation-beating capital appreciation and strong rental cash flows.",
-        "Due to the continuous expansion of Hinjawadi IT Park Phase 1, 2, and 3—housing global tech giants like Infosys, Cognizant, Wipro, and TCS—luxury housing in Wakad experiences perennial demand from high-earning corporate professionals.",
-        "Saheel Luxton offers a dedicated International NRI Concierge Desk providing virtual video walk-throughs, digital power of attorney (POA) advisory, pre-approved home loan disbursement through NRE/NRO accounts, and hassle-free tenant placement.",
-        "Under Reserve Bank of India (RBI) and FEMA regulations, capital proceeds from RERA-registered projects with clear freehold titles like Saheel Luxton are fully repatriable back to the overseas country of residence."
-      ]
-    },
-    {
-      id: 'maharera-statutory-trust-governance',
-      category: 'legal-finance',
-      title: "MahaRERA PM1260002502043 & The 70% Ring-Fenced Escrow Governance Architecture",
-      subtitle: "How Statutory Clearances & Clear Freehold Land Titles Protect Homebuyer Capital",
-      targetKeywords: ["MahaRERA PM1260002502043 verification", "Saheel Properties legal title", "SBI HDFC approved projects Wakad", "RERA escrow account rule Pune"],
-      readTime: "7 Min Read",
-      summary: "An institutional compliance report detailing how Saheel Luxton satisfies 100% of statutory environmental, municipal, fire CFO, and MahaRERA escrow account ring-fencing regulations.",
-      keyHighlights: [
-        { label: "MahaRERA Number", value: "PM1260002502043" },
-        { label: "Escrow Ring-Fencing", value: "70% Construction Dedicated" },
-        { label: "Approved Banks", value: "SBI, HDFC, ICICI, Axis, BoB" },
-        { label: "Land Title", value: "100% Clear Freehold Non-Agri" }
-      ],
-      fullContent: [
-        "Real estate investment security is fundamentally anchored in statutory compliance and financial ring-fencing. Saheel Luxton operates under MahaRERA Registration No. PM1260002502043 with targeted completion by June 2030.",
-        "Under strict MahaRERA guidelines, 70% of all customer receivables are directly deposited into a scheduled bank escrow account. These funds can only be withdrawn in proportion to certified structural construction milestones verified by chartered engineers.",
-        "The project holds 100% clear freehold land title, State Level Environment Impact Assessment (SEIAA) clearance, CFO Fire NOC, PCMC municipal building sanctions, and aviation height clearances.",
-        "India's leading institutional lenders—including State Bank of India (SBI), HDFC Bank, and ICICI Bank—have conducted comprehensive title searches and pre-approved home loans up to 80% for qualified buyers."
-      ]
-    },
-    {
-      id: 'golden-triangle-hinjawadi-baner-wakad',
-      category: 'micro-markets',
-      title: "The West Pune Golden Triangle: Wakad, Hinjawadi & Baner Synergy",
-      subtitle: "Why Wakad is the Epicenter of Capital Inflow and Commercial Expansion",
-      targetKeywords: ["Wakad vs Baner real estate comparison", "Hinjawadi Wakad Baner golden triangle", "best real estate investment in West Pune", "Saheel Luxton location advantages"],
-      readTime: "6 Min Read",
-      summary: "Comparative regional analysis detailing why Wakad delivers 25% better carpet-area value than Baner while offering faster commute times to Hinjawadi IT campuses.",
-      keyHighlights: [
-        { label: "Wakad vs Baner Price Delta", value: "20% - 25% Higher Value in Wakad" },
-        { label: "Hinjawadi IT Commute", value: "7 Mins from Saheel Luxton" },
-        { label: "Lifestyle Access", value: "Phoenix Mall (5 Mins), Balewadi (9 Mins)" },
-        { label: "Rental Tenant Demand", value: "12,000+ New IT Tech Hires/Yr" }
-      ],
-      fullContent: [
-        "The West Pune Golden Triangle—formed by Wakad, Hinjawadi, and Baner—generates over 45% of Pune's total residential real estate demand.",
-        "While Baner has reached saturation with older housing stock and inflated price tags exceeding ₹14,000 per sq.ft, Wakad offers brand-new, modern high-rises with world-class amenities at high-value pricing starting from ₹97 Lakhs.",
-        "Saheel Luxton sits right at the core of this triangle. Residents can work in Hinjawadi IT Park, socialize at Balewadi High Street, and shop at Phoenix Mall of the Millennium—all within a 10-minute drive.",
-        "This balanced lifestyle makes properties in Shankar Kalat Nagar, Wakad the top choice for discerning families, corporate leaders, and real estate investors alike."
-      ]
-    }
-  ];
+  const [selectedDossier, setSelectedDossier] = useState<ProgrammaticDossier | null>(null);
 
   const categories = [
     { id: 'all', label: 'All Real Estate Dossiers' },
-    { id: 'micro-markets', label: 'Wakad Micro-Markets' },
-    { id: 'transit', label: 'Metro 3 & Transit Hubs' },
-    { id: 'typologies', label: 'Floor Plans & Architecture' },
-    { id: 'nri-investment', label: 'Global NRI Desks' },
-    { id: 'legal-finance', label: 'MahaRERA & Legal Trust' }
+    { id: 'wakad-micromarkets', label: 'Wakad Micro-Markets' },
+    { id: 'infra-metro', label: 'Metro 3 & Infrastructure' },
+    { id: 'typology-engineering', label: 'Floor Plans & Lobby' },
+    { id: 'it-corridors', label: 'Hinjawadi IT Hubs' },
+    { id: 'nri-global-desks', label: 'Global NRI Desks' },
+    { id: 'developer-comparisons', label: 'Builder Benchmarks' }
   ];
 
-  const filteredArticles = articleHubs.filter(art => {
-    const matchesTab = activeTab === 'all' || art.category === activeTab;
+  const filteredDossiers = programmaticDossiers.filter(dossier => {
+    const matchesTab = activeTab === 'all' || dossier.cluster === activeTab;
     const matchesSearch = searchQuery === '' || 
-      art.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      art.summary.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      art.targetKeywords.some(k => k.toLowerCase().includes(searchQuery.toLowerCase()));
+      dossier.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      dossier.subtitle.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      dossier.metaDesc.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      dossier.targetKeywords.some(k => k.toLowerCase().includes(searchQuery.toLowerCase()));
     return matchesTab && matchesSearch;
   });
 
   return (
     <section id="programmatic-seo-hub" className="py-24 lg:py-32 relative bg-[#FAF8F5] overflow-hidden border-t border-champagne-500/20">
       
-      {/* Gliding Fluid Background Orbs */}
+      {/* Gliding Fluid Background Glow */}
       <motion.div 
         animate={{ y: [0, -30, 0], scale: [1, 1.06, 1] }}
         transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
@@ -196,7 +57,7 @@ export const ProgrammaticSEOHub: React.FC<ProgrammaticSEOHubProps> = ({
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full ultra-glass border-champagne-500/40 text-champagne-800 text-xs font-bold uppercase tracking-widest shadow-sm"
           >
             <BookOpen className="w-4 h-4 text-champagne-600" />
-            Pune Real Estate Intelligence & Research Engine
+            Pune Real Estate Intelligence & Topical Authority Hub
           </motion.div>
           
           <motion.h2 
@@ -207,7 +68,7 @@ export const ProgrammaticSEOHub: React.FC<ProgrammaticSEOHubProps> = ({
             className="text-3xl sm:text-4xl lg:text-5xl font-bold font-cinzel text-slate-900 tracking-tight leading-tight"
           >
             Comprehensive Market Dossiers <br />
-            <span className="gold-gradient-text">& Saheel Luxton Ecosystem Hub</span>
+            <span className="gold-gradient-text">& Saheel Luxton Ecosystem Engine</span>
           </motion.h2>
           
           <motion.p 
@@ -217,7 +78,7 @@ export const ProgrammaticSEOHub: React.FC<ProgrammaticSEOHubProps> = ({
             transition={{ delay: 0.2, duration: 0.6 }}
             className="text-slate-600 text-sm sm:text-base font-normal"
           >
-            Explore in-depth market research whitepapers, micro-market infrastructure audits, typology engineering guides, and NRI investment models covering Wakad and Pune.
+            Explore in-depth market research whitepapers, transit infrastructure reports, typology engineering audits, and NRI investment models covering Wakad and Pune.
           </motion.p>
         </div>
 
@@ -265,9 +126,9 @@ export const ProgrammaticSEOHub: React.FC<ProgrammaticSEOHubProps> = ({
 
         {/* Articles Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredArticles.map((article) => (
+          {filteredDossiers.map((dossier) => (
             <motion.article
-              key={article.id}
+              key={dossier.id}
               whileHover={{ y: -4 }}
               className="p-6 sm:p-7 rounded-3xl ultra-glass border-2 border-champagne-500/30 bg-white shadow-milky-card flex flex-col justify-between group"
             >
@@ -275,24 +136,24 @@ export const ProgrammaticSEOHub: React.FC<ProgrammaticSEOHubProps> = ({
                 
                 <div className="flex items-center justify-between gap-2">
                   <span className="px-3 py-1 rounded-full bg-champagne-100 text-champagne-800 text-[10px] font-mono font-bold uppercase tracking-wider">
-                    {article.category.replace('-', ' ')}
+                    {dossier.cluster.replace('-', ' ')}
                   </span>
                   <span className="text-[11px] font-mono text-slate-400">
-                    {article.readTime}
+                    {dossier.readTime}
                   </span>
                 </div>
 
                 <h3 className="text-base sm:text-lg font-bold font-cinzel text-slate-900 group-hover:text-champagne-700 transition-colors leading-snug">
-                  {article.title}
+                  {dossier.title}
                 </h3>
 
                 <p className="text-xs text-slate-600 leading-relaxed line-clamp-3">
-                  {article.summary}
+                  {dossier.metaDesc}
                 </p>
 
                 {/* Micro Key Stats */}
                 <div className="grid grid-cols-2 gap-2 pt-2 border-t border-slate-100">
-                  {article.keyHighlights.slice(0, 2).map((stat, i) => (
+                  {dossier.stats.slice(0, 2).map((stat, i) => (
                     <div key={i} className="p-2 rounded-xl bg-milky-50 border border-slate-100">
                       <span className="text-[9px] font-mono text-slate-400 block">{stat.label}</span>
                       <strong className="text-[11px] font-bold text-slate-900 block truncate">{stat.value}</strong>
@@ -305,7 +166,7 @@ export const ProgrammaticSEOHub: React.FC<ProgrammaticSEOHubProps> = ({
               {/* Read Full Whitepaper Trigger */}
               <div className="pt-5 border-t border-slate-100 flex items-center justify-between mt-4">
                 <button
-                  onClick={() => setSelectedArticle(article)}
+                  onClick={() => setSelectedDossier(dossier)}
                   className="text-xs font-bold font-cinzel text-champagne-700 hover:text-champagne-900 flex items-center gap-1.5 cursor-pointer"
                 >
                   Read Full Dossier <ChevronRight className="w-4 h-4" />
@@ -327,8 +188,8 @@ export const ProgrammaticSEOHub: React.FC<ProgrammaticSEOHubProps> = ({
 
       {/* Deep Dossier Modal View */}
       <AnimatePresence>
-        {selectedArticle && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-slate-950/70 backdrop-blur-md overflow-y-auto">
+        {selectedDossier && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-slate-950/75 backdrop-blur-md overflow-y-auto">
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -340,18 +201,18 @@ export const ProgrammaticSEOHub: React.FC<ProgrammaticSEOHubProps> = ({
               <div className="flex items-start justify-between gap-4 border-b border-slate-200 pb-4">
                 <div className="space-y-1">
                   <span className="px-3 py-1 rounded-full bg-champagne-100 text-champagne-800 text-[10px] font-mono font-bold uppercase">
-                    {selectedArticle.category.replace('-', ' ')} • {selectedArticle.readTime}
+                    {selectedDossier.cluster.replace('-', ' ')} • {selectedDossier.readTime}
                   </span>
                   <h3 className="text-xl sm:text-2xl font-bold font-cinzel text-slate-900 leading-tight">
-                    {selectedArticle.title}
+                    {selectedDossier.title}
                   </h3>
                   <p className="text-xs text-champagne-700 font-medium font-cinzel">
-                    {selectedArticle.subtitle}
+                    {selectedDossier.subtitle}
                   </p>
                 </div>
 
                 <button
-                  onClick={() => setSelectedArticle(null)}
+                  onClick={() => setSelectedDossier(null)}
                   className="p-2 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 transition cursor-pointer"
                 >
                   <X className="w-5 h-5" />
@@ -360,7 +221,7 @@ export const ProgrammaticSEOHub: React.FC<ProgrammaticSEOHubProps> = ({
 
               {/* Key Specs Grid */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 p-4 rounded-2xl bg-milky-50 border border-champagne-400/30">
-                {selectedArticle.keyHighlights.map((hl, i) => (
+                {selectedDossier.stats.map((hl, i) => (
                   <div key={i} className="space-y-0.5">
                     <span className="text-[10px] font-mono text-slate-400 uppercase">{hl.label}</span>
                     <strong className="text-xs font-bold font-cinzel text-slate-900 block">{hl.value}</strong>
@@ -368,22 +229,57 @@ export const ProgrammaticSEOHub: React.FC<ProgrammaticSEOHubProps> = ({
                 ))}
               </div>
 
-              {/* Full Article Content */}
-              <div className="space-y-4 text-xs sm:text-sm text-slate-700 leading-relaxed">
-                {selectedArticle.fullContent.map((para, i) => (
+              {/* Editorial Analysis */}
+              <div className="space-y-3 text-xs sm:text-sm text-slate-700 leading-relaxed">
+                {selectedDossier.editorialAnalysis.map((para, i) => (
                   <p key={i} className="leading-relaxed">
                     {para}
                   </p>
                 ))}
               </div>
 
-              {/* Targeted Keywords Footer */}
+              {/* Strategic Key Highlights */}
+              <div className="space-y-2 p-4 rounded-2xl bg-slate-50 border border-slate-200">
+                <span className="text-xs font-bold font-cinzel text-slate-900 uppercase tracking-wider block">
+                  Strategic Real Estate Takeaways:
+                </span>
+                <div className="grid grid-cols-1 gap-2">
+                  {selectedDossier.keyHighlights.map((hl, i) => (
+                    <div key={i} className="flex items-start gap-2 text-xs text-slate-700">
+                      <CheckCircle2 className="w-4 h-4 text-champagne-600 shrink-0 mt-0.5" />
+                      <span>{hl}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Financial & ROI Projection Card */}
+              <div className="p-4 rounded-2xl bg-gradient-to-r from-champagne-50 to-milky-50 border border-champagne-400/40 grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+                <div>
+                  <span className="text-[10px] font-mono text-slate-500 uppercase block">Gross Rental Yield</span>
+                  <strong className="font-bold font-cinzel text-champagne-800 text-sm">{selectedDossier.roiProjection.rentalYield}</strong>
+                </div>
+                <div>
+                  <span className="text-[10px] font-mono text-slate-500 uppercase block">Projected CAGR</span>
+                  <strong className="font-bold font-cinzel text-emerald-800 text-sm">{selectedDossier.roiProjection.annualCagr}</strong>
+                </div>
+                <div>
+                  <span className="text-[10px] font-mono text-slate-500 uppercase block">RERA Possession</span>
+                  <strong className="font-bold font-cinzel text-slate-900 text-xs">{selectedDossier.roiProjection.possessionTimeframe}</strong>
+                </div>
+                <div>
+                  <span className="text-[10px] font-mono text-slate-500 uppercase block">Incentives</span>
+                  <strong className="font-bold font-cinzel text-slate-900 text-xs">{selectedDossier.roiProjection.stampDutyIncentive}</strong>
+                </div>
+              </div>
+
+              {/* Targeted Keywords Knowledge Graph Footer */}
               <div className="p-4 rounded-2xl bg-slate-900 text-white space-y-2">
                 <span className="text-[10px] font-mono uppercase text-champagne-400 font-bold block">
                   Search Entity & Knowledge Graph Keywords:
                 </span>
                 <div className="flex flex-wrap gap-1.5">
-                  {selectedArticle.targetKeywords.map((kw, i) => (
+                  {selectedDossier.targetKeywords.map((kw, i) => (
                     <span key={i} className="px-2.5 py-0.5 rounded-lg bg-white/10 text-slate-300 text-[10px] font-mono">
                       #{kw}
                     </span>
@@ -395,7 +291,7 @@ export const ProgrammaticSEOHub: React.FC<ProgrammaticSEOHubProps> = ({
               <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-2">
                 <button
                   onClick={() => {
-                    setSelectedArticle(null);
+                    setSelectedDossier(null);
                     onOpenBrochure();
                   }}
                   className="w-full sm:w-auto btn-auric-outline px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider"
@@ -405,7 +301,7 @@ export const ProgrammaticSEOHub: React.FC<ProgrammaticSEOHubProps> = ({
 
                 <button
                   onClick={() => {
-                    setSelectedArticle(null);
+                    setSelectedDossier(null);
                     onOpenBooking();
                   }}
                   className="w-full sm:w-auto btn-auric px-8 py-3 rounded-full text-xs font-bold uppercase tracking-wider shadow-gold-glow text-slate-950"
