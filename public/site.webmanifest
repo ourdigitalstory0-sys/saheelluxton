@@ -1,18 +1,44 @@
 {
-  "name": "Saheel Luxton Wakad Pune",
+  "id": "https://saheeluxton.in/",
+  "name": "Saheel Luxton Wakad Pune | Ultra-Luxury Residences",
   "short_name": "Saheel Luxton",
-  "description": "Ultra-Luxury 2, 3 & 4 BHK Residences in Wakad Pune by Saheel Properties. MahaRERA PM1260002502043.",
+  "description": "Ultra-Luxury 2, 3 & 4 BHK Residences in Wakad Pune by Saheel Properties. Pune's 1st 4,000 sq ft grand lobby & rooftop aqua theatre. MahaRERA PM1260002502043.",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#FAF8F5",
-  "theme_color": "#FAF8F5",
-  "orientation": "portrait",
+  "theme_color": "#1E293B",
+  "orientation": "portrait-primary",
+  "categories": ["business", "lifestyle", "finance", "real-estate"],
   "icons": [
     {
       "src": "https://backend.saheelproperties.com/uploads/Vector_9421f72212.svg",
       "sizes": "192x192 512x512",
       "type": "image/svg+xml",
       "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Book VIP Site Visit",
+      "short_name": "VIP Visit",
+      "description": "Schedule a private luxury tour with complimentary cab pickup",
+      "url": "/?action=book-visit",
+      "icons": [{ "src": "https://backend.saheelproperties.com/uploads/Vector_9421f72212.svg", "sizes": "96x96" }]
+    },
+    {
+      "name": "Download E-Brochure",
+      "short_name": "Brochure",
+      "description": "Download 12MB PDF with complete floor plans & specifications",
+      "url": "/?action=brochure",
+      "icons": [{ "src": "https://backend.saheelproperties.com/uploads/Vector_9421f72212.svg", "sizes": "96x96" }]
+    },
+    {
+      "name": "Price & EMI Calculator",
+      "short_name": "Pricing",
+      "description": "Calculate itemized all-inclusive pricing and bank home loans",
+      "url": "/?action=pricing",
+      "icons": [{ "src": "https://backend.saheelproperties.com/uploads/Vector_9421f72212.svg", "sizes": "96x96" }]
     }
   ]
 }
