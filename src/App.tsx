@@ -14,6 +14,7 @@ import { LocationMatrix } from './components/LocationMatrix';
 import { TransitDistanceCalculator } from './components/TransitDistanceCalculator';
 import { MicroMarketInsights } from './components/MicroMarketInsights';
 import { ProgrammaticSEOHub } from './components/ProgrammaticSEOHub';
+import { DynamicProgrammaticGenerator } from './components/DynamicProgrammaticGenerator';
 import { FAQSection } from './components/FAQSection';
 import { GalleryModal } from './components/GalleryModal';
 import { Specifications } from './components/Specifications';
@@ -164,6 +165,12 @@ export const App: React.FC = () => {
 
         {/* 10,000+ Programmatic Real Estate Intelligence & Dossier Hub */}
         <ProgrammaticSEOHub
+          onOpenBooking={openBooking}
+          onOpenBrochure={openBrochure}
+        />
+
+        {/* Dynamic Multi-Dimensional Programmatic SEO Permutation Generator */}
+        <DynamicProgrammaticGenerator
           onOpenBooking={openBooking}
           onOpenBrochure={openBrochure}
         />
