@@ -17,7 +17,7 @@ export const GlobalRegionBar: React.FC<GlobalRegionBarProps> = ({ onOpenBooking 
       name: "India (IST)",
       currency: "INR (₹)",
       priceLabel: "₹97 Lakhs* onwards",
-      phone: "+91 9179617961",
+      phone: "+91 7744009295",
       timezone: "10:00 AM - 8:00 PM IST",
       badge: "MahaRERA: PM1260002502043"
     },
@@ -26,7 +26,7 @@ export const GlobalRegionBar: React.FC<GlobalRegionBarProps> = ({ onOpenBooking 
       name: "UAE & GCC (GST)",
       currency: "AED (د.إ)",
       priceLabel: "AED 412,000* onwards",
-      phone: "+91 9179617961",
+      phone: "+91 7744009295",
       timezone: "8:30 AM - 6:30 PM GST",
       badge: "Dedicated Dubai / GCC NRI Desk"
     },
@@ -35,7 +35,7 @@ export const GlobalRegionBar: React.FC<GlobalRegionBarProps> = ({ onOpenBooking 
       name: "USA & Canada (EST/PST)",
       currency: "USD ($)",
       priceLabel: "$112,000* onwards",
-      phone: "+91 9179617961",
+      phone: "+91 7744009295",
       timezone: "24/7 Global US Investor Line",
       badge: "FEMA Compliant Repatriation"
     },
@@ -44,7 +44,7 @@ export const GlobalRegionBar: React.FC<GlobalRegionBarProps> = ({ onOpenBooking 
       name: "UK & Europe (BST)",
       currency: "GBP (£)",
       priceLabel: "£88,000* onwards",
-      phone: "+91 9179617961",
+      phone: "+91 7744009295",
       timezone: "9:00 AM - 5:00 PM BST",
       badge: "NRE / NRO Direct Facilitation"
     },
@@ -53,7 +53,7 @@ export const GlobalRegionBar: React.FC<GlobalRegionBarProps> = ({ onOpenBooking 
       name: "Singapore & APAC (SGT)",
       currency: "SGD (S$)",
       priceLabel: "S$152,000* onwards",
-      phone: "+91 9179617961",
+      phone: "+91 7744009295",
       timezone: "12:30 PM - 10:30 PM SGT",
       badge: "High-Yield Portfolio Desk"
     }
