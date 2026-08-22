@@ -29,6 +29,46 @@ export const DynamicPageRenderer: React.FC<DynamicPageRendererProps> = ({
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     document.title = `${formattedTitle} | Saheel Luxton Wakad Official`;
+
+    // Programmatically inject dynamic Google Maps Place & RealEstateListing schema
+    const schemaScript = document.createElement('script');
+    schemaScript.type = 'application/ld+json';
+    schemaScript.id = 'dynamic-pseo-maps-schema';
+    schemaScript.text = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "RealEstateListing",
+      "name": `${formattedTitle} - Saheel Luxton Wakad`,
+      "url": window.location.href,
+      "mainEntity": {
+        "@type": "ApartmentComplex",
+        "name": "Luxton By Saheel",
+        "hasMap": projectData.googleMapsUrl,
+        "telephone": projectData.contactPhone,
+        "email": projectData.contactEmail,
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "S. No. 111, Near Phoenix Mall of the Millennium",
+          "addressLocality": "Wakad",
+          "addressRegion": "Maharashtra",
+          "postalCode": "411057",
+          "addressCountry": "IN"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 18.6041,
+          "longitude": 73.7555
+        }
+      }
+    });
+
+    const existing = document.getElementById('dynamic-pseo-maps-schema');
+    if (existing) existing.remove();
+    document.head.appendChild(schemaScript);
+
+    return () => {
+      const el = document.getElementById('dynamic-pseo-maps-schema');
+      if (el) el.remove();
+    };
   }, [slug]);
 
   return (
