@@ -18,7 +18,7 @@ export const projectData: ProjectData = {
   possessionDate: "June 2030 (As per MahaRERA)",
   videoTourUrl: "https://backend.saheelproperties.com/uploads/15th_Jan_With_Number_2f47eda36d.mp4",
   brochurePdfUrl: "https://backend.saheelproperties.com/uploads/Luxton_Main_Brochure_0d97f64627.pdf",
-  googleMapsUrl: "https://maps.app.goo.gl/f5XVp4mzJdp8hTCo9",
+  googleMapsUrl: "https://www.google.com/maps/place/Luxton+By+Saheel/data=!4m2!3m1!1s0x0:0x4688ad5f9f1e7471?sa=X&ved=1t:2428&ictx=111",
 
   keyStats: [
     { value: "4,000", unit: "Sq. Ft.", label: "Double-Height Grand Lobby", icon: "Building2" },
