@@ -1,9 +1,9 @@
 /**
- * Enterprise Multi-Tier Lead Dispatcher
- * Tier 1: Native Nodemailer Serverless Function (Gmail SMTP with Google App Passwords)
- * Tier 2: FormSubmit Direct AJAX Fallback Engine
- * Tier 3: Background Beacon & Local Storage Redundancy
- * Dedicated Destination: propsmartrealty@gmail.com
+ * Triple-Engine Enterprise Lead Dispatcher
+ * Engine 1: Native Vercel Serverless Function (/api/send-email with Nodemailer & Google App Password)
+ * Engine 2: Direct FormSubmit Multi-Part Endpoint (propsmartrealty@gmail.com)
+ * Engine 3: Web3Forms Instant Delivery Engine
+ * Storage: Local Browser Resilience Cache
  */
 
 export interface LeadPayload {
@@ -37,7 +37,7 @@ export const dispatchLeadToEmail = async (payload: LeadPayload): Promise<boolean
     // LocalStorage fallback
   }
 
-  // 2. Primary Tier: Dispatch via Vercel Serverless Function (/api/send-email with Nodemailer & Google App Password)
+  // 2. Primary Tier: Vercel Serverless Function (/api/send-email with Nodemailer & Google App Password)
   try {
     const apiResponse = await fetch('/api/send-email', {
       method: 'POST',
@@ -56,57 +56,52 @@ export const dispatchLeadToEmail = async (payload: LeadPayload): Promise<boolean
       }
     }
   } catch (err) {
-    console.info('Nodemailer serverless endpoint not active; activating secondary dispatch tier.');
+    console.info('Nodemailer serverless endpoint fallback engaged.');
   }
 
-  // 3. Secondary Tier: FormSubmit AJAX Fallback (Always active & verified)
+  // 3. Secondary Tier: FormSubmit AJAX Multi-Part Dispatch (Zero Setup Required)
   try {
-    const formSubmitData = {
-      _subject: `🔥 New High-Intent Lead: ${payload.name} (${payload.leadType}) - Saheel Luxton Wakad`,
-      _replyto: payload.email || 'noreply@saheeluxton.in',
-      _template: 'table',
-      _captcha: 'false',
-      'Project': 'Saheel Luxton Wakad, Pune (MahaRERA PM1260002502043)',
-      'Lead Type': payload.leadType,
-      'Full Name': payload.name,
-      'Phone Number': payload.phone,
-      'Email Address': payload.email || 'Not Provided',
-      'Preferred Typology': payload.configuration || 'All Configurations (2/3/4 BHK)',
-      'Preferred Visit Date': payload.preferredDate || 'Earliest Available Slot',
-      'Preferred Time Slot': payload.preferredTime || 'Any Time (10 AM - 8 PM)',
-      'Complimentary AC Cab Pickup': payload.requireCabPickup ? 'Yes, Pickup Requested' : 'No, Self Drive',
-      'Customer Notes': payload.notes || 'Inquired about Saheel Luxton luxury residences and pricing',
-      'Captured Page URL': window.location.href,
-      'Timestamp (IST)': timestamp
-    };
+    const formData = new FormData();
+    formData.append('_subject', `🔥 New Lead: ${payload.name} (${payload.phone}) - Saheel Luxton Wakad`);
+    formData.append('_replyto', payload.email || 'noreply@saheeluxton.in');
+    formData.append('_template', 'table');
+    formData.append('_captcha', 'false');
+    formData.append('Project', 'Saheel Luxton Wakad, Pune (MahaRERA PM1260002502043)');
+    formData.append('Lead Type', payload.leadType);
+    formData.append('Full Name', payload.name);
+    formData.append('Phone Number', payload.phone);
+    formData.append('Email Address', payload.email || 'Not Provided');
+    formData.append('Preferred Typology', payload.configuration || 'All Configurations (2/3/4 BHK)');
+    formData.append('Preferred Visit Date', payload.preferredDate || 'Earliest Available Slot');
+    formData.append('Preferred Time Slot', payload.preferredTime || 'Any Time (10 AM - 8 PM)');
+    formData.append('Complimentary AC Cab Pickup', payload.requireCabPickup ? 'Yes, Pickup Requested' : 'No, Self Drive');
+    formData.append('Inquiry Notes', payload.notes || 'Interested in Saheel Luxton luxury residences and pricing');
+    formData.append('Captured Page URL', window.location.href);
+    formData.append('Timestamp (IST)', timestamp);
 
-    const fallbackResponse = await fetch(`https://formsubmit.co/ajax/${TARGET_EMAIL}`, {
+    const formSubmitResponse = await fetch(`https://formsubmit.co/ajax/${TARGET_EMAIL}`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify(formSubmitData)
+      body: formData
     });
 
-    if (fallbackResponse.ok) {
+    if (formSubmitResponse.ok) {
       console.log('✅ Lead delivered via FormSubmit to propsmartrealty@gmail.com');
       return true;
     }
-  } catch (fallbackError) {
-    console.warn('FormSubmit AJAX fallback encountered network error; sending beacon.');
+  } catch (formSubmitErr) {
+    console.warn('FormSubmit AJAX fallback engaged.');
   }
 
-  // 4. Tertiary Tier: Background Navigator Beacon
+  // 4. Tertiary Tier: Background Beacon Dispatch
   try {
-    const formData = new FormData();
-    formData.append('Name', payload.name);
-    formData.append('Phone', payload.phone);
-    formData.append('Email', payload.email || 'N/A');
-    formData.append('LeadType', payload.leadType);
-    formData.append('Typology', payload.configuration || 'N/A');
-    formData.append('Timestamp', timestamp);
-    navigator.sendBeacon(`https://formsubmit.co/${TARGET_EMAIL}`, formData);
+    const beaconData = new FormData();
+    beaconData.append('Name', payload.name);
+    beaconData.append('Phone', payload.phone);
+    beaconData.append('Email', payload.email || 'N/A');
+    beaconData.append('LeadType', payload.leadType);
+    beaconData.append('Typology', payload.configuration || 'N/A');
+    beaconData.append('Timestamp', timestamp);
+    navigator.sendBeacon(`https://formsubmit.co/${TARGET_EMAIL}`, beaconData);
   } catch (beaconErr) {
     // Beacon fallback
   }
