@@ -4,27 +4,41 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://saheeluxton.in/</loc>
-    <lastmod>2026-08-17T11:00:00+05:30</lastmod>
+    <loc>https://www.saheeluxton.in/</loc>
+    <lastmod>2026-08-25T18:30:00+05:30</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
     
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://saheeluxton.in/" />
-    <xhtml:link rel="alternate" hreflang="en-IN" href="https://saheeluxton.in/" />
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://saheeluxton.in/" />
-    <xhtml:link rel="alternate" hreflang="en-GB" href="https://saheeluxton.in/" />
-    <xhtml:link rel="alternate" hreflang="en-AE" href="https://saheeluxton.in/" />
-    <xhtml:link rel="alternate" hreflang="en-SG" href="https://saheeluxton.in/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saheeluxton.in/" />
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://www.saheeluxton.in/" />
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.saheeluxton.in/" />
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://www.saheeluxton.in/" />
+    <xhtml:link rel="alternate" hreflang="en-AE" href="https://www.saheeluxton.in/" />
+    <xhtml:link rel="alternate" hreflang="en-SG" href="https://www.saheeluxton.in/" />
+    <xhtml:link rel="alternate" hreflang="en-AU" href="https://www.saheeluxton.in/" />
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://www.saheeluxton.in/" />
+    <xhtml:link rel="alternate" hreflang="en-DE" href="https://www.saheeluxton.in/" />
+    <xhtml:link rel="alternate" hreflang="en-SA" href="https://www.saheeluxton.in/" />
 
     <image:image>
       <image:loc>https://backend.saheelproperties.com/uploads/Chembur_Rameshwar_Day_View_Final_1_1_1_5dd5da3a34.png</image:loc>
       <image:title>Saheel Luxton 30 Storey Architectural Day Elevation Wakad Pune</image:title>
-      <image:caption>Signature 30-Storey Landmark Tower by Saheel Properties in Wakad Pune</image:caption>
+      <image:caption>Signature 30-Storey Landmark Tower by Saheel Properties in Wakad Pune near Phoenix Mall</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://backend.saheelproperties.com/uploads/Luxton_Desktop_Banner_19a7b369f6.webp</image:loc>
       <image:title>Luxton by Saheel Official Horizon Master Banner</image:title>
-      <image:caption>Ultra-Luxury 2 BHK, 3 BHK and 4 BHK Residences Wakad Pune</image:caption>
+      <image:caption>Ultra-Luxury 2 BHK, 3 BHK and 4 BHK Residences Wakad Pune starting ₹97 Lakhs*</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://backend.saheelproperties.com/uploads/Grand_Entrance_Lobby_1_e9c54035de.png</image:loc>
+      <image:title>Pune 1st 4000 Sq Ft Double Height Italian Marble Grand Entrance Lobby</image:title>
+      <image:caption>Signature 4,000 Sq. Ft. Grand Reception Lobby with 5-Star Concierge Desk at Saheel Luxton</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://backend.saheelproperties.com/uploads/115_01_S_No_111_Wakad_View_07_2_4b8cb94b01.png</image:loc>
+      <image:title>Saheel Luxton 5-Star Rooftop Aqua Theatre & Infinity Pool</image:title>
+      <image:caption>30th Floor Rooftop Open-Air Aqua Theatre and Horizon Pool overlooking Pune Skyline</image:caption>
     </image:image>
   </url>
 </urlset>
