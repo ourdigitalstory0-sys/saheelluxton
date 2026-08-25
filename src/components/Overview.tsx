@@ -288,6 +288,28 @@ export const Overview: React.FC<OverviewProps> = ({ onOpenBooking, onOpenBrochur
               <strong className="text-slate-900 font-bold text-sm">₹97 Lakhs* | SBI / HDFC Pre-Approved</strong>
             </div>
           </div>
+
+          {/* Pune Real Estate Market & Regulatory Intelligence Sub-Grid */}
+          <div className="mt-6 pt-6 border-t border-slate-200 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+            <div className="p-4 rounded-2xl bg-champagne-500/10 border border-champagne-400/40 space-y-1">
+              <div className="text-[10px] font-mono text-champagne-800 uppercase font-bold">7% MH Stamp Duty & Registration</div>
+              <p className="text-slate-700 leading-relaxed text-[11px]">
+                5% Base + 1% Local Body Tax + 1% Metro Cess with a fixed ₹30,000 PCMC registration fee cap for full cost transparency.
+              </p>
+            </div>
+            <div className="p-4 rounded-2xl bg-champagne-500/10 border border-champagne-400/40 space-y-1">
+              <div className="text-[10px] font-mono text-champagne-800 uppercase font-bold">PCMC Master Plan 2041 Infrastructure</div>
+              <p className="text-slate-700 leading-relaxed text-[11px]">
+                Direct arterial DP road links to Mumbai-Pune Expressway & 24/7 dedicated Ravet–Punawale water conduit grid.
+              </p>
+            </div>
+            <div className="p-4 rounded-2xl bg-champagne-500/10 border border-champagne-400/40 space-y-1">
+              <div className="text-[10px] font-mono text-champagne-800 uppercase font-bold">MahaRERA 70% Escrow Protection</div>
+              <p className="text-slate-700 leading-relaxed text-[11px]">
+                100% compliant with Section 4(2)(l)(D) dedicated bank escrow governance for total homebuyer financial safety (PM1260002502043).
+              </p>
+            </div>
+          </div>
         </motion.div>
 
       </div>
