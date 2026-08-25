@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
   <ShortName>Saheel Luxton</ShortName>
-  <Description>Search Saheel Luxton Wakad 2, 3 &amp; 4 BHK Luxury Residences in Pune</Description>
+  <LongName>Saheel Luxton Wakad Pune - Ultra-Luxury Residences Portal</LongName>
+  <Description>Official search engine for Saheel Luxton Wakad 2, 3 &amp; 4 BHK Luxury Residences in Pune (MahaRERA: PM1260002502043).</Description>
+  <Tags>saheel luxton wakad pune 2 bhk 3 bhk 4 bhk luxury flats phoenix mall hinjawadi</Tags>
+  <Contact>propsmartrealty@gmail.com</Contact>
   <InputEncoding>UTF-8</InputEncoding>
-  <Image width="16" height="16" type="image/svg+xml">https://backend.saheelproperties.com/uploads/Vector_9421f72212.svg</Image>
-  <Url type="text/html" template="https://www.saheeluxton.in/?q={searchTerms}"/>
+  <OutputEncoding>UTF-8</OutputEncoding>
+  <Language>en</Language>
+  <Image width="64" height="64" type="image/svg+xml">https://backend.saheelproperties.com/uploads/Vector_9421f72212.svg</Image>
+  <Url type="text/html" method="get" template="https://www.saheeluxton.in/?q={searchTerms}"/>
+  <Url type="application/x-suggestions+json" template="https://www.saheeluxton.in/sitemap-core.xml"/>
+  <Developer>Saheel Properties</Developer>
+  <Attribution>© 2026 Saheel Properties. MahaRERA Registration: PM1260002502043</Attribution>
+  <SyndicationRight>open</SyndicationRight>
+  <AdultContent>false</AdultContent>
 </OpenSearchDescription>
