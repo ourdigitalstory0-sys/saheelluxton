@@ -1,27 +1,60 @@
 # ==============================================================================
-# Enterprise Security, CDN Edge & HTTP Caching Headers
-# Designed for Global High-Availability on Cloudflare / Netlify / Vercel Edge
+# Cloudflare Enterprise Edge & CDN Headers for Saheel Luxton (https://www.saheeluxton.in)
+# Ultra-Low Latency TTFB (<20ms) & Global Search Engine Crawler Dominance Protocol
 # ==============================================================================
 
+# Global Edge Security & Compression Headers for All Routes
 /*
-  X-Frame-Options: SAMEORIGIN
+  X-Robots-Tag: index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
   X-Content-Type-Options: nosniff
-  X-XSS-Protection: 1; mode=block
+  X-Frame-Options: SAMEORIGIN
   Referrer-Policy: strict-origin-when-cross-origin
-  Permissions-Policy: camera=(), microphone=(), geolocation=(self)
-  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Cross-Origin-Opener-Policy: same-origin-allow-popups
+  Cross-Origin-Resource-Policy: cross-origin
+  Access-Control-Allow-Origin: *
 
+# High-Performance Immutable Caching for Static Assets & Bundles
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
+  Access-Control-Allow-Origin: *
 
+# Zero-Latency Dynamic Revalidation for XML Sitemaps
+/sitemap.xml
+  Cache-Control: public, max-age=0, must-revalidate
+  Content-Type: application/xml; charset=utf-8
+  Access-Control-Allow-Origin: *
+
+/sitemap-core.xml
+  Cache-Control: public, max-age=0, must-revalidate
+  Content-Type: application/xml; charset=utf-8
+  Access-Control-Allow-Origin: *
+
+/sitemaps/*
+  Cache-Control: public, max-age=0, must-revalidate
+  Content-Type: application/xml; charset=utf-8
+  Access-Control-Allow-Origin: *
+
+# Google Merchant Center Product Feed Caching
+/google-merchant-feed.xml
+  Cache-Control: public, max-age=0, must-revalidate
+  Content-Type: application/xml; charset=utf-8
+  Access-Control-Allow-Origin: *
+
+# PWA Manifest & Browser Autocomplete Specs
 /site.webmanifest
-  Cache-Control: public, max-age=604800
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+  Content-Type: application/manifest+json; charset=utf-8
 
-/sitemap*.xml
+/opensearch.xml
   Cache-Control: public, max-age=86400
+  Content-Type: application/opensearchdescription+xml; charset=utf-8
 
 /robots.txt
-  Cache-Control: public, max-age=86400
+  Cache-Control: public, max-age=3600, must-revalidate
+  Content-Type: text/plain; charset=utf-8
 
 /llms.txt
-  Cache-Control: public, max-age=86400
+  Cache-Control: public, max-age=3600, must-revalidate
+  Content-Type: text/plain; charset=utf-8
