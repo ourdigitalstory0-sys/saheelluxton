@@ -10,6 +10,7 @@
     "index": "node scripts/indexnow-submit.js && node scripts/google-indexing-api.js"
   },
   "dependencies": {
+    "@cloudflare/kv-asset-handler": "^0.5.0",
     "@types/canvas-confetti": "^1.9.0",
     "canvas-confetti": "^1.9.4",
     "clsx": "^2.1.1",
