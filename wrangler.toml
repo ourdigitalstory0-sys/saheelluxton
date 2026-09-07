@@ -7,9 +7,6 @@ compatibility_flags = ["nodejs_compat"]
 directory = "./dist"
 binding = "ASSETS"
 
-[site]
-bucket = "./dist"
-
 [vars]
 ENVIRONMENT = "production"
 CANONICAL_DOMAIN = "www.saheeluxton.in"
