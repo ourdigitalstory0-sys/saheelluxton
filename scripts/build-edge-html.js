@@ -57,7 +57,7 @@ async function generateEdgeHtmlPages() {
 
         const title = `${locality} ${typology.name} | Saheel Luxton Wakad Official`;
         const metaDesc = `Explore ${typology.name} at Saheel Luxton in ${locality}, Wakad Pune. 30-Storey landmark featuring 4,000 sq ft grand lobby, rooftop aqua theatre & luxury residences starting ${typology.price}. MahaRERA PM1260002502043.`;
-        const canonicalUrl = `https://www.saheeluxton.in/p/${slug}`;
+        const canonicalUrl = `https://saheeluxton.in/p/${slug}`;
 
         const schemaJson = {
           "@context": "https://schema.org",
