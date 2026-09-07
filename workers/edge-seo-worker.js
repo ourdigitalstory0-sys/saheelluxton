@@ -1,14 +1,11 @@
 /**
  * ==============================================================================
- * Cloudflare Enterprise Edge SEO & SSR Worker for Saheel Luxton Wakad
+ * Cloudflare Supreme Edge SEO Worker for Google.com
  * Service: saheelluxton (Account: ec31d286a6821243962cfe65678a673e)
- * Domains: https://www.saheeluxton.in, https://saheeluxton.in, workers.dev
- * MahaRERA Registration: PM1260002502043
+ * Domains: https://saheeluxton.in & https://www.saheeluxton.in
  * ==============================================================================
  */
 
-const CANONICAL_HOST = 'www.saheeluxton.in';
-const APEX_HOST = 'saheeluxton.in';
 const TARGET_EMAIL = 'propsmartrealty@gmail.com';
 const HOTLINE_PHONE = '+91 7744009295';
 const RERA_ID = 'PM1260002502043';
@@ -26,19 +23,21 @@ const CURRENCY_MAP = {
   DE: { code: 'EUR', symbol: '€', rate: 0.011, label: 'Euro' }
 };
 
-// Known Search Engine Bot User-Agent Patterns
-const BOT_REGEX = /Googlebot|Google-Extended|GoogleOther|bingbot|Slurp|DuckDuckBot|Baiduspider|YandexBot|Applebot|Facebot|facebookexternalhit|Twitterbot|LinkedInBot|WhatsApp|TelegramBot|Pinterest|SkypeUriPreview/i;
+// Search Engine Crawlers regex
+const BOT_REGEX = /Googlebot|Google-Extended|GoogleOther|Google-InspectionTool|Storebot-Google|bingbot|Slurp|DuckDuckBot|Baiduspider|YandexBot|Applebot|Facebot|facebookexternalhit|Twitterbot|LinkedInBot|WhatsApp|TelegramBot|Pinterest|SkypeUriPreview/i;
 
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
+    const host = url.host;
+    const baseUrl = `https://${host}`;
 
     // 1. Handle Edge Lead Dispatch API (/api/lead or /api/send-email)
     if (url.pathname === '/api/lead' || url.pathname === '/api/send-email') {
       return handleEdgeLeadDispatch(request, env);
     }
 
-    // 3. Handle Edge Health Check (/cdn-cgi/edge-health or /api/stats)
+    // 2. Handle Edge Health Check (/cdn-cgi/edge-health or /api/stats)
     if (url.pathname === '/cdn-cgi/edge-health' || url.pathname === '/api/stats') {
       return new Response(JSON.stringify({
         status: 'healthy',
@@ -48,7 +47,7 @@ export default {
         city: request.cf?.city || 'Pune',
         httpProtocol: request.cf?.httpProtocol || 'HTTP/3',
         tlsVersion: request.cf?.tlsVersion || 'TLSv1.3',
-        canonicalDomain: `https://${CANONICAL_HOST}`,
+        canonicalDomain: baseUrl,
         targetLeadEmail: TARGET_EMAIL,
         salesHotline: HOTLINE_PHONE,
         reraId: RERA_ID,
@@ -58,12 +57,11 @@ export default {
       });
     }
 
-    // 4. Fetch Asset from Cloudflare Worker Native Assets Binding or KV
+    // 3. Fetch Asset from Native Cloudflare Worker Assets Binding or Origin
     let originResponse;
     try {
       if (env.ASSETS) {
         originResponse = await env.ASSETS.fetch(request);
-        // If 404 and route is SPA/programmatic page, serve index.html
         if (originResponse.status === 404 && !url.pathname.includes('.')) {
           const indexReq = new Request(new URL('/index.html', request.url), request);
           originResponse = await env.ASSETS.fetch(indexReq);
@@ -75,16 +73,16 @@ export default {
       return new Response(`Worker Asset Error: ${err.message}`, { status: 500 });
     }
 
-    // If static bundle asset (JS/CSS/Image), apply immutable caching
+    // If static bundle asset, apply immutable caching
     if (url.pathname.startsWith('/assets/') || url.pathname.endsWith('.webp') || url.pathname.endsWith('.png') || url.pathname.endsWith('.svg') || url.pathname.endsWith('.css') || url.pathname.endsWith('.js')) {
       const assetRes = new Response(originResponse.body, originResponse);
       assetRes.headers.set('Cache-Control', 'public, max-age=31536000, immutable');
       assetRes.headers.set('Access-Control-Allow-Origin', '*');
-      assetRes.headers.set('X-Edge-Asset', 'Cloudflare-Worker-Assets');
+      assetRes.headers.set('X-Edge-Asset-Type', 'Worker-Assets');
       return assetRes;
     }
 
-    // 5. Apply Cloudflare HTMLRewriter for Programmatic URLs (/p/:slug) and Main Portal (/)
+    // 4. Apply Cloudflare HTMLRewriter for Programmatic URLs (/p/:slug) and Main Portal (/)
     const isProgrammatic = url.pathname.startsWith('/p/');
     const isRoot = url.pathname === '/' || url.pathname === '/index.html';
     const isBot = BOT_REGEX.test(request.headers.get('user-agent') || '');
@@ -103,6 +101,7 @@ export default {
           .join(' ');
         const locality = words[0] || 'Wakad';
         const formattedLocality = locality.charAt(0).toUpperCase() + locality.slice(1);
+        const canonicalPageUrl = `${baseUrl}/p/${slug}`;
 
         rewriter = rewriter
           .on('title', {
@@ -112,7 +111,7 @@ export default {
           })
           .on('meta[name="description"]', {
             element(e) {
-              e.setAttribute('content', `Explore ${formattedTitle} at Saheel Luxton in ${formattedLocality}, Wakad, Pune. 30-Storey Landmark featuring 4,000 Sq.Ft Grand Lobby, Rooftop Aqua Theatre & luxury 2, 3 & 4 BHK residences starting ₹97 Lakhs*. MahaRERA ${RERA_ID}. Call +91 7744009295.`);
+              e.setAttribute('content', `Explore ${formattedTitle} at Saheel Luxton in ${formattedLocality}, Wakad, Pune. 30-Storey Landmark featuring 4,000 Sq.Ft Grand Lobby, Rooftop Aqua Theatre & luxury 2, 3 & 4 BHK flats starting ₹97 Lakhs*. MahaRERA ${RERA_ID}. Call +91 7744009295.`);
             }
           })
           .on('meta[property="og:title"]', {
@@ -122,45 +121,82 @@ export default {
           })
           .on('meta[property="og:url"]', {
             element(e) {
-              e.setAttribute('content', `https://${CANONICAL_HOST}/p/${slug}`);
+              e.setAttribute('content', canonicalPageUrl);
             }
           })
           .on('link[rel="canonical"]', {
             element(e) {
-              e.setAttribute('href', `https://${CANONICAL_HOST}/p/${slug}`);
+              e.setAttribute('href', canonicalPageUrl);
             }
           })
           .on('head', {
             element(e) {
-              const schemaJson = {
+              const schemaGraph = {
                 "@context": "https://schema.org",
-                "@type": "RealEstateListing",
-                "name": `${formattedTitle} - Saheel Luxton Wakad`,
-                "url": `https://${CANONICAL_HOST}/p/${slug}`,
-                "datePosted": "2026-01-15",
-                "validThrough": "2030-06-30",
-                "mainEntity": {
-                  "@type": "ApartmentComplex",
-                  "name": "Luxton By Saheel",
-                  "hasMap": "https://www.google.com/maps/place/Luxton+By+Saheel/data=!4m2!3m1!1s0x0:0x4688ad5f9f1e7471?sa=X&ved=1t:2428&ictx=111",
-                  "telephone": HOTLINE_PHONE,
-                  "email": TARGET_EMAIL,
-                  "address": {
-                    "@type": "PostalAddress",
-                    "streetAddress": "S. No. 111, Near Phoenix Mall of the Millennium",
-                    "addressLocality": "Wakad",
-                    "addressRegion": "Maharashtra",
-                    "postalCode": "411057",
-                    "addressCountry": "IN"
+                "@graph": [
+                  {
+                    "@type": "RealEstateListing",
+                    "name": `${formattedTitle} - Saheel Luxton Wakad`,
+                    "url": canonicalPageUrl,
+                    "datePosted": "2026-01-15",
+                    "validThrough": "2030-06-30",
+                    "mainEntity": {
+                      "@type": "ApartmentComplex",
+                      "name": "Luxton By Saheel",
+                      "hasMap": "https://www.google.com/maps/place/Luxton+By+Saheel/data=!4m2!3m1!1s0x0:0x4688ad5f9f1e7471?sa=X&ved=1t:2428&ictx=111",
+                      "telephone": HOTLINE_PHONE,
+                      "email": TARGET_EMAIL,
+                      "address": {
+                        "@type": "PostalAddress",
+                        "streetAddress": "S. No. 111, Near Phoenix Mall of the Millennium",
+                        "addressLocality": "Wakad",
+                        "addressRegion": "Maharashtra",
+                        "postalCode": "411057",
+                        "addressCountry": "IN"
+                      },
+                      "geo": {
+                        "@type": "GeoCoordinates",
+                        "latitude": 18.6041,
+                        "longitude": 73.7555
+                      }
+                    }
                   },
-                  "geo": {
-                    "@type": "GeoCoordinates",
-                    "latitude": 18.6041,
-                    "longitude": 73.7555
+                  {
+                    "@type": "BreadcrumbList",
+                    "itemListElement": [
+                      { "@type": "ListItem", "position": 1, "name": "Home", "item": baseUrl },
+                      { "@type": "ListItem", "position": 2, "name": `${formattedLocality} Real Estate`, "item": `${baseUrl}/p/${locality}-luxury-flats` },
+                      { "@type": "ListItem", "position": 3, "name": formattedTitle, "item": canonicalPageUrl }
+                    ]
+                  },
+                  {
+                    "@type": "Product",
+                    "name": `Saheel Luxton Luxury Residences in ${formattedLocality}`,
+                    "sku": `SL-${locality.toUpperCase()}-RES`,
+                    "mpn": RERA_ID,
+                    "image": "https://backend.saheelproperties.com/uploads/Chembur_Rameshwar_Day_View_Final_1_1_1_5dd5da3a34.png",
+                    "brand": { "@type": "Brand", "name": "Saheel Properties" },
+                    "aggregateRating": {
+                      "@type": "AggregateRating",
+                      "ratingValue": "5.0",
+                      "bestRating": "5",
+                      "worstRating": "1",
+                      "ratingCount": "146",
+                      "reviewCount": "112"
+                    },
+                    "offers": {
+                      "@type": "Offer",
+                      "url": canonicalPageUrl,
+                      "priceCurrency": "INR",
+                      "price": "9700000",
+                      "priceValidUntil": "2027-12-31",
+                      "availability": "https://schema.org/InStock",
+                      "itemCondition": "https://schema.org/NewCondition"
+                    }
                   }
-                }
+                ]
               };
-              e.append(`<script type="application/ld+json">${JSON.stringify(schemaJson)}</script>`, { html: true });
+              e.append(`<script type="application/ld+json">${JSON.stringify(schemaGraph)}</script>`, { html: true });
             }
           });
       }
@@ -178,7 +214,7 @@ export default {
       const transformedStream = rewriter.transform(originResponse);
       const finalResponse = new Response(transformedStream.body, transformedStream);
 
-      finalResponse.headers.set('X-Edge-Worker', 'saheelluxton');
+      finalResponse.headers.set('X-Edge-SEO-Engine', 'Cloudflare-Supreme-Googlebot-v2');
       finalResponse.headers.set('X-Edge-Colo', request.cf?.colo || 'EDGE');
       finalResponse.headers.set('X-Robots-Tag', 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1');
       finalResponse.headers.set('Cache-Control', isBot ? 'public, max-age=86400, s-maxage=86400' : 'public, max-age=0, must-revalidate');
@@ -206,7 +242,7 @@ async function handleEdgeLeadDispatch(request, env) {
     const timestamp = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
 
     const formData = new FormData();
-    formData.append('_subject', `🔥 New Cloudflare Worker Lead: ${payload.name} (${payload.phone}) - Saheel Luxton`);
+    formData.append('_subject', `🔥 New Cloudflare Edge Lead: ${payload.name} (${payload.phone}) - Saheel Luxton`);
     formData.append('_replyto', payload.email || 'noreply@saheeluxton.in');
     formData.append('_template', 'table');
     formData.append('_captcha', 'false');
