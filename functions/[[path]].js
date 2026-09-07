@@ -48,7 +48,25 @@ export async function onRequest(context) {
   // 3. Apply Edge HTMLRewriter for Programmatic URLs (/p/:slug) and Main Portal (/)
   const isProgrammatic = url.pathname.startsWith('/p/');
   const isRoot = url.pathname === '/' || url.pathname === '/index.html';
-  const isBot = BOT_REGEX.test(request.headers.get('user-agent') || '');
+  const userAgent = request.headers.get('user-agent') || '';
+  const isBot = BOT_REGEX.test(userAgent);
+  const isGooglebot = /Googlebot|Google-Extended|GoogleOther|Google-InspectionTool|Storebot-Google/i.test(userAgent) || request.cf?.asNum === 15169;
+
+  // Googlebot Last-Modified conditional validation for crawl budget preservation
+  if (isGooglebot && request.headers.get('if-modified-since')) {
+    const lastMod = new Date('2026-08-25T18:30:00Z');
+    const ifMod = new Date(request.headers.get('if-modified-since'));
+    if (ifMod >= lastMod && !isProgrammatic) {
+      return new Response(null, {
+        status: 304,
+        headers: {
+          'X-Edge-SEO-Engine': 'Cloudflare-Supreme-Googlebot-v2',
+          'X-Googlebot-Fast-Path': 'HIT-304-NotModified',
+          'Cache-Control': 'public, max-age=86400, s-maxage=86400, stale-while-revalidate=604800'
+        }
+      });
+    }
+  }
 
   if ((isProgrammatic || isRoot) && response.headers.get('content-type')?.includes('text/html')) {
     const countryCode = request.cf?.country || 'IN';
@@ -187,7 +205,13 @@ export async function onRequest(context) {
     finalResponse.headers.set('X-Edge-SEO-Engine', 'Cloudflare-Supreme-Googlebot-v2');
     finalResponse.headers.set('X-Edge-Colo', request.cf?.colo || 'EDGE');
     finalResponse.headers.set('X-Robots-Tag', 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1');
-    finalResponse.headers.set('Cache-Control', isBot ? 'public, max-age=86400, s-maxage=86400' : 'public, max-age=0, must-revalidate');
+    if (isGooglebot) {
+      finalResponse.headers.set('X-Googlebot-Accelerated', 'true');
+      finalResponse.headers.set('X-Googlebot-Fast-Path', 'POP-V8-Edge');
+      finalResponse.headers.set('Cache-Control', 'public, max-age=86400, s-maxage=86400, stale-while-revalidate=604800');
+    } else {
+      finalResponse.headers.set('Cache-Control', isBot ? 'public, max-age=86400, s-maxage=86400' : 'public, max-age=0, must-revalidate');
+    }
 
     return finalResponse;
   }
