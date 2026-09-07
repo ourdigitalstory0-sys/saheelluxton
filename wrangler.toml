@@ -1,7 +1,8 @@
-name = "saheelluxton-edge-seo"
+name = "saheelluxton"
 main = "workers/edge-seo-worker.js"
 compatibility_date = "2026-09-01"
 compatibility_flags = ["nodejs_compat"]
+account_id = "ec31d286a6821243962cfe65678a673e"
 
 [site]
 bucket = "./dist"
