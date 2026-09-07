@@ -5,12 +5,27 @@
 
 import https from 'https';
 
-const host = 'www.saheeluxton.in';
+const host = 'saheeluxton.in';
 const key = 'saheeluxton7c845a0206de495b990146e423de0a7c';
 const keyLocation = `https://${host}/saheeluxton-indexnow.txt`;
 
+const TOP_SLUGS = [
+  '',
+  'p/wakad-2-bhk-luxury-flats-price-cost-sheet-floor-plans',
+  'p/wakad-3-bhk-grand-luxury-residences-brochure-pdf-sample-flat-video',
+  'p/wakad-4-bhk-presidential-sky-suites-rera-carpet-area-possession-date',
+  'p/hinjawadi-luxury-apartments-near-phoenix-mall-reviews-roi-investment-analysis',
+  'p/baner-2-bhk-luxury-flats-price-cost-sheet-floor-plans',
+  'p/balewadi-3-bhk-grand-luxury-residences-brochure-pdf-sample-flat-video',
+  'p/pimple-saudagar-2-bhk-luxury-flats-price-cost-sheet-floor-plans',
+  'p/tathawade-flats-near-hinjawadi-it-park-price-cost-sheet-floor-plans',
+  'p/ravet-2-bhk-luxury-flats-brochure-pdf-sample-flat-video',
+  'p/punawale-3-bhk-grand-luxury-residences-rera-carpet-area-possession-date'
+];
+
 const urlList = [
-  `https://${host}/`
+  ...TOP_SLUGS.map(s => `https://saheeluxton.in/${s}`.replace(/\/$/, '') || 'https://saheeluxton.in/'),
+  ...TOP_SLUGS.map(s => `https://www.saheeluxton.in/${s}`.replace(/\/$/, '') || 'https://www.saheeluxton.in/')
 ];
 
 const payload = JSON.stringify({
