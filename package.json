@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && node scripts/build-edge-html.js",
     "preview": "vite preview",
     "index": "node scripts/indexnow-submit.js && node scripts/google-indexing-api.js"
   },

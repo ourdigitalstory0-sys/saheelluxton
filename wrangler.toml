@@ -1,0 +1,22 @@
+name = "saheelluxton-edge-seo"
+main = "workers/edge-seo-worker.js"
+compatibility_date = "2026-09-01"
+compatibility_flags = ["nodejs_compat"]
+
+[site]
+bucket = "./dist"
+
+[vars]
+ENVIRONMENT = "production"
+CANONICAL_DOMAIN = "www.saheeluxton.in"
+TARGET_LEAD_EMAIL = "propsmartrealty@gmail.com"
+HOTLINE_PHONE = "+91 7744009295"
+MAHARERA_ID = "PM1260002502043"
+
+# Cloudflare Observability & Metrics
+[observability]
+enabled = true
+
+# Cloudflare Edge Cache TTL Configurations
+[placement]
+mode = "smart"
