@@ -33,13 +33,7 @@ export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
 
-    // 1. Force Canonical Domain on Apex if accessing via saheeluxton.in
-    if (url.hostname === APEX_HOST) {
-      url.hostname = CANONICAL_HOST;
-      return Response.redirect(url.toString(), 301);
-    }
-
-    // 2. Handle Edge Lead Dispatch API (/api/lead or /api/send-email)
+    // 1. Handle Edge Lead Dispatch API (/api/lead or /api/send-email)
     if (url.pathname === '/api/lead' || url.pathname === '/api/send-email') {
       return handleEdgeLeadDispatch(request, env);
     }

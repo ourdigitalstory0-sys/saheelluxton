@@ -31,13 +31,7 @@ export async function onRequest(context) {
   const { request, next } = context;
   const url = new URL(request.url);
 
-  // 1. Force Canonical Domain (Apex saheeluxton.in -> www.saheeluxton.in)
-  if (url.hostname === APEX_HOST) {
-    url.hostname = CANONICAL_HOST;
-    return Response.redirect(url.toString(), 301);
-  }
-
-  // 2. Pass static assets directly
+  // 1. Pass static assets directly
   if (url.pathname.startsWith('/assets/') || url.pathname.endsWith('.webp') || url.pathname.endsWith('.png') || url.pathname.endsWith('.svg') || url.pathname.endsWith('.css') || url.pathname.endsWith('.js')) {
     const assetRes = await next();
     const newHeaders = new Headers(assetRes.headers);
