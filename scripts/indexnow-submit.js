@@ -3,67 +3,74 @@
  * Automatically notifies Bing, Yandex, Seznam, Naver, and IndexNow endpoints
  */
 
+import fs from 'fs';
+import path from 'path';
 import https from 'https';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const rootDir = path.resolve(__dirname, '..');
+const distPDir = path.join(rootDir, 'dist', 'p');
 
 const host = 'saheeluxton.in';
 const key = 'saheeluxton7c845a0206de495b990146e423de0a7c';
 const keyLocation = `https://${host}/saheeluxton-indexnow.txt`;
 
-const TOP_SLUGS = [
-  '',
-  'p/wakad-2-bhk-luxury-flats-price-cost-sheet-floor-plans',
-  'p/wakad-3-bhk-grand-luxury-residences-brochure-pdf-sample-flat-video',
-  'p/wakad-4-bhk-presidential-sky-suites-rera-carpet-area-possession-date',
-  'p/hinjawadi-luxury-apartments-near-phoenix-mall-reviews-roi-investment-analysis',
-  'p/baner-2-bhk-luxury-flats-price-cost-sheet-floor-plans',
-  'p/balewadi-3-bhk-grand-luxury-residences-brochure-pdf-sample-flat-video',
-  'p/pimple-saudagar-2-bhk-luxury-flats-price-cost-sheet-floor-plans',
-  'p/tathawade-flats-near-hinjawadi-it-park-price-cost-sheet-floor-plans',
-  'p/ravet-2-bhk-luxury-flats-brochure-pdf-sample-flat-video',
-  'p/punawale-3-bhk-grand-luxury-residences-rera-carpet-area-possession-date'
-];
+let slugs = [''];
+if (fs.existsSync(distPDir)) {
+  const folders = fs.readdirSync(distPDir, { withFileTypes: true })
+    .filter(d => d.isDirectory())
+    .map(d => `p/${d.name}`);
+  slugs = slugs.concat(folders);
+}
 
-const urlList = [
-  ...TOP_SLUGS.map(s => `https://saheeluxton.in/${s}`.replace(/\/$/, '') || 'https://saheeluxton.in/'),
-  ...TOP_SLUGS.map(s => `https://www.saheeluxton.in/${s}`.replace(/\/$/, '') || 'https://www.saheeluxton.in/')
-];
+const allUrls = slugs.map(s => s ? `https://${host}/${s}` : `https://${host}/`);
 
-const payload = JSON.stringify({
-  host,
-  key,
-  keyLocation,
-  urlList
-});
+console.log(`======================================================`);
+console.log(`🚀 [IndexNow Batch Submitter] Total URLs Discovered: ${allUrls.length}`);
+console.log(`======================================================`);
 
-const options = {
-  hostname: 'api.indexnow.org',
-  port: 443,
-  path: '/IndexNow',
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json; charset=utf-8',
-    'Content-Length': Buffer.byteLength(payload)
-  }
-};
-
-console.log(`[IndexNow] Submitting ${urlList.length} clean URLs for https://${host}...`);
-
-const req = https.request(options, (res) => {
-  console.log(`[IndexNow] Response Status Code: ${res.statusCode} (${res.statusMessage})`);
-  let data = '';
-  res.on('data', (chunk) => data += chunk);
-  res.on('end', () => {
-    if (res.statusCode === 200 || res.statusCode === 202) {
-      console.log('✅ [IndexNow] Successfully submitted URLs for instant search engine indexing!');
-    } else {
-      console.log('[IndexNow] Endpoint acknowledged:', data || 'Submitted successfully');
-    }
+// Submit in batches of 500
+const CHUNK_SIZE = 500;
+for (let i = 0; i < allUrls.length; i += CHUNK_SIZE) {
+  const chunk = allUrls.slice(i, i + CHUNK_SIZE);
+  const payload = JSON.stringify({
+    host,
+    key,
+    keyLocation,
+    urlList: chunk
   });
-});
 
-req.on('error', (e) => {
-  console.error(`❌ [IndexNow] Error submitting to IndexNow: ${e.message}`);
-});
+  const options = {
+    hostname: 'api.indexnow.org',
+    port: 443,
+    path: '/IndexNow',
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json; charset=utf-8',
+      'Content-Length': Buffer.byteLength(payload)
+    }
+  };
 
-req.write(payload);
-req.end();
+  console.log(`[IndexNow] Submitting Batch ${Math.floor(i / CHUNK_SIZE) + 1} (${chunk.length} URLs)...`);
+
+  const req = https.request(options, (res) => {
+    let data = '';
+    res.on('data', (chunkData) => data += chunkData);
+    res.on('end', () => {
+      if (res.statusCode === 200 || res.statusCode === 202) {
+        console.log(`✅ [IndexNow Batch] Batch ${Math.floor(i / CHUNK_SIZE) + 1} Submitted Successfully (HTTP ${res.statusCode})`);
+      } else {
+        console.log(`[IndexNow Batch] HTTP ${res.statusCode}:`, data || 'Acknowledged');
+      }
+    });
+  });
+
+  req.on('error', (e) => {
+    console.error(`❌ [IndexNow Batch] Error: ${e.message}`);
+  });
+
+  req.write(payload);
+  req.end();
+}
