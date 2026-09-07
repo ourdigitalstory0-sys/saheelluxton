@@ -2,7 +2,10 @@ name = "saheelluxton"
 main = "workers/edge-seo-worker.js"
 compatibility_date = "2026-09-01"
 compatibility_flags = ["nodejs_compat"]
-account_id = "ec31d286a6821243962cfe65678a673e"
+
+[assets]
+directory = "./dist"
+binding = "ASSETS"
 
 [site]
 bucket = "./dist"
@@ -18,6 +21,5 @@ MAHARERA_ID = "PM1260002502043"
 [observability]
 enabled = true
 
-# Cloudflare Edge Cache TTL Configurations
 [placement]
 mode = "smart"

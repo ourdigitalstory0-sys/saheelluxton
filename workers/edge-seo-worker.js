@@ -2,21 +2,10 @@
  * ==============================================================================
  * Cloudflare Enterprise Edge SEO & SSR Worker for Saheel Luxton Wakad
  * Service: saheelluxton (Account: ec31d286a6821243962cfe65678a673e)
- * Domain: https://www.saheeluxton.in & https://saheeluxton.in
+ * Domains: https://www.saheeluxton.in, https://saheeluxton.in, workers.dev
  * MahaRERA Registration: PM1260002502043
- * Features:
- *   1. Cloudflare Workers Sites Asset Serving via KV (__STATIC_CONTENT)
- *   2. Edge Server-Side Rendering (SSR) & HTMLRewriter for 11,250+ pSEO Pages
- *   3. Instant Dynamic Schema.org (Product, Offer, Review 5.0, GeoShape) Injection
- *   4. Edge Geolocation & NRI Currency Adaptation (USD, AED, GBP, SGD, EUR, SAR)
- *   5. Verified Search Engine Crawler Fast-Lane (Googlebot, Bingbot, Yandex, Applebot)
- *   6. Edge Lead Webhook Dispatch to propsmartrealty@gmail.com
  * ==============================================================================
  */
-
-import { getAssetFromKV, mapRequestToAsset, serveSinglePageApp } from '@cloudflare/kv-asset-handler';
-import manifestJSON from '__STATIC_CONTENT_MANIFEST';
-const assetManifest = JSON.parse(manifestJSON);
 
 const CANONICAL_HOST = 'www.saheeluxton.in';
 const APEX_HOST = 'saheeluxton.in';
@@ -44,7 +33,7 @@ export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
 
-    // 1. Force Canonical Domain (Redirect apex saheeluxton.in -> www.saheeluxton.in with 301 Permanent)
+    // 1. Force Canonical Domain on Apex if accessing via saheeluxton.in
     if (url.hostname === APEX_HOST) {
       url.hostname = CANONICAL_HOST;
       return Response.redirect(url.toString(), 301);
@@ -75,37 +64,21 @@ export default {
       });
     }
 
-    // 4. Fetch Static Asset from Cloudflare Workers Sites KV
+    // 4. Fetch Asset from Cloudflare Worker Native Assets Binding or KV
     let originResponse;
     try {
-      originResponse = await getAssetFromKV(
-        {
-          request,
-          waitUntil: ctx.waitUntil.bind(ctx)
-        },
-        {
-          ASSET_NAMESPACE: env.__STATIC_CONTENT,
-          ASSET_MANIFEST: assetManifest,
-          mapRequestToAsset: url.pathname.startsWith('/p/') ? serveSinglePageApp : mapRequestToAsset
+      if (env.ASSETS) {
+        originResponse = await env.ASSETS.fetch(request);
+        // If 404 and route is SPA/programmatic page, serve index.html
+        if (originResponse.status === 404 && !url.pathname.includes('.')) {
+          const indexReq = new Request(new URL('/index.html', request.url), request);
+          originResponse = await env.ASSETS.fetch(indexReq);
         }
-      );
-    } catch (e) {
-      // Fallback to single page app index.html
-      try {
-        originResponse = await getAssetFromKV(
-          {
-            request,
-            waitUntil: ctx.waitUntil.bind(ctx)
-          },
-          {
-            ASSET_NAMESPACE: env.__STATIC_CONTENT,
-            ASSET_MANIFEST: assetManifest,
-            mapRequestToAsset: serveSinglePageApp
-          }
-        );
-      } catch (err) {
-        return new Response(`Not Found: ${e.message}`, { status: 404 });
+      } else {
+        originResponse = await fetch(request);
       }
+    } catch (err) {
+      return new Response(`Worker Asset Error: ${err.message}`, { status: 500 });
     }
 
     // If static bundle asset (JS/CSS/Image), apply immutable caching
@@ -113,7 +86,7 @@ export default {
       const assetRes = new Response(originResponse.body, originResponse);
       assetRes.headers.set('Cache-Control', 'public, max-age=31536000, immutable');
       assetRes.headers.set('Access-Control-Allow-Origin', '*');
-      assetRes.headers.set('X-Edge-Asset', 'Workers-Sites-KV');
+      assetRes.headers.set('X-Edge-Asset', 'Cloudflare-Worker-Assets');
       return assetRes;
     }
 
