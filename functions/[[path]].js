@@ -163,6 +163,17 @@ export async function onRequest(context) {
                     "ratingValue": "5.0",
                     "bestRating": "5",
                     "worstRating": "1",
+                    "ratingCount": "128"
+                  },
+                  "offers": {
+                    "@type": "AggregateOffer",
+                    "priceCurrency": "INR",
+                    "lowPrice": "9700000",
+                    "highPrice": "25000000",
+                    "offerCount": "450",
+                    "availability": "https://schema.org/InStock"
+                  }
+                },
                 {
                   "@type": "FAQPage",
                   "mainEntity": [
