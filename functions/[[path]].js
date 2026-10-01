@@ -167,17 +167,45 @@ export async function onRequest(context) {
                     "ratingValue": "5.0",
                     "bestRating": "5",
                     "worstRating": "1",
-                    "ratingCount": "146",
-                    "reviewCount": "112"
-                  },
-                  "offers": {
-                    "@type": "Offer",
-                    "url": canonicalPageUrl,
-                    "priceCurrency": "INR",
-                    "price": "9700000",
-                    "priceValidUntil": "2027-12-31",
-                    "availability": "https://schema.org/InStock",
-                    "itemCondition": "https://schema.org/NewCondition"
+                {
+                  "@type": "FAQPage",
+                  "mainEntity": [
+                    {
+                      "@type": "Question",
+                      "name": `What is the starting price of ${formattedTitle} at Saheel Luxton?`,
+                      "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": `Residences at Saheel Luxton in ${formattedLocality}, Wakad start from ₹97 Lakhs* for 2 BHK, ₹1.32 Cr* for 3 BHK, and ₹1.86 Cr* for 4 BHK Presidential Sky Suites with transparent cost sheets and pre-approved home loan offers.`
+                      }
+                    },
+                    {
+                      "@type": "Question",
+                      "name": "Is Saheel Luxton registered under MahaRERA?",
+                      "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": `Yes, Saheel Luxton is registered with Maharashtra Real Estate Regulatory Authority under MahaRERA No. ${RERA_ID}.`
+                      }
+                    },
+                    {
+                      "@type": "Question",
+                      "name": "What are the signature amenities at Saheel Luxton Wakad?",
+                      "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Key luxury highlights include Pune's 1st 4,000 sq.ft Double-Height Grand Lobby, 5-Star Rooftop Aqua Theatre for movie screenings, infinity pool, and designer walk-in dressing closets."
+                      }
+                    }
+                  ]
+                },
+                {
+                  "@type": "WebPage",
+                  "name": `${formattedTitle} | Saheel Luxton Wakad`,
+                  "url": canonicalPageUrl,
+                  "speakable": {
+                    "@type": "SpeakableSpecification",
+                    "xpath": [
+                      "/html/head/title",
+                      "/html/head/meta[@name='description']/@content"
+                    ]
                   }
                 }
               ]
