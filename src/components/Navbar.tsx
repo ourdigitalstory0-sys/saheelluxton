@@ -113,7 +113,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenBrochure })
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
         
-        {/* Brand Logo */}
+        {/* Brand Dual Logos: Luxton + Saheel Properties */}
         <a 
           href="/" 
           onClick={(e) => {
@@ -121,24 +121,25 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenBrochure })
             window.scrollTo({ top: 0, behavior: 'smooth' });
             window.history.replaceState(null, '', window.location.pathname);
           }}
-          className="flex items-center gap-3 group min-h-[44px]"
+          className="flex items-center gap-2 sm:gap-3 group min-h-[44px]"
+          title="Luxton by Saheel Properties Wakad Pune"
         >
-          <motion.div 
-            whileHover={{ scale: 1.08 }}
-            className="w-10 h-10 rounded-2xl bg-gradient-to-br from-champagne-400 via-champagne-600 to-champagne-800 p-0.5 flex items-center justify-center shadow-gold-glow shrink-0"
-          >
-            <div className="w-full h-full bg-white rounded-[14px] flex items-center justify-center">
-              <span className="font-cinzel text-xl font-black gold-gradient-text">L</span>
-            </div>
-          </motion.div>
-          <div className="flex flex-col">
-            <span className="font-cinzel text-lg sm:text-xl font-black tracking-widest text-slate-900 leading-none group-hover:text-champagne-600 transition-colors">
-              LUXTON
-            </span>
-            <span className="text-[9px] uppercase tracking-[0.25em] text-champagne-600 font-extrabold mt-0.5">
-              BY SAHEEL • WAKAD
-            </span>
-          </div>
+          {/* Luxton Emblem Logo */}
+          <img 
+            src="/logos/luxton-logo.jpg" 
+            alt="Luxton by Saheel Logo" 
+            className="h-8 sm:h-10 w-auto max-w-[110px] sm:max-w-[135px] object-contain rounded-md shadow-sm group-hover:scale-105 transition-transform duration-200 shrink-0" 
+          />
+          
+          {/* Clean Vertical Divider */}
+          <div className="h-6 sm:h-7 w-px bg-slate-300/80 shrink-0" />
+          
+          {/* Saheel Properties Developer Logo */}
+          <img 
+            src="/logos/saheel-developer-logo.webp" 
+            alt="Saheel Properties Logo" 
+            className="h-5 sm:h-7 w-auto max-w-[95px] sm:max-w-[125px] object-contain shrink-0 group-hover:opacity-90 transition-opacity" 
+          />
         </a>
 
         {/* Floating Pill Menu Container for Large screens */}
@@ -243,20 +244,18 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenBrochure })
           >
             {/* Top Bar inside Mobile Drawer */}
             <div className="p-4 sm:p-6 border-b border-champagne-500/20 flex items-center justify-between bg-white/90 backdrop-blur-md sticky top-0 z-20">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-champagne-400 via-champagne-600 to-champagne-800 p-0.5 flex items-center justify-center shadow-gold-glow">
-                  <div className="w-full h-full bg-white rounded-[14px] flex items-center justify-center">
-                    <span className="font-cinzel text-xl font-black gold-gradient-text">L</span>
-                  </div>
-                </div>
-                <div>
-                  <span className="font-cinzel text-lg font-black tracking-widest text-slate-900 block leading-none">
-                    LUXTON
-                  </span>
-                  <span className="text-[9px] uppercase tracking-[0.25em] text-champagne-700 font-extrabold block mt-0.5">
-                    BY SAHEEL • WAKAD
-                  </span>
-                </div>
+              <div className="flex items-center gap-2.5">
+                <img 
+                  src="/logos/luxton-logo.jpg" 
+                  alt="Luxton by Saheel Logo" 
+                  className="h-8 w-auto max-w-[110px] object-contain rounded-md shadow-sm shrink-0" 
+                />
+                <div className="h-6 w-px bg-slate-300 shrink-0" />
+                <img 
+                  src="/logos/saheel-developer-logo.webp" 
+                  alt="Saheel Properties Logo" 
+                  className="h-5 w-auto max-w-[95px] object-contain shrink-0" 
+                />
               </div>
 
               <button

@@ -20,6 +20,7 @@ import { GalleryModal } from './components/GalleryModal';
 import { Specifications } from './components/Specifications';
 import { DeveloperLegacy } from './components/DeveloperLegacy';
 import { LuxuryComparison } from './components/LuxuryComparison';
+import { MasterSEOTopicalHub } from './components/MasterSEOTopicalHub';
 import { SEOFooterHub } from './components/SEOFooterHub';
 import { VIPBookingModal } from './components/VIPBookingModal';
 import { BrochureModal } from './components/BrochureModal';
@@ -232,6 +233,12 @@ export const App: React.FC = () => {
             {/* Why Luxton Outclasses Ordinary Pune Projects (Pre-Footer) */}
             <LuxuryComparison
               onOpenBooking={openBooking}
+            />
+
+            {/* 37-Pillar Real Estate Topical Authority & Knowledge Graph Hub */}
+            <MasterSEOTopicalHub
+              onOpenBooking={openBooking}
+              onOpenBrochure={openBrochure}
             />
 
             {/* Homebuyer & Investor FAQ Section (Schema-Optimized) */}

@@ -67,23 +67,27 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking, onOpenBrochure })
           
           {/* Col 1: Brand & Overview */}
           <div className="space-y-4">
-            <a href="/" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); window.history.replaceState(null, '', window.location.pathname); }} className="flex items-center gap-3.5 group">
-              <motion.div 
-                whileHover={{ scale: 1.08 }}
-                className="w-11 h-11 rounded-2xl bg-gradient-to-br from-champagne-400 to-champagne-800 p-0.5 flex items-center justify-center shadow-sm"
-              >
-                <div className="w-full h-full bg-white rounded-[14px] flex items-center justify-center">
-                  <span className="font-cinzel text-2xl font-black gold-gradient-text">L</span>
-                </div>
-              </motion.div>
-              <div className="flex flex-col">
-                <span className="font-cinzel text-lg font-black tracking-widest text-slate-900 leading-none">
-                  LUXTON
-                </span>
-                <span className="text-[10px] uppercase tracking-[0.25em] text-champagne-700 font-black mt-0.5">
-                  BY SAHEEL • WAKAD
-                </span>
-              </div>
+            <a 
+              href="/" 
+              onClick={(e) => { 
+                e.preventDefault(); 
+                window.scrollTo({ top: 0, behavior: 'smooth' }); 
+                window.history.replaceState(null, '', window.location.pathname); 
+              }} 
+              className="flex items-center gap-3 group"
+              title="Luxton by Saheel Properties Wakad Pune"
+            >
+              <img 
+                src="/logos/luxton-logo.jpg" 
+                alt="Luxton by Saheel Logo" 
+                className="h-10 w-auto max-w-[130px] object-contain rounded-md shadow-sm" 
+              />
+              <div className="h-7 w-px bg-slate-300" />
+              <img 
+                src="/logos/saheel-developer-logo.webp" 
+                alt="Saheel Properties Logo" 
+                className="h-7 w-auto max-w-[120px] object-contain" 
+              />
             </a>
 
             <p className="text-slate-600 font-normal leading-relaxed">

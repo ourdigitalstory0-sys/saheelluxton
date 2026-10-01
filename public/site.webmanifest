@@ -12,9 +12,9 @@
   "categories": ["business", "lifestyle", "finance", "real-estate"],
   "icons": [
     {
-      "src": "https://backend.saheelproperties.com/uploads/Vector_9421f72212.svg",
+      "src": "/favicon.png",
       "sizes": "192x192 512x512",
-      "type": "image/svg+xml",
+      "type": "image/png",
       "purpose": "any maskable"
     }
   ],

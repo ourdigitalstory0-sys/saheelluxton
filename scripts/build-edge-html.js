@@ -68,8 +68,7 @@ async function generateEdgeHtmlPages() {
           "validThrough": "2030-06-30",
           "mainEntity": {
             "@type": "ApartmentComplex",
-            "name": "Luxton By Saheel",
-            "hasMap": "https://www.google.com/maps/place/Luxton+By+Saheel/data=!4m2!3m1!1s0x0:0x4688ad5f9f1e7471?sa=X&ved=1t:2428&ictx=111",
+            "hasMap": "https://www.google.com/maps/place/Luxton+By+Saheel/@18.6081733,73.746433,17z/data=!3m1!4b1!4m6!3m5!1s0x3bc2b90054256fc7:0x4688ad5f9f1e7471!8m2!3d18.6081733!4d73.7490079!16s%2Fg%2F11ywcyn9g5",
             "telephone": "+91 7744009295",
             "email": "propsmartrealty@gmail.com",
             "address": {
@@ -82,8 +81,8 @@ async function generateEdgeHtmlPages() {
             },
             "geo": {
               "@type": "GeoCoordinates",
-              "latitude": 18.6041,
-              "longitude": 73.7555
+              "latitude": 18.6081733,
+              "longitude": 73.7490079
             }
           }
         };
