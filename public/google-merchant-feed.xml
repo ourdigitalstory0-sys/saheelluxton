@@ -3,7 +3,9 @@
   <channel>
     <title>Saheel Luxton Wakad - Google Merchant & Product Inventory</title>
     <link>https://saheeluxton.in/</link>
-    <description>Official Residential Inventory & Floor Plans for Saheel Luxton by Saheel Properties in Wakad, Pune (MahaRERA: PM1260002502043).</description>
+    <description>Official Residential Inventory, Floor Plans & Pricing for Saheel Luxton by Saheel Properties in Wakad, Pune (MahaRERA: PM1260002502043).</description>
+    
+    <!-- Item 1: 2 BHK Luxury Skyline Residence -->
     <item>
       <g:id>LUXTON-WAKAD-2BHK</g:id>
       <g:title>2 BHK Luxury Skyline Apartment - Saheel Luxton Wakad, Pune</g:title>
@@ -15,14 +17,26 @@
       <g:availability>in_stock</g:availability>
       <g:price>10900000.00 INR</g:price>
       <g:google_product_category>Home &amp; Garden &gt; Real Estate &gt; Residential</g:google_product_category>
+      <g:product_type>Real Estate &gt; Luxury Apartments &gt; 2 BHK &gt; Wakad Pune</g:product_type>
       <g:mpn>PM1260002502043-2BHK</g:mpn>
       <g:identifier_exists>no</g:identifier_exists>
+      <g:custom_label_0>Wakad Pune</g:custom_label_0>
+      <g:custom_label_1>MahaRERA PM1260002502043</g:custom_label_1>
+      <g:custom_label_2>Near Phoenix Mall of Millennium</g:custom_label_2>
+      <g:custom_label_3>4,000 Sq.Ft Grand Lobby</g:custom_label_3>
+      <g:custom_label_4>Rooftop Aqua Theatre</g:custom_label_4>
+      <g:product_highlight>753 - 809 Sq.Ft. RERA Usable Carpet Area</g:product_highlight>
+      <g:product_highlight>Master Suite with Dedicated Walk-in Wardrobe</g:product_highlight>
+      <g:product_highlight>Pune's 1st 4,000 Sq.Ft Double-Height Entrance Lobby</g:product_highlight>
+      <g:product_highlight>5-Star Rooftop Aqua Cinema &amp; Horizon Pool</g:product_highlight>
       <g:shipping>
         <g:country>IN</g:country>
         <g:service>Complimentary AC Cab Site Visit &amp; Tour</g:service>
         <g:price>0.00 INR</g:price>
       </g:shipping>
     </item>
+
+    <!-- Item 2: 3 BHK Grand Luxury Residence -->
     <item>
       <g:id>LUXTON-WAKAD-3BHK</g:id>
       <g:title>3 BHK Grand Luxury Skyline Residence - Saheel Luxton Wakad, Pune</g:title>
@@ -34,14 +48,26 @@
       <g:availability>in_stock</g:availability>
       <g:price>15800000.00 INR</g:price>
       <g:google_product_category>Home &amp; Garden &gt; Real Estate &gt; Residential</g:google_product_category>
+      <g:product_type>Real Estate &gt; Luxury Apartments &gt; 3 BHK &gt; Wakad Pune</g:product_type>
       <g:mpn>PM1260002502043-3BHK</g:mpn>
       <g:identifier_exists>no</g:identifier_exists>
+      <g:custom_label_0>Wakad Pune</g:custom_label_0>
+      <g:custom_label_1>MahaRERA PM1260002502043</g:custom_label_1>
+      <g:custom_label_2>Near Phoenix Mall of Millennium</g:custom_label_2>
+      <g:custom_label_3>Dual Master Dressing Suites</g:custom_label_3>
+      <g:custom_label_4>30 Storeys Landmark Elevation</g:custom_label_4>
+      <g:product_highlight>1,027 - 1,162 Sq.Ft. RERA Usable Carpet Area</g:product_highlight>
+      <g:product_highlight>Dual Expansive Balconies with 180° Skyline Views</g:product_highlight>
+      <g:product_highlight>Dedicated Dining Foyer &amp; Chef-Grade Kitchen</g:product_highlight>
+      <g:product_highlight>8 Minutes to Hinjawadi IT Park Phase 1</g:product_highlight>
       <g:shipping>
         <g:country>IN</g:country>
         <g:service>Complimentary AC Cab Site Visit &amp; Tour</g:service>
         <g:price>0.00 INR</g:price>
       </g:shipping>
     </item>
+
+    <!-- Item 3: 4 BHK Presidential Sky Suite -->
     <item>
       <g:id>LUXTON-WAKAD-4BHK</g:id>
       <g:title>4 BHK Presidential Sky Suite - Saheel Luxton Wakad, Pune</g:title>
@@ -53,8 +79,18 @@
       <g:availability>in_stock</g:availability>
       <g:price>18600000.00 INR</g:price>
       <g:google_product_category>Home &amp; Garden &gt; Real Estate &gt; Residential</g:google_product_category>
+      <g:product_type>Real Estate &gt; Luxury Apartments &gt; 4 BHK &gt; Wakad Pune</g:product_type>
       <g:mpn>PM1260002502043-4BHK</g:mpn>
       <g:identifier_exists>no</g:identifier_exists>
+      <g:custom_label_0>Wakad Pune</g:custom_label_0>
+      <g:custom_label_1>MahaRERA PM1260002502043</g:custom_label_1>
+      <g:custom_label_2>Presidential Penthouse Floor</g:custom_label_2>
+      <g:custom_label_3>3-Side Open Panoramic Vistas</g:custom_label_3>
+      <g:custom_label_4>Private Foyer &amp; Servant Room</g:custom_label_4>
+      <g:product_highlight>1,458 Sq.Ft. Full-Floor Presidential Layout</g:product_highlight>
+      <g:product_highlight>Triple Walk-in Closets &amp; 35-Ft Living Lounge</g:product_highlight>
+      <g:product_highlight>High-Floor Priority Access &amp; Concierge</g:product_highlight>
+      <g:product_highlight>Exclusive Rooftop Aqua Theatre Privileges</g:product_highlight>
       <g:shipping>
         <g:country>IN</g:country>
         <g:service>Complimentary AC Cab Site Visit &amp; Tour</g:service>
