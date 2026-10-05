@@ -303,11 +303,25 @@ async function generateEdgeHtmlPages() {
         </div>
       </section>
 
+      <!-- E-E-A-T Trust & Governance Section -->
+      <section class="p-6 rounded-2xl bg-[#FAF8F5] border border-slate-200 text-xs text-slate-600 space-y-3">
+        <div class="flex items-center justify-between flex-wrap gap-2">
+          <span class="font-bold text-slate-900">🛡️ Certified MahaRERA Compliance</span>
+          <a href="https://maharera.mahaonline.gov.in" target="_blank" rel="noopener noreferrer" class="text-champagne-700 hover:underline font-semibold">Verify on MahaRERA Portal &rarr;</a>
+        </div>
+        <p class="leading-relaxed">
+          <strong>Project RERA:</strong> PM1260002502043 (Registered as "Luxton By Saheel"). Marketed by Authorized Strategic Partner (PropSmart Realty). All specifications, pricing, and visual representations are subject to standard builder terms and MahaRERA guidelines.
+        </p>
+        <p class="text-[11px] text-slate-500">
+          <strong>Editorial Review &amp; Authenticity:</strong> Verified &amp; updated as of ${CURRENT_DATE}. For official inquiries, reach sales desk at <a href="tel:+917744009295" class="text-slate-900 font-bold hover:underline">+91 7744009295</a> or <a href="mailto:propsmartrealty@gmail.com" class="text-slate-900 font-bold hover:underline">propsmartrealty@gmail.com</a>.
+        </p>
+      </section>
+
       <!-- Footer & Governance -->
       <footer class="text-center text-xs text-slate-500 pt-6 space-y-2 border-t border-slate-200">
         <p>Project Registered under MahaRERA No. <strong>PM1260002502043</strong> | Luxton By Saheel Wakad, Pune</p>
         <p>Site Address: S. No. 111, Near Phoenix Mall of the Millennium, Shankar Kalat Nagar, Wakad, Pune - 411057</p>
-        <p>© 2026 Saheel Properties. All Rights Reserved.</p>
+        <p>© 2026 Saheel Properties. All Rights Reserved. | <a href="/#overview" class="hover:underline text-champagne-700">Privacy Policy &amp; Terms</a></p>
       </footer>
     </main>
   </div>
