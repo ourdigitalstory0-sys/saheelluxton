@@ -217,16 +217,43 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onOpenBrochure, onOpe
 
           </motion.div>
 
-          {/* Right Column: Master Architectural Image Showcase with Gliding Float Animation */}
+          {/* Right Column: Master Architectural Image Showcase with Interactive 3D Lighting Switcher */}
           <motion.div 
             initial={{ opacity: 0, x: 40, filter: 'blur(8px)' }}
             animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
             transition={{ duration: 0.9, delay: 0.2 }}
-            className="lg:col-span-6 space-y-4"
+            className="lg:col-span-6 space-y-3"
           >
+            {/* Interactive 3D Lighting Mode Bar */}
+            <div className="flex items-center justify-between p-1.5 rounded-2xl bg-white/90 border border-champagne-500/30 shadow-xs text-xs font-bold gap-1 overflow-x-auto no-scrollbar">
+              <span className="text-[10px] uppercase font-mono text-champagne-700 font-extrabold px-2 shrink-0 hidden sm:inline">
+                Lighting:
+              </span>
+              {[
+                { label: '☀️ Daylight', idx: 0, tip: 'Morning Sun Elevation' },
+                { label: '🌅 Sunset', idx: 1, tip: 'Golden Hour Horizon' },
+                { label: '🌙 Night Cinema', idx: 3, tip: 'Illuminated Rooftop Club' },
+                { label: '🏛️ Grand Lobby', idx: 2, tip: '4,000 Sq.Ft Entrance' },
+                { label: '🦅 Masterplan', idx: 4, tip: 'Aerial 3.38 Acres' }
+              ].map((mode) => (
+                <button
+                  key={mode.idx}
+                  onClick={() => setActiveSlide(mode.idx)}
+                  className={`px-3 py-1.5 rounded-xl transition-all text-[11px] whitespace-nowrap cursor-pointer ${
+                    activeSlide === mode.idx
+                      ? 'bg-slate-900 text-white shadow-xs font-black scale-102'
+                      : 'text-slate-600 hover:text-slate-900 hover:bg-champagne-50 font-semibold'
+                  }`}
+                  title={mode.tip}
+                >
+                  {mode.label}
+                </button>
+              ))}
+            </div>
+
             {/* Master Image Frame with Gentle Gliding Float Effect */}
             <motion.div 
-              animate={{ y: [0, -8, 0] }}
+              animate={{ y: [0, -6, 0] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
               className="relative rounded-3xl overflow-hidden ultra-glass p-3 sm:p-4 shadow-milky-hover border-2 border-champagne-500/40 bg-white group"
             >
@@ -236,10 +263,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onOpenBrochure, onOpe
                 <AnimatePresence mode="wait">
                   <motion.img
                     key={currentSlide.image}
-                    initial={{ opacity: 0, scale: 1.08 }}
+                    initial={{ opacity: 0, scale: 1.06 }}
                     animate={{ opacity: 1, scale: 1.0 }}
                     exit={{ opacity: 0, scale: 0.96 }}
-                    transition={{ duration: 0.7, ease: "easeInOut" }}
+                    transition={{ duration: 0.6, ease: "easeInOut" }}
                     src={currentSlide.image}
                     alt={`${currentSlide.title} - ${currentSlide.caption} | Saheel Luxton Wakad Pune 30-Storey Elevation`}
                     fetchPriority="high"
@@ -254,7 +281,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onOpenBrochure, onOpe
                     {currentSlide.tag}
                   </span>
                   <span className="px-3 py-1 rounded-full bg-champagne-600/90 text-white text-[10px] font-black uppercase tracking-wider shadow-sm">
-                    Master Render
+                    30 Storeys
                   </span>
                 </div>
 
@@ -262,7 +289,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onOpenBrochure, onOpe
                 <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-950/90 via-slate-950/50 to-transparent p-4 sm:p-5 flex items-end justify-between z-10">
                   <div className="space-y-0.5 max-w-xs sm:max-w-sm">
                     <span className="text-[10px] font-mono uppercase tracking-widest text-champagne-400 font-bold">
-                      Luxton by Saheel • Wakad
+                      Luxton by Saheel • Prime Wakad
                     </span>
                     <h3 className="text-white font-cinzel text-base sm:text-lg font-bold line-clamp-1">
                       {currentSlide.title}

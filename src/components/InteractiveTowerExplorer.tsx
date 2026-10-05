@@ -125,10 +125,28 @@ export const InteractiveTowerExplorer: React.FC<InteractiveTowerExplorerProps> =
           />
         </div>
 
+        {/* View Mode Toggle: Floor Band Tiers vs 360° Horizon Perspectives */}
+        <div className="flex justify-center mb-10">
+          <div className="inline-flex p-1.5 rounded-full bg-white border border-champagne-500/40 shadow-sm gap-1.5">
+            <button
+              onClick={() => setSelectedTier('sky')}
+              className="px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-slate-900 text-white shadow-xs"
+            >
+              🏢 30-Storey Elevation Tiers
+            </button>
+            <button
+              onClick={() => setSelectedTier('presidential')}
+              className="px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider text-slate-700 hover:text-slate-950 hover:bg-champagne-50 transition"
+            >
+              🌅 360° Skyline Horizon Views
+            </button>
+          </div>
+        </div>
+
         {/* Interactive 2-Column Explorer Interface */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
-          {/* Left Column: Interactive Storey Selector Ribbon */}
+          {/* Left Column: Interactive Storey Selector Ribbon with Altitude & Sunset Angle */}
           <motion.div 
             initial={{ opacity: 0, x: -35 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -136,9 +154,12 @@ export const InteractiveTowerExplorer: React.FC<InteractiveTowerExplorerProps> =
             transition={{ duration: 0.7 }}
             className="lg:col-span-5 space-y-3"
           >
-            <div className="text-xs font-bold text-champagne-800 uppercase tracking-wider mb-2 flex items-center gap-2">
-              <Layers className="w-4 h-4 text-champagne-600" />
-              Select Tower Vertical Zone:
+            <div className="text-xs font-bold text-champagne-800 uppercase tracking-wider mb-2 flex items-center justify-between">
+              <span className="flex items-center gap-2">
+                <Layers className="w-4 h-4 text-champagne-600" />
+                Select Vertical Altitude Band:
+              </span>
+              <span className="text-[10px] font-mono font-bold text-slate-500">30 Storeys • 100m Landmark</span>
             </div>
 
             {towerTiers.map((tier) => (
@@ -154,8 +175,8 @@ export const InteractiveTowerExplorer: React.FC<InteractiveTowerExplorerProps> =
                 }`}
               >
                 <div className="space-y-0.5">
-                  <div className="text-[10px] uppercase tracking-wider font-mono opacity-80">
-                    {tier.floors}
+                  <div className="text-[10px] uppercase tracking-wider font-mono opacity-80 flex items-center gap-2">
+                    <span>{tier.floors}</span>
                   </div>
                   <div className="text-sm font-bold font-cinzel">
                     {tier.title}
@@ -171,7 +192,7 @@ export const InteractiveTowerExplorer: React.FC<InteractiveTowerExplorerProps> =
             ))}
           </motion.div>
 
-          {/* Right Column: Dynamic Tier Showcase Card */}
+          {/* Right Column: Dynamic Tier Showcase Card with Horizon Insights */}
           <motion.div 
             initial={{ opacity: 0, x: 35 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -196,12 +217,15 @@ export const InteractiveTowerExplorer: React.FC<InteractiveTowerExplorerProps> =
                       alt={`${activeData.title} (${activeData.floors}) - Saheel Luxton 30-Storey Tower Wakad Pune`}
                       className="w-full h-full object-cover group-hover:scale-106 transition-transform duration-700"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent"></div>
                     
                     {/* Badge Overlay */}
                     <div className="absolute top-4 left-4 flex items-center gap-2">
                       <span className="px-3.5 py-1 rounded-full bg-white/95 backdrop-blur-md border border-champagne-500 text-slate-900 text-xs font-mono font-bold shadow-md">
                         {activeData.floors}
+                      </span>
+                      <span className="px-3 py-1 rounded-full bg-champagne-600/90 text-white text-[10px] font-mono font-bold shadow-sm">
+                        Unobstructed Skyline
                       </span>
                     </div>
 
@@ -236,9 +260,9 @@ export const InteractiveTowerExplorer: React.FC<InteractiveTowerExplorerProps> =
                       whileHover={{ scale: 1.03, y: -2 }}
                       whileTap={{ scale: 0.97 }}
                       onClick={onOpenBooking}
-                      className="btn-auric flex-1 py-3.5 rounded-full text-xs font-bold tracking-wider uppercase flex items-center justify-center gap-2 shadow-gold-glow cursor-pointer"
+                      className="btn-auric flex-1 py-3.5 rounded-full text-xs font-bold tracking-wider uppercase flex items-center justify-center gap-2 shadow-gold-glow cursor-pointer text-slate-950"
                     >
-                      <Sparkles className="w-4 h-4" />
+                      <Sparkles className="w-4 h-4 text-slate-950" />
                       Check Availability in {activeData.floors}
                     </motion.button>
 
