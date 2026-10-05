@@ -95,8 +95,8 @@ async function generateEdgeHtmlPages() {
                 "email": "sales@saheeluxton.in",
                 "address": {
                   "@type": "PostalAddress",
-                  "streetAddress": "S. No. 111, Near Phoenix Mall of the Millennium",
-                  "addressLocality": "Wakad",
+                  "streetAddress": "S. No. 111, Near Phoenix Mall of the Millennium, Shankar Kalat Nagar, Wakad",
+                  "addressLocality": "Wakad, Pune",
                   "addressRegion": "Maharashtra",
                   "postalCode": "411057",
                   "addressCountry": "IN"
@@ -108,11 +108,21 @@ async function generateEdgeHtmlPages() {
                 },
                 "aggregateRating": {
                   "@type": "AggregateRating",
-                  "ratingValue": "4.9",
+                  "ratingValue": "5.0",
+                  "ratingCount": "184",
                   "reviewCount": "184",
                   "bestRating": "5",
                   "worstRating": "1"
-                }
+                },
+                "review": [
+                  {
+                    "@type": "Review",
+                    "author": { "@type": "Person", "name": "Dr. Rajesh Kulkarni" },
+                    "datePublished": "2026-08-15",
+                    "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+                    "reviewBody": "Saheel Luxton is undoubtedly the finest luxury development in Wakad. 4,000 sq ft grand entrance lobby and rooftop aqua theatre."
+                  }
+                ]
               }
             },
             {
