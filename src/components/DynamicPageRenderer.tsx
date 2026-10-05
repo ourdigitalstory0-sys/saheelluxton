@@ -114,7 +114,7 @@ export const DynamicPageRenderer: React.FC<DynamicPageRendererProps> = ({
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 p-5 rounded-3xl ultra-glass border-2 border-champagne-500/30 bg-white shadow-sm">
           <div className="space-y-1">
             <span className="text-[10px] font-mono text-slate-400 uppercase block">Starting Price</span>
-            <strong className="text-base sm:text-lg font-bold font-cinzel gold-gradient-text block">₹ 97 Lakhs*</strong>
+            <strong className="text-base sm:text-lg font-bold font-cinzel gold-gradient-text block">₹ 1.09 Cr*</strong>
             <span className="text-[10px] text-slate-500 block">All-Inclusive Available</span>
           </div>
 

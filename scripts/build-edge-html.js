@@ -26,11 +26,11 @@ const LOCALITIES = [
 ];
 
 const TYPOLOGIES = [
-  { slug: '2-bhk-luxury-flats', name: '2 BHK Luxury Flats', price: '₹97 Lakhs*', carpet: '753 - 809 Sq.Ft.', rooms: 2, baths: 2 },
-  { slug: '3-bhk-grand-luxury-residences', name: '3 BHK Grand Luxury Residences', price: '₹1.32 Cr*', carpet: '1,027 - 1,162 Sq.Ft.', rooms: 3, baths: 3 },
+  { slug: '2-bhk-luxury-flats', name: '2 BHK Luxury Flats', price: '₹1.09 Cr*', carpet: '753 - 809 Sq.Ft.', rooms: 2, baths: 2 },
+  { slug: '3-bhk-grand-luxury-residences', name: '3 BHK Grand Luxury Residences', price: '₹1.58 Cr*', carpet: '1,027 - 1,162 Sq.Ft.', rooms: 3, baths: 3 },
   { slug: '4-bhk-presidential-sky-suites', name: '4 BHK Presidential Sky Suites', price: '₹1.86 Cr*', carpet: '1,458 Sq.Ft.', rooms: 4, baths: 4 },
-  { slug: 'luxury-apartments-near-phoenix-mall', name: 'Luxury Apartments Near Phoenix Mall', price: '₹97 Lakhs*', carpet: '753 - 1,458 Sq.Ft.', rooms: 3, baths: 3 },
-  { slug: 'flats-near-hinjawadi-it-park', name: 'Flats Near Hinjawadi IT Park Phase 1', price: '₹97 Lakhs*', carpet: '753 - 1,458 Sq.Ft.', rooms: 3, baths: 3 }
+  { slug: 'luxury-apartments-near-phoenix-mall', name: 'Luxury Apartments Near Phoenix Mall', price: '₹1.09 Cr*', carpet: '753 - 1,458 Sq.Ft.', rooms: 3, baths: 3 },
+  { slug: 'flats-near-hinjawadi-it-park', name: 'Flats Near Hinjawadi IT Park Phase 1', price: '₹1.09 Cr*', carpet: '753 - 1,458 Sq.Ft.', rooms: 3, baths: 3 }
 ];
 
 const INTENTS = [

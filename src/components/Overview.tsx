@@ -285,7 +285,7 @@ export const Overview: React.FC<OverviewProps> = ({ onOpenBooking, onOpenBrochur
             </div>
             <div className="p-3.5 rounded-2xl bg-milky-100/70 border border-champagne-400/30">
               <span className="text-slate-500 block text-[10px] uppercase font-bold">Pricing & Loan</span>
-              <strong className="text-slate-900 font-bold text-sm">₹97 Lakhs* | SBI / HDFC Pre-Approved</strong>
+              <strong className="text-slate-900 font-bold text-sm">₹1.09 Cr* | SBI / HDFC Pre-Approved</strong>
             </div>
           </div>
 

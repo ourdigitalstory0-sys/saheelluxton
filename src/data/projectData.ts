@@ -201,8 +201,8 @@ export const projectData: ProjectData = {
       carpetArea: "753 – 809 Sq. Ft.",
       balconies: "2 Luxury Sun Decks",
       bathrooms: "2 Designer Bathrooms",
-      startingPrice: "₹ 97 Lakhs*",
-      priceNumber: 9700000,
+      startingPrice: "₹ 1.09 Cr*",
+      priceNumber: 10900000,
       description: "Smartly optimized luxury 2 BHK featuring dedicated master suite with walk-in wardrobe, open modular kitchen, and scenic sun deck.",
       features: [
         "Master Bedroom with Walk-in Closet Space",
@@ -239,8 +239,8 @@ export const projectData: ProjectData = {
       carpetArea: "1,027 – 1,162 Sq. Ft.",
       balconies: "2-3 Expansive Balconies",
       bathrooms: "3 Luxury Bathrooms",
-      startingPrice: "₹ 1.32 Cr*",
-      priceNumber: 13200000,
+      startingPrice: "₹ 1.58 Cr*",
+      priceNumber: 15800000,
       description: "Palatial 3 BHK residences featuring double master suites, walk-in closets, family lounge, and expansive 180-degree unobstructed vistas.",
       features: [
         "Dual Master Suites with En-Suite Bathrooms",

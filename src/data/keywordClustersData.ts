@@ -72,7 +72,7 @@ export const KEYWORD_PILLARS_DATA: KeywordPillar[] = [
     semanticContent: "The 2 BHK luxury floor plans at Saheel Luxton offer an efficient usable carpet area ranging from 753 to 809 sq.ft. Designed with zero circulation waste, each home features an integrated walk-in wardrobe in the master suite, Italian marble flooring in living zones, 8-ft high panoramic sundecks, and full Vastu compliance.",
     verifiedSpecs: [
       { label: "Carpet Area", value: "753 - 809 Sq.Ft." },
-      { label: "Indicative Pricing", value: "Starting ₹97 Lakhs*" },
+      { label: "Indicative Pricing", value: "Starting ₹1.09 Cr*" },
       { label: "Master Suite", value: "Dedicated Walk-in Wardrobe" },
       { label: "Balcony Deck", value: "Expansive Sun Deck" }
     ]
@@ -92,7 +92,7 @@ export const KEYWORD_PILLARS_DATA: KeywordPillar[] = [
     semanticContent: "The 3 BHK residences provide 1,027 to 1,162 sq.ft of luxurious RERA usable carpet. Highlights include an isolated master dressing suite, dedicated dining lounge, 3-side open ventilation, and unobstructed panoramic vistas of the Pune skyline and Hinjawadi IT corridor.",
     verifiedSpecs: [
       { label: "Carpet Area", value: "1,027 - 1,162 Sq.Ft." },
-      { label: "Indicative Pricing", value: "Starting ₹1.32 Cr*" },
+      { label: "Indicative Pricing", value: "Starting ₹1.58 Cr*" },
       { label: "Orientation", value: "East-West Cross Ventilation" },
       { label: "Balconies", value: "Dual Lifestyle Terraces" }
     ]
@@ -308,7 +308,7 @@ export const ALL_FAQ_LIST = [
   },
   {
     question: "What are the starting prices for 2, 3, and 4 BHK flats at Saheel Luxton?",
-    answer: "Indicative pricing starts from ₹97 Lakhs* for 2 BHK, ₹1.32 Cr* for 3 BHK, and ₹1.86 Cr* for 4 BHK presidential sky suites, subject to floor level and inventory availability."
+    answer: "Indicative pricing starts from ₹1.09 Cr* for 2 BHK, ₹1.58 Cr* for 3 BHK, and ₹1.86 Cr* for 4 BHK presidential sky suites, subject to floor level and inventory availability."
   },
   {
     question: "What are the signature amenities that distinguish Saheel Luxton?",

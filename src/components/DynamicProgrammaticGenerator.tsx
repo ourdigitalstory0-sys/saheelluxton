@@ -18,8 +18,8 @@ export const DynamicProgrammaticGenerator: React.FC<DynamicProgrammaticGenerator
   const [selectedIntent, setSelectedIntent] = useState<string>('Floor Plan & Spatial Efficiency');
 
   const typologies = [
-    { name: '2 BHK Luxury', carpet: '753 – 809 Sq. Ft.', price: '₹97 Lakhs*', usps: 'Designer Walk-In Closet, Sunlit Balcony' },
-    { name: '3 BHK Grand Luxury', carpet: '1,027 – 1,162 Sq. Ft.', price: '₹1.32 Cr*', usps: '3 Full Baths, Master Dressing Suite' },
+    { name: '2 BHK Luxury', carpet: '753 – 809 Sq. Ft.', price: '₹1.09 Cr*', usps: 'Designer Walk-In Closet, Sunlit Balcony' },
+    { name: '3 BHK Grand Luxury', carpet: '1,027 – 1,162 Sq. Ft.', price: '₹1.58 Cr*', usps: '3 Full Baths, Master Dressing Suite' },
     { name: '4 BHK Presidential Suite', carpet: '1,458 Sq. Ft.', price: '₹1.86 Cr*', usps: '270° Panoramic Skyline, Private Foyer' }
   ];
 

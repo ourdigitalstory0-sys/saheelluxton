@@ -33,7 +33,7 @@ export const PrintableCostSheetModal: React.FC<PrintableCostSheetModalProps> = (
     '2bhk': {
       title: '2 BHK Luxury Residence',
       carpet: '753 - 809 Sq. Ft.',
-      agreementValue: 9700000,
+      agreementValue: 10900000,
       stampDuty: 679000, // 7% (MH Govt)
       registration: 30000,
       gst: 485000, // 5%
@@ -42,7 +42,7 @@ export const PrintableCostSheetModal: React.FC<PrintableCostSheetModalProps> = (
     '3bhk': {
       title: '3 BHK Grand Luxury Residence',
       carpet: '1,027 - 1,162 Sq. Ft.',
-      agreementValue: 13200000,
+      agreementValue: 15800000,
       stampDuty: 924000, // 7%
       registration: 30000,
       gst: 660000, // 5%
@@ -117,7 +117,7 @@ export const PrintableCostSheetModal: React.FC<PrintableCostSheetModalProps> = (
           <div className="grid grid-cols-3 gap-2 pt-1 print:hidden">
             {[
               { id: '2bhk', label: '2 BHK (₹97L*)' },
-              { id: '3bhk', label: '3 BHK (₹1.32 Cr*)' },
+              { id: '3bhk', label: '3 BHK (₹1.58 Cr*)' },
               { id: '4bhk', label: '4 BHK (₹1.86 Cr*)' }
             ].map((tab) => (
               <button

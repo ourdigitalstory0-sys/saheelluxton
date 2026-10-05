@@ -85,7 +85,7 @@ export const LuxuryConciergeChat: React.FC<LuxuryConciergeChatProps> = ({
       const lower = textToSend.toLowerCase();
 
       if (lower.includes('price') || lower.includes('cost') || lower.includes('rate') || lower.includes('emi')) {
-        aiReply = "Saheel Luxton luxury residences start at ₹97 Lakhs* for 2 BHK (753-809 sq.ft), ₹1.32 Cr* for 3 BHK (1,027-1,162 sq.ft), and ₹1.86 Cr* for 4 BHK Presidential Sky Suites (1,458 sq.ft). Pre-approved bank loans available from SBI and HDFC.";
+        aiReply = "Saheel Luxton luxury residences start at ₹1.09 Cr* for 2 BHK (753-809 sq.ft), ₹1.58 Cr* for 3 BHK (1,027-1,162 sq.ft), and ₹1.86 Cr* for 4 BHK Presidential Sky Suites (1,458 sq.ft). Pre-approved bank loans available from SBI and HDFC.";
         replies = ['Download Itemized Cost Sheet', 'Book VIP Visit & Lock Offers'];
       } else if (lower.includes('lobby') || lower.includes('arrival') || lower.includes('amenities')) {
         aiReply = "Saheel Luxton introduces Pune's 1st 4,000 Sq. Ft. Double-Height Italian Marble Grand Lobby with 24/7 concierge, plus a 5-Star Rooftop Sky Club featuring an Open-Air Aqua Theatre & Infinity Horizon Pool on the 30th floor!";

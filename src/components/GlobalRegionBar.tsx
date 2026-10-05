@@ -16,7 +16,7 @@ export const GlobalRegionBar: React.FC<GlobalRegionBarProps> = ({ onOpenBooking 
       flag: "🇮🇳",
       name: "India (IST)",
       currency: "INR (₹)",
-      priceLabel: "₹97 Lakhs* onwards",
+      priceLabel: "₹1.09 Cr* onwards",
       phone: "+91 7744009295",
       timezone: "10:00 AM - 8:00 PM IST",
       badge: "MahaRERA: PM1260002502043"

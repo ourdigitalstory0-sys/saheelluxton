@@ -11,7 +11,7 @@ interface PricingCalculatorProps {
 }
 
 export const PricingCalculator: React.FC<PricingCalculatorProps> = ({ onOpenBooking, onOpenBrochure, onOpenCostSheet }) => {
-  const [propertyPrice, setPropertyPrice] = useState(9700000); // 97 Lakhs default (2 BHK)
+  const [propertyPrice, setPropertyPrice] = useState(10900000); // 1.09 Cr default (2 BHK)
   const [downPaymentPercent, setDownPaymentPercent] = useState(20);
   const [interestRate, setInterestRate] = useState(8.5);
   const [tenureYears, setTenureYears] = useState(20);

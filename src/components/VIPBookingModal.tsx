@@ -176,8 +176,8 @@ export const VIPBookingModal: React.FC<VIPBookingModalProps> = ({ isOpen, onClos
                   onChange={(e) => setFormData({ ...formData, configuration: e.target.value })}
                   className="w-full min-h-[46px] px-3.5 py-2.5 rounded-xl bg-milky-100 border border-slate-300 focus:border-champagne-500 text-slate-900 text-xs sm:text-sm outline-none"
                 >
-                  <option value="2 BHK Luxury (753 - 809 Sq. Ft.)">2 BHK Luxury (753 - 809 Sq. Ft.) - From ₹97 Lakhs*</option>
-                  <option value="3 BHK Grand Luxury (1,027 - 1,162 Sq. Ft.)">3 BHK Grand Luxury (1,027 - 1,162 Sq. Ft.) - From ₹1.32 Cr*</option>
+                  <option value="2 BHK Luxury (753 - 809 Sq. Ft.)">2 BHK Luxury (753 - 809 Sq. Ft.) - From ₹1.09 Cr*</option>
+                  <option value="3 BHK Grand Luxury (1,027 - 1,162 Sq. Ft.)">3 BHK Grand Luxury (1,027 - 1,162 Sq. Ft.) - From ₹1.58 Cr*</option>
                   <option value="4 BHK Presidential Sky Suite (1,458 Sq. Ft.)">4 BHK Presidential Sky Suite (1,458 Sq. Ft.) - From ₹1.86 Cr*</option>
                   <option value="Penthouse & Custom Duplex">Penthouse & Custom Duplex Inquiry</option>
                 </select>

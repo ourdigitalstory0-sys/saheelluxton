@@ -21,7 +21,7 @@ export const FAQSection: React.FC<FAQSectionProps> = ({ onOpenBooking }) => {
     },
     {
       question: "What is the starting price for 2 BHK, 3 BHK, and 4 BHK apartments at Luxton by Saheel?",
-      answer: "Residences at Saheel Luxton start at ₹97 Lakhs* onwards for 2 BHK luxury apartments, ₹1.32 Cr* onwards for 3 BHK grand luxury apartments, and ₹1.86 Cr* onwards for 4 BHK presidential suites. Flexible construction-linked payment milestones and special financial schemes are offered with leading banking partners."
+      answer: "Residences at Saheel Luxton start at ₹1.09 Cr* onwards for 2 BHK luxury apartments, ₹1.58 Cr* onwards for 3 BHK grand luxury apartments, and ₹1.86 Cr* onwards for 4 BHK presidential suites. Flexible construction-linked payment milestones and special financial schemes are offered with leading banking partners."
     },
     {
       question: "How far is Saheel Luxton from Hinjawadi Rajiv Gandhi Infotech Park and Baner?",

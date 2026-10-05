@@ -32,7 +32,7 @@ export const saheelProjectsList: SaheelProject[] = [
     category: "Ultra-Luxury High-Rise Flagship",
     locality: "Wakad, Pune (Near Phoenix Mall)",
     configurations: ["2 BHK (753-809 sq.ft)", "3 BHK (1,027-1,162 sq.ft)", "4 BHK (1,458 sq.ft)"],
-    startingPrice: "₹97 Lakhs*",
+    startingPrice: "₹1.09 Cr*",
     keyHighlight: "Pune's 1st 4,000 Sq.Ft. Double-Height Grand Lobby & 5-Star Rooftop Aqua Theatre",
     reraNumber: "PM1260002502043",
     status: "New Launch / Under Construction",

@@ -22,8 +22,8 @@ export const NRICalculator: React.FC<NRICalculatorProps> = ({ onOpenBooking, onO
   };
 
   const unitPrices: Record<string, { inr: number; name: string; carpet: string; defaultRent: number }> = {
-    '2bhk': { inr: 9700000, name: '2 BHK Luxury', carpet: '753 - 809 Sq.Ft.', defaultRent: 38000 },
-    '3bhk': { inr: 13200000, name: '3 BHK Grand Luxury', carpet: '1,027 - 1,162 Sq.Ft.', defaultRent: 55000 },
+    '2bhk': { inr: 10900000, name: '2 BHK Luxury', carpet: '753 - 809 Sq.Ft.', defaultRent: 38000 },
+    '3bhk': { inr: 15800000, name: '3 BHK Grand Luxury', carpet: '1,027 - 1,162 Sq.Ft.', defaultRent: 55000 },
     '4bhk': { inr: 18600000, name: '4 BHK Presidential', carpet: '1,458 Sq.Ft.', defaultRent: 78000 }
   };
 

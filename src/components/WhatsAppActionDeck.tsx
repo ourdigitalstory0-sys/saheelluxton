@@ -12,15 +12,15 @@ export const WhatsAppActionDeck: React.FC = () => {
       id: 'cost-sheet-2bhk',
       icon: <FileText className="w-4 h-4 text-emerald-600" />,
       title: '2 BHK Itemized Cost Sheet',
-      subtitle: '₹97 Lakhs* all-inclusive breakdown',
-      text: 'Hello Saheel Properties, please share the itemized 2 BHK (753 sq.ft) cost sheet, stamp duty breakdown, and payment plan for Saheel Luxton Wakad.'
+      subtitle: '₹1.09 Cr* all-inclusive breakdown',
+      text: 'Hello Saheel Properties, please share the itemized 2 BHK (753 sq.ft, ₹1.09 Cr*) cost sheet, stamp duty breakdown, and payment plan for Saheel Luxton Wakad.'
     },
     {
       id: 'cost-sheet-3bhk',
       icon: <FileText className="w-4 h-4 text-emerald-600" />,
       title: '3 BHK Grand Residence Cost Sheet',
-      subtitle: '₹1.32 Cr* all-inclusive breakdown',
-      text: 'Hello Saheel Properties, please send the 3 BHK (1,027 sq.ft) detailed cost sheet, high-floor availability, and floor plan layouts for Saheel Luxton Wakad.'
+      subtitle: '₹1.58 Cr* all-inclusive breakdown',
+      text: 'Hello Saheel Properties, please send the 3 BHK (1,027 sq.ft, ₹1.58 Cr*) detailed cost sheet, high-floor availability, and floor plan layouts for Saheel Luxton Wakad.'
     },
     {
       id: 'sample-flat-video',

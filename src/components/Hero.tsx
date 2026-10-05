@@ -170,7 +170,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onOpenBrochure, onOpe
 
               <motion.div whileHover={{ y: -3, scale: 1.02 }} className="col-span-2 sm:col-span-1 p-3 rounded-2xl bg-gradient-to-r from-champagne-100 via-white to-champagne-50 border border-champagne-400/60 shadow-sm cursor-default">
                 <span className="text-champagne-700 block text-[10px] uppercase tracking-wider font-bold">Starting Price</span>
-                <strong className="gold-gradient-text text-sm sm:text-base font-black">₹ 97 Lakhs*</strong>
+                <strong className="gold-gradient-text text-sm sm:text-base font-black">₹ 1.09 Cr*</strong>
               </motion.div>
             </motion.div>
 

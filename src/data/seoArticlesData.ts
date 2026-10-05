@@ -73,13 +73,13 @@ export const seoArticlesData: SEOArticle[] = [
     keyHighlights: [
       "The Mahalunge-Maan Hi-Tech City and Hinjawadi bridge connectivity have reduced travel times to Balewadi High Street to under 12 minutes.",
       "High demand for spacious 3 BHK and 4 BHK luxury duplex configurations among senior corporate leadership and IT tech founders.",
-      "Baner property prices benchmarked between ₹11,000 - ₹14,500/sq.ft, positioning neighbouring Wakad projects like Saheel Luxton as exceptional value propositions starting at ₹97 Lakhs*."
+      "Baner property prices benchmarked between ₹11,000 - ₹14,500/sq.ft, positioning neighbouring Wakad projects like Saheel Luxton as exceptional value propositions starting at ₹1.09 Cr*."
     ],
     content: [
       "The confluence of Hinjewadi (Phase 1, 2 & 3), Mahalunge, and Baner constitutes the economic powerhouse of Pune. With global tech giants including Infosys, TCS, Wipro, Cognizant, and Barclays employing over 400,000 high-earning professionals, demand for lifestyle-centric luxury housing has reached record levels.",
       "Mahalunge is evolving as a planned township destination, while Baner represents the established cosmopolitan high-street lifestyle. Wakad bridges these two worlds seamlessly, giving residents immediate access to both high-velocity corporate campuses and world-class retail, dining, and healthcare.",
       "Modern luxury buyers in 2026 are demanding more than just four walls. The shift toward 'Vastu-Compliant Urban Sanctuaries' with dedicated work-from-home suites, private master bedroom walk-in dressing corridors, and rooftop clubhouses is the core philosophy behind Saheel Luxton's 30-storey architectural triumph.",
-      "Whether evaluating a 2 BHK in Wakad starting at ₹97 Lakhs, a grand 3 BHK from ₹1.32 Cr, or a presidential 4 BHK suite from ₹1.86 Cr, capital preservation and long-term liquidity are backed by Saheel Properties' 25+ year legacy of delivering over 10 million sq. ft. of landmark real estate across Pune."
+      "Whether evaluating a 2 BHK in Wakad starting at ₹1.09 Cr, a grand 3 BHK from ₹1.58 Cr, or a presidential 4 BHK suite from ₹1.86 Cr, capital preservation and long-term liquidity are backed by Saheel Properties' 25+ year legacy of delivering over 10 million sq. ft. of landmark real estate across Pune."
     ]
   },
   {
