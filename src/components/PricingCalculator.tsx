@@ -330,19 +330,27 @@ export const PricingCalculator: React.FC<PricingCalculatorProps> = ({ onOpenBook
                 </div>
               </div>
 
-              {/* Breakdown Grid */}
+              {/* Breakdown Grid with Live Govt Taxes & Stamp Duty */}
               <div className="space-y-2.5 pt-2 border-t border-slate-200 text-xs">
                 <div className="flex justify-between items-center text-slate-700">
-                  <span>Loan Amount Required:</span>
-                  <span className="font-mono font-bold text-slate-900 text-sm">{formatINR(loanAmount)}</span>
+                  <span>Agreement Cost (Base + Infra):</span>
+                  <span className="font-mono font-bold text-slate-900 text-sm">{formatINR(propertyPrice)}</span>
                 </div>
                 <div className="flex justify-between items-center text-slate-700">
-                  <span>Total Interest Payable:</span>
-                  <span className="font-mono font-bold text-champagne-700 text-sm">{formatINR(totalInterest)}</span>
+                  <span>7% Stamp Duty + 1% PCMC Cess:</span>
+                  <span className="font-mono font-bold text-slate-800 text-sm">{formatINR(Math.round(propertyPrice * 0.08))}</span>
+                </div>
+                <div className="flex justify-between items-center text-slate-700">
+                  <span>5% GST + Legal/Registration (₹30k):</span>
+                  <span className="font-mono font-bold text-slate-800 text-sm">{formatINR(Math.round(propertyPrice * 0.05 + 30000))}</span>
                 </div>
                 <div className="flex justify-between items-center text-slate-700 border-t border-slate-200 pt-2">
-                  <span className="font-bold text-slate-900">Total Amount (Principal + Interest):</span>
-                  <span className="font-mono font-bold text-slate-900 text-sm">{formatINR(totalPayment)}</span>
+                  <span className="font-bold text-slate-900">Estimated All-Inclusive On-Road Cost:</span>
+                  <span className="font-mono font-black text-champagne-800 text-base">{formatINR(Math.round(propertyPrice * 1.13 + 30000))}</span>
+                </div>
+                <div className="flex justify-between items-center text-slate-700 pt-1">
+                  <span>Monthly EMI ({interestRate}%, {tenureYears} Yrs):</span>
+                  <span className="font-mono font-bold text-slate-900 text-sm">{formatINR(monthlyEmi)}/mo</span>
                 </div>
               </div>
 

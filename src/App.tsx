@@ -36,7 +36,8 @@ import { RealEstateGlossary } from './components/RealEstateGlossary';
 import { VastuSunlightSimulator } from './components/VastuSunlightSimulator';
 import { PrintableCostSheetModal } from './components/PrintableCostSheetModal';
 import { LuxuryConciergeChat } from './components/LuxuryConciergeChat';
-import { FloatingHUD } from './components/FloatingHUD';
+import { SmartExitIntentModal } from './components/SmartExitIntentModal';
+import { WhatsAppActionDeck } from './components/WhatsAppActionDeck';
 import { Footer } from './components/Footer';
 import { DynamicPageRenderer } from './components/DynamicPageRenderer';
 import { UnitPlan } from './types/project';
@@ -305,6 +306,12 @@ export const App: React.FC = () => {
         onClose={() => setIsCostSheetOpen(false)}
         onOpenBooking={openBooking}
       />
+
+      {/* 1-Click Floating WhatsApp Action Deck */}
+      <WhatsAppActionDeck />
+
+      {/* Smart Exit-Intent & Engaged Session VIP Cab Modal */}
+      <SmartExitIntentModal />
     </div>
   );
 };

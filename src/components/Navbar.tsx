@@ -48,23 +48,23 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenBrochure })
     { label: 'Tower', id: 'tower-explorer' },
     { label: 'Amenities', id: 'amenities' },
     { label: 'Floor Plans', id: 'plans' },
-    { label: 'Pricing & EMI', id: 'pricing' },
+    { label: 'Pricing', id: 'pricing' },
     { label: 'Location', id: 'location' },
-    { label: 'Market Insights', id: 'pune-real-estate-insights' },
-    { label: 'FAQs', id: 'faqs' },
     { label: 'Gallery', id: 'gallery' },
+    { label: 'Insights', id: 'pune-real-estate-insights' },
+    { label: 'FAQs', id: 'faqs' },
     { label: 'Why Luxton', id: 'comparison' }
   ];
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled 
-        ? 'ultra-glass-nav py-2.5 sm:py-3 shadow-md' 
-        : 'bg-gradient-to-b from-[#FAF8F5]/98 via-[#FAF8F5]/85 to-transparent py-3.5 sm:py-4'
+        ? 'ultra-glass-nav py-2 sm:py-2.5 shadow-md' 
+        : 'bg-gradient-to-b from-[#FAF8F5]/98 via-[#FAF8F5]/85 to-transparent py-2.5 sm:py-3.5'
     }`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between gap-4">
+      <div className="max-w-[1400px] mx-auto px-3 sm:px-5 lg:px-6 flex items-center justify-between gap-2 lg:gap-4">
         
-        {/* Brand Dual Logos: Luxton + Saheel Properties (Enlarged, Balanced & High-Impact) */}
+        {/* Brand Dual Logos: Luxton + Saheel Properties (Enlarged & Optimized Gap Lockup) */}
         <a 
           href="/" 
           onClick={(e) => {
@@ -72,33 +72,33 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenBrochure })
             window.scrollTo({ top: 0, behavior: 'smooth' });
             window.history.replaceState(null, '', window.location.pathname);
           }}
-          className="flex items-center gap-3 sm:gap-4 md:gap-5 group shrink-0 min-h-[48px]"
+          className="flex items-center gap-2 sm:gap-2.5 md:gap-3 group shrink-0 min-h-[50px]"
           title="Luxton by Saheel Properties Wakad Pune"
         >
           {/* Luxton Emblem & Wordmark Logo */}
           <img 
             src="/logos/luxton-logo.jpg" 
             alt="Luxton By Saheel Logo" 
-            className="h-11 sm:h-13 md:h-15 w-auto max-w-[140px] sm:max-w-[175px] md:max-w-[210px] object-contain rounded-lg shadow-sm group-hover:scale-105 transition-transform duration-200 shrink-0" 
+            className="h-12 sm:h-14 md:h-16 w-auto max-w-[150px] sm:max-w-[190px] md:max-w-[220px] object-contain rounded-lg shadow-sm group-hover:scale-105 transition-transform duration-200 shrink-0" 
           />
           
           {/* Subtle Vertical Divider */}
-          <div className="h-8 sm:h-10 md:h-11 w-px bg-slate-300/90 shrink-0" />
+          <div className="h-8 sm:h-10 md:h-11 w-px bg-slate-300/80 shrink-0 mx-0.5" />
           
           {/* Saheel Properties Developer Logo */}
           <img 
             src="/logos/saheel-developer-logo.webp" 
             alt="Saheel Properties Developer Logo" 
-            className="h-8 sm:h-10 md:h-11 w-auto max-w-[110px] sm:max-w-[140px] md:max-w-[165px] object-contain shrink-0 group-hover:opacity-90 transition-opacity" 
+            className="h-9 sm:h-11 md:h-12 w-auto max-w-[120px] sm:max-w-[150px] md:max-w-[175px] object-contain shrink-0 group-hover:opacity-95 transition-opacity" 
           />
         </a>
 
-        {/* Floating Pill Menu Container for Large screens */}
+        {/* Floating Single-Line Navigation Container for Desktop */}
         <nav 
           onMouseLeave={() => setHoveredIndex(null)}
-          className="hidden xl:flex items-center p-1.5 rounded-full ultra-glass border border-champagne-500/30 bg-white/85 shadow-sm relative"
+          className="hidden lg:flex items-center flex-nowrap p-1 rounded-full ultra-glass border border-champagne-500/30 bg-white/90 shadow-sm relative whitespace-nowrap overflow-x-auto no-scrollbar"
         >
-          {navLinks.slice(0, 9).map((link, idx) => {
+          {navLinks.map((link, idx) => {
             const isHovered = hoveredIndex === idx;
             return (
               <a
@@ -106,8 +106,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenBrochure })
                 href="/"
                 onClick={(e) => handleNavClick(e, link.id)}
                 onMouseEnter={() => setHoveredIndex(idx)}
-                className={`relative px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider transition-colors z-10 ${
-                  isHovered ? 'text-slate-950 font-extrabold' : 'text-slate-700 hover:text-slate-900'
+                className={`relative px-2.5 xl:px-3.5 py-1.5 rounded-full text-[11px] xl:text-xs font-bold uppercase tracking-wider transition-colors z-10 whitespace-nowrap shrink-0 ${
+                  isHovered ? 'text-slate-950 font-extrabold' : 'text-slate-700 hover:text-slate-950'
                 }`}
               >
                 {isHovered && (
@@ -123,32 +123,25 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenBrochure })
           })}
         </nav>
 
-        {/* Right Desktop Action Suite */}
-        <div className="hidden sm:flex items-center gap-3 shrink-0">
-          {/* Direct Concierge Call */}
+        {/* Right Desktop Action Suite: Phone Icon with Number Reveal + VIP Visit Button */}
+        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+          {/* Phone Icon with Number Reveal on Hover & Tap */}
           <motion.a
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             href={`tel:${projectData.contactPhone}`}
-            className="hidden md:flex items-center gap-2 px-3.5 py-2 rounded-full ultra-glass border border-champagne-500/40 text-slate-800 hover:text-slate-950 hover:bg-champagne-50 text-xs font-bold transition-all shadow-sm min-h-[42px]"
+            className="group relative flex items-center justify-center p-2 sm:px-3 sm:py-2 rounded-full ultra-glass border border-champagne-500/40 text-slate-800 hover:text-slate-950 hover:bg-champagne-50 transition-all shadow-sm min-h-[42px] cursor-pointer"
             title={`Call Concierge: ${projectData.contactPhone}`}
+            aria-label={`Call Concierge: ${projectData.contactPhone}`}
           >
-            <span className="w-7 h-7 rounded-full bg-champagne-200/80 flex items-center justify-center text-champagne-800">
-              <Phone className="w-3.5 h-3.5" />
+            <span className="w-8 h-8 rounded-full bg-gradient-to-tr from-champagne-200 to-champagne-100 border border-champagne-400/60 flex items-center justify-center text-champagne-900 shrink-0 shadow-sm group-hover:scale-110 transition-transform">
+              <Phone className="w-4 h-4" />
             </span>
-            <span className="font-mono tracking-tight font-bold">{projectData.contactPhone}</span>
-          </motion.a>
-
-          {/* Quick Call Icon (visible on smaller sm viewports) */}
-          <motion.a
-            whileHover={{ scale: 1.08 }}
-            whileTap={{ scale: 0.95 }}
-            href={`tel:${projectData.contactPhone}`}
-            className="md:hidden w-11 h-11 rounded-full ultra-glass border-champagne-500/30 text-champagne-700 hover:bg-champagne-50 transition-all flex items-center justify-center shadow-sm"
-            title={`Call Concierge: ${projectData.contactPhone}`}
-            aria-label="Call Concierge"
-          >
-            <Phone className="w-4 h-4" />
+            
+            {/* Phone Number Reveal on Hover (slides out smoothly) */}
+            <span className="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-[150px] group-hover:ml-2.5 transition-all duration-300 ease-in-out font-mono font-bold text-xs text-slate-900 tracking-tight">
+              {projectData.contactPhone}
+            </span>
           </motion.a>
           
           {/* Book VIP Visit CTA */}
@@ -156,10 +149,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenBrochure })
             whileHover={{ scale: 1.04, y: -1 }}
             whileTap={{ scale: 0.96 }}
             onClick={onOpenBooking}
-            className="btn-auric px-6 py-2.5 rounded-full text-xs font-black tracking-wider uppercase flex items-center gap-2 cursor-pointer shadow-gold-glow min-h-[42px] text-slate-950"
+            className="btn-auric px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 rounded-full text-xs font-black tracking-wider uppercase flex items-center gap-1.5 sm:gap-2 cursor-pointer shadow-gold-glow min-h-[42px] text-slate-950 whitespace-nowrap"
           >
-            <Sparkles className="w-4 h-4 text-slate-950" />
-            VIP Visit
+            <Sparkles className="w-3.5 sm:w-4 h-3.5 sm:h-4 text-slate-950" />
+            <span>VIP Visit</span>
           </motion.button>
         </div>
 
