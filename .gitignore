@@ -25,5 +25,7 @@ dist-ssr
 .vercel
 .env*
 service-account*.json
+*.indexing-state.json
+scripts/.indexing-state.json
 *.pem
 

@@ -9,8 +9,8 @@ const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, '..');
 const distPDir = path.join(rootDir, 'dist', 'p');
 const serviceAccountPath = path.join(rootDir, 'service-account.json');
+const stateFilePath = path.join(__dirname, '.indexing-state.json');
 
-const SERVICE_ACCOUNT_EMAIL = 'saheelluxton@vivid-reality-419916.iam.gserviceaccount.com';
 const host = 'saheeluxton.in';
 
 let targetUrls = [
@@ -25,6 +25,22 @@ if (fs.existsSync(distPDir)) {
   targetUrls = targetUrls.concat(folders);
 }
 
+// Load indexing state
+function loadState() {
+  if (fs.existsSync(stateFilePath)) {
+    try {
+      return JSON.parse(fs.readFileSync(stateFilePath, 'utf-8'));
+    } catch {
+      return { lastSubmittedIndex: 0, history: {} };
+    }
+  }
+  return { lastSubmittedIndex: 0, history: {} };
+}
+
+function saveState(state) {
+  fs.writeFileSync(stateFilePath, JSON.stringify(state, null, 2), 'utf-8');
+}
+
 /**
  * Generate Google OAuth2 Access Token using RS256 JWT
  */
@@ -32,7 +48,7 @@ async function getGoogleAccessToken(serviceAccount) {
   const now = Math.floor(Date.now() / 1000);
   const header = { alg: 'RS256', typ: 'JWT' };
   const payload = {
-    iss: serviceAccount.client_email || SERVICE_ACCOUNT_EMAIL,
+    iss: serviceAccount.client_email,
     scope: 'https://www.googleapis.com/auth/indexing',
     aud: 'https://oauth2.googleapis.com/token',
     exp: now + 3600,
@@ -107,10 +123,13 @@ async function publishUrlToGoogle(url, accessToken) {
       res.on('end', () => {
         if (res.statusCode === 200) {
           console.log(`✅ [Google Indexing API] ${url} -> Indexed (HTTP 200)`);
-          resolve({ success: true, url });
+          resolve({ success: true, statusCode: 200, url });
+        } else if (res.statusCode === 429) {
+          console.log(`⏳ [Google Indexing API] Rate Limit / Daily Quota (HTTP 429) reached.`);
+          resolve({ success: false, statusCode: 429, quotaExceeded: true, url, error: data });
         } else {
           console.log(`⚠️ [Google Indexing API] ${url} -> HTTP ${res.statusCode}: ${data}`);
-          resolve({ success: false, url, error: data });
+          resolve({ success: false, statusCode: res.statusCode, url, error: data });
         }
       });
     });
@@ -129,35 +148,70 @@ async function run() {
   console.log('======================================================');
   console.log('🚀 SAHEEL LUXTON WAKAD — GOOGLE REAL-TIME INDEXING API');
   console.log('======================================================');
-  console.log(`Service Account: ${SERVICE_ACCOUNT_EMAIL}`);
   console.log(`Discovered Target URLs: ${targetUrls.length}`);
 
   if (!fs.existsSync(serviceAccountPath)) {
     console.log('\n📌 [Next Step Required to Execute Direct API Publish]:');
-    console.log('1. In Google Search Console, ensure saheelluxton@vivid-reality-419916.iam.gserviceaccount.com is added as Owner.');
-    console.log('2. In Google Cloud Console (Project vivid-reality-419916), enable "Web Search Indexing API".');
+    console.log('1. In Google Search Console, ensure your service account email is added as Owner.');
+    console.log('2. In Google Cloud Console, enable "Web Search Indexing API".');
     console.log('3. Download the service account JSON key and save it as "service-account.json" in the project root.');
-    console.log('\nWhen service-account.json is present, this script instantly pushes all 1,080+ URLs into Google\'s real-time queue.');
     return;
   }
 
   try {
     const serviceAccount = JSON.parse(fs.readFileSync(serviceAccountPath, 'utf-8'));
+    console.log(`Service Account Email: ${serviceAccount.client_email}`);
     console.log('\n🔑 Authenticating with Google OAuth2 using RS256 JWT...');
     const accessToken = await getGoogleAccessToken(serviceAccount);
-    console.log('✅ Google OAuth2 Token Obtained! Batch publishing URLs to Google Indexing API...');
+    console.log('✅ Google OAuth2 Token Obtained successfully!');
 
-    // Google Indexing API daily quota is typically 200 URLs/day by default
-    const batch = targetUrls.slice(0, 200);
-    console.log(`Publishing top ${batch.length} URLs to Google Indexing API...\n`);
+    const state = loadState();
+    let startIndex = state.lastSubmittedIndex || 0;
+    if (startIndex >= targetUrls.length) {
+      startIndex = 0; // Reset cycle if all URLs completed
+    }
 
-    for (const u of batch) {
-      await publishUrlToGoogle(u, accessToken);
-      // Small pause to avoid hitting rapid rate limits
+    const batchSize = 200; // Default Google Indexing API daily quota
+    const batch = targetUrls.slice(startIndex, startIndex + batchSize);
+    console.log(`\n📡 Submitting Batch [${startIndex + 1} to ${startIndex + batch.length} of ${targetUrls.length}] to Google Indexing API...\n`);
+
+    let successfulCount = 0;
+    let quotaExceeded = false;
+
+    for (let i = 0; i < batch.length; i++) {
+      const u = batch[i];
+      const res = await publishUrlToGoogle(u, accessToken);
+      
+      if (res.success) {
+        successfulCount++;
+        state.history[u] = { lastPublishedAt: new Date().toISOString(), status: 'SUCCESS' };
+        state.lastSubmittedIndex = startIndex + i + 1;
+      } else if (res.quotaExceeded) {
+        quotaExceeded = true;
+        break;
+      }
+
+      // 100ms pause between requests
       await new Promise(r => setTimeout(r, 100));
     }
 
-    console.log('\n🎉 [Google Indexing API] Batch submission completed successfully!');
+    saveState(state);
+
+    console.log('\n======================================================');
+    console.log(`📊 Batch Summary:`);
+    console.log(`- Successfully Published Today: ${successfulCount} URLs`);
+    console.log(`- Total URLs Indexed in Rotation: ${state.lastSubmittedIndex} / ${targetUrls.length}`);
+
+    if (quotaExceeded) {
+      console.log(`\n⏳ Notice: Google's default daily limit of 200 API requests was reached for today.`);
+      console.log(`- The script saved its pointer at index ${state.lastSubmittedIndex}.`);
+      console.log(`- It will pick up the next 200 URLs automatically on the next run when the daily quota resets (midnight Pacific Time).`);
+      console.log(`- To increase quota up to 10,000/day, visit: https://cloud.google.com/docs/quotas/help/request_increase`);
+    } else {
+      console.log(`\n🎉 [Google Indexing API] Batch submission cycle complete!`);
+    }
+    console.log('======================================================');
+
   } catch (err) {
     console.error(`❌ Authentication or Publishing Failed: ${err.message}`);
   }
