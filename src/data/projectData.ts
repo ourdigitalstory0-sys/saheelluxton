@@ -12,7 +12,7 @@ export const projectData: ProjectData = {
   corporateAddress: "Office No. 210, V18, Opp. Cummins India Campus, Balewadi High Street, Pune - 411045",
   contactPhone: "+91 7744009295",
   whatsappPhone: "917744009295",
-  contactEmail: "propsmartrealty@gmail.com",
+  contactEmail: "sales@saheeluxton.in",
   landParcel: "3.38 Acres",
   structure: "3 Iconic Towers | 30 Storeys",
   possessionDate: "June 2030 (As per MahaRERA)",

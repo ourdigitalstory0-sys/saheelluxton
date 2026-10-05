@@ -1,5 +1,5 @@
 # Security Policy for Saheel Luxton (https://www.saheeluxton.in)
-Contact: mailto:propsmartrealty@gmail.com
+Contact: mailto:security@saheeluxton.in
 Contact: tel:+917744009295
 Expires: 2028-12-31T23:59:59.000Z
 Preferred-Languages: en, hi, mr

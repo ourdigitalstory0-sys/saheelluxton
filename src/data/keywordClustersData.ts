@@ -54,7 +54,7 @@ export const KEYWORD_PILLARS_DATA: KeywordPillar[] = [
       { label: "Sales Hotline", value: "+91 7744009295" },
       { label: "Booking Mode", value: "MahaRERA Escrow Account" },
       { label: "Cab Pickup", value: "Complimentary AC Doorstep Pickup" },
-      { label: "Lead Desk", value: "propsmartrealty@gmail.com" }
+      { label: "Lead Desk", value: "sales@saheeluxton.in" }
     ]
   },
 
