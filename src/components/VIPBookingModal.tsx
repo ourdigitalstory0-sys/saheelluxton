@@ -158,7 +158,7 @@ export const VIPBookingModal: React.FC<VIPBookingModalProps> = ({ isOpen, onClos
                     <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
                     <input
                       type="email"
-                      placeholder="name@example.com"
+                      placeholder="yourname@gmail.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       className="w-full min-h-[46px] pl-10 pr-4 py-2.5 rounded-xl bg-milky-100 border border-slate-300 focus:border-champagne-500 focus:ring-1 focus:ring-champagne-500 text-slate-900 text-xs sm:text-sm outline-none transition"
