@@ -9,7 +9,6 @@ export const projectData: ProjectData = {
   reraNo: "PM1260002502043",
   location: "Wakad, Pune, Maharashtra",
   exactAddress: "S. No. 111, Near Phoenix Mall of the Millennium, Wakad, Pune - 411057",
-  corporateAddress: "Office No. 210, V18, Opp. Cummins India Campus, Balewadi High Street, Pune - 411045",
   contactPhone: "+91 7744009295",
   whatsappPhone: "917744009295",
   contactEmail: "sales@saheeluxton.in",

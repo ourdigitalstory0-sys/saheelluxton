@@ -105,7 +105,6 @@ export interface ProjectData {
   reraNo: string;
   location: string;
   exactAddress: string;
-  corporateAddress: string;
   contactPhone: string;
   whatsappPhone: string;
   contactEmail: string;

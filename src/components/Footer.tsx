@@ -164,22 +164,16 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking, onOpenBrochure })
             </ul>
           </div>
 
-          {/* Col 4: Corporate Contact */}
+          {/* Col 4: Site Experience Centre Contact */}
           <div className="space-y-3">
             <h4 className="text-sm font-bold font-cinzel text-slate-900 uppercase tracking-wider">
-              Site & Corporate Office
+              Site Experience Centre
             </h4>
             <div className="space-y-2.5 text-slate-600 font-normal leading-relaxed">
               <div className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 text-champagne-600 shrink-0 mt-0.5" />
                 <span>
-                  <strong className="text-slate-900">Site Address:</strong> S. No. 111, Near Phoenix Mall of the Millennium, Wakad, Pune - 411057
-                </span>
-              </div>
-              <div className="flex items-start gap-2">
-                <MapPin className="w-4 h-4 text-champagne-600 shrink-0 mt-0.5" />
-                <span>
-                  <strong className="text-slate-900">Headquarters:</strong> {projectData.corporateAddress}
+                  <strong className="text-slate-900">Experience Centre:</strong> S. No. 111, Near Phoenix Mall of the Millennium, Shankar Kalat Nagar, Wakad, Pune - 411057
                 </span>
               </div>
               <div className="flex items-center gap-2 pt-1">

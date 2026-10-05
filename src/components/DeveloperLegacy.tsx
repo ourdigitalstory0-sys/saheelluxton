@@ -112,7 +112,7 @@ export const DeveloperLegacy: React.FC<DeveloperLegacyProps> = ({ onOpenBooking 
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-champagne-600 shrink-0 mt-0.5" />
                 <span>
-                  <strong className="text-slate-900">Corporate Headquarters:</strong> {projectData.corporateAddress}
+                  <strong className="text-slate-900">Project Experience Centre:</strong> S. No. 111, Near Phoenix Mall of the Millennium, Shankar Kalat Nagar, Wakad, Pune - 411057
                 </span>
               </div>
               <div className="flex items-center gap-6 pt-1">
