@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Phone, Menu, X, Download, Sparkles, ShieldCheck, Volume2, VolumeX, MessageCircle, MapPin } from 'lucide-react';
+import { Phone, Menu, X, Sparkles, ShieldCheck, MessageCircle, MapPin } from 'lucide-react';
 import { projectData } from '../data/projectData';
 
 interface NavbarProps {
   onOpenBooking: () => void;
-  onOpenBrochure: () => void;
+  onOpenBrochure?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenBrochure }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [isPlayingAudio, setIsPlayingAudio] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   useEffect(() => {
@@ -30,54 +29,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenBrochure })
       document.body.style.overflow = 'unset';
     }
   }, [mobileMenuOpen]);
-
-  const audioCtxRef = React.useRef<AudioContext | null>(null);
-  const oscillatorRef = React.useRef<OscillatorNode | null>(null);
-  const gainNodeRef = React.useRef<GainNode | null>(null);
-
-  const toggleAmbiance = () => {
-    try {
-      if (!isPlayingAudio) {
-        const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext;
-        if (!AudioContextClass) return;
-
-        const ctx = new AudioContextClass();
-        audioCtxRef.current = ctx;
-
-        const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
-
-        // 432 Hz warm ambient drone
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(432, ctx.currentTime);
-
-        gain.gain.setValueAtTime(0.001, ctx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.04, ctx.currentTime + 2);
-
-        osc.connect(gain);
-        gain.connect(ctx.destination);
-
-        osc.start();
-        oscillatorRef.current = osc;
-        gainNodeRef.current = gain;
-        setIsPlayingAudio(true);
-      } else {
-        if (gainNodeRef.current && audioCtxRef.current) {
-          gainNodeRef.current.gain.exponentialRampToValueAtTime(0.0001, audioCtxRef.current.currentTime + 1);
-          setTimeout(() => {
-            oscillatorRef.current?.stop();
-            audioCtxRef.current?.close();
-            audioCtxRef.current = null;
-            setIsPlayingAudio(false);
-          }, 1000);
-        } else {
-          setIsPlayingAudio(false);
-        }
-      }
-    } catch (err) {
-      setIsPlayingAudio(!isPlayingAudio);
-    }
-  };
 
   const handleNavClick = (e: React.MouseEvent, sectionId: string) => {
     e.preventDefault();
@@ -108,12 +59,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenBrochure })
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled 
-        ? 'ultra-glass-nav py-2.5 shadow-md' 
-        : 'bg-gradient-to-b from-[#FAF8F5]/95 via-[#FAF8F5]/70 to-transparent py-3.5'
+        ? 'ultra-glass-nav py-2.5 sm:py-3 shadow-md' 
+        : 'bg-gradient-to-b from-[#FAF8F5]/98 via-[#FAF8F5]/85 to-transparent py-3.5 sm:py-4'
     }`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between gap-4">
         
-        {/* Brand Dual Logos: Luxton + Saheel Properties */}
+        {/* Brand Dual Logos: Luxton + Saheel Properties (Enlarged, Balanced & High-Impact) */}
         <a 
           href="/" 
           onClick={(e) => {
@@ -121,31 +72,31 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenBrochure })
             window.scrollTo({ top: 0, behavior: 'smooth' });
             window.history.replaceState(null, '', window.location.pathname);
           }}
-          className="flex items-center gap-2 sm:gap-3 group min-h-[44px]"
+          className="flex items-center gap-3 sm:gap-4 md:gap-5 group shrink-0 min-h-[48px]"
           title="Luxton by Saheel Properties Wakad Pune"
         >
-          {/* Luxton Emblem Logo */}
+          {/* Luxton Emblem & Wordmark Logo */}
           <img 
             src="/logos/luxton-logo.jpg" 
-            alt="Luxton by Saheel Logo" 
-            className="h-8 sm:h-10 w-auto max-w-[110px] sm:max-w-[135px] object-contain rounded-md shadow-sm group-hover:scale-105 transition-transform duration-200 shrink-0" 
+            alt="Luxton By Saheel Logo" 
+            className="h-11 sm:h-13 md:h-15 w-auto max-w-[140px] sm:max-w-[175px] md:max-w-[210px] object-contain rounded-lg shadow-sm group-hover:scale-105 transition-transform duration-200 shrink-0" 
           />
           
-          {/* Clean Vertical Divider */}
-          <div className="h-6 sm:h-7 w-px bg-slate-300/80 shrink-0" />
+          {/* Subtle Vertical Divider */}
+          <div className="h-8 sm:h-10 md:h-11 w-px bg-slate-300/90 shrink-0" />
           
           {/* Saheel Properties Developer Logo */}
           <img 
             src="/logos/saheel-developer-logo.webp" 
-            alt="Saheel Properties Logo" 
-            className="h-5 sm:h-7 w-auto max-w-[95px] sm:max-w-[125px] object-contain shrink-0 group-hover:opacity-90 transition-opacity" 
+            alt="Saheel Properties Developer Logo" 
+            className="h-8 sm:h-10 md:h-11 w-auto max-w-[110px] sm:max-w-[140px] md:max-w-[165px] object-contain shrink-0 group-hover:opacity-90 transition-opacity" 
           />
         </a>
 
         {/* Floating Pill Menu Container for Large screens */}
         <nav 
           onMouseLeave={() => setHoveredIndex(null)}
-          className="hidden xl:flex items-center p-1.5 rounded-full ultra-glass border border-champagne-500/30 bg-white/80 shadow-sm relative"
+          className="hidden xl:flex items-center p-1.5 rounded-full ultra-glass border border-champagne-500/30 bg-white/85 shadow-sm relative"
         >
           {navLinks.slice(0, 9).map((link, idx) => {
             const isHovered = hoveredIndex === idx;
@@ -173,50 +124,41 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenBrochure })
         </nav>
 
         {/* Right Desktop Action Suite */}
-        <div className="hidden sm:flex items-center gap-2.5">
-          {/* Audio Ambience Toggle */}
-          <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            onClick={toggleAmbiance}
-            className="w-10 h-10 rounded-full ultra-glass border-champagne-500/30 hover:border-champagne-600 text-champagne-700 hover:bg-champagne-50 transition-all flex items-center justify-center shadow-sm cursor-pointer"
-            title={isPlayingAudio ? "Mute Resort Ambience" : "Play Luxury Ambience"}
-            aria-label="Toggle Resort Ambience"
-          >
-            {isPlayingAudio ? <Volume2 className="w-4 h-4 text-champagne-600" /> : <VolumeX className="w-4 h-4 text-slate-400" />}
-          </motion.button>
-
-          {/* Quick Call */}
+        <div className="hidden sm:flex items-center gap-3 shrink-0">
+          {/* Direct Concierge Call */}
           <motion.a
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             href={`tel:${projectData.contactPhone}`}
-            className="w-10 h-10 rounded-full ultra-glass border-champagne-500/30 hover:border-champagne-600 text-champagne-700 hover:bg-champagne-50 transition-all flex items-center justify-center shadow-sm"
+            className="hidden md:flex items-center gap-2 px-3.5 py-2 rounded-full ultra-glass border border-champagne-500/40 text-slate-800 hover:text-slate-950 hover:bg-champagne-50 text-xs font-bold transition-all shadow-sm min-h-[42px]"
+            title={`Call Concierge: ${projectData.contactPhone}`}
+          >
+            <span className="w-7 h-7 rounded-full bg-champagne-200/80 flex items-center justify-center text-champagne-800">
+              <Phone className="w-3.5 h-3.5" />
+            </span>
+            <span className="font-mono tracking-tight font-bold">{projectData.contactPhone}</span>
+          </motion.a>
+
+          {/* Quick Call Icon (visible on smaller sm viewports) */}
+          <motion.a
+            whileHover={{ scale: 1.08 }}
+            whileTap={{ scale: 0.95 }}
+            href={`tel:${projectData.contactPhone}`}
+            className="md:hidden w-11 h-11 rounded-full ultra-glass border-champagne-500/30 text-champagne-700 hover:bg-champagne-50 transition-all flex items-center justify-center shadow-sm"
             title={`Call Concierge: ${projectData.contactPhone}`}
             aria-label="Call Concierge"
           >
             <Phone className="w-4 h-4" />
           </motion.a>
-
-          {/* Brochure CTA */}
-          <motion.button
-            whileHover={{ scale: 1.04, y: -1 }}
-            whileTap={{ scale: 0.96 }}
-            onClick={onOpenBrochure}
-            className="btn-auric-outline px-4 py-2 rounded-full text-xs font-bold tracking-wider uppercase flex items-center gap-1.5 cursor-pointer shadow-sm min-h-[40px]"
-          >
-            <Download className="w-3.5 h-3.5 text-champagne-600" />
-            Brochure
-          </motion.button>
           
           {/* Book VIP Visit CTA */}
           <motion.button
             whileHover={{ scale: 1.04, y: -1 }}
             whileTap={{ scale: 0.96 }}
             onClick={onOpenBooking}
-            className="btn-auric px-5 py-2 rounded-full text-xs font-black tracking-wider uppercase flex items-center gap-1.5 cursor-pointer shadow-gold-glow min-h-[40px]"
+            className="btn-auric px-6 py-2.5 rounded-full text-xs font-black tracking-wider uppercase flex items-center gap-2 cursor-pointer shadow-gold-glow min-h-[42px] text-slate-950"
           >
-            <Sparkles className="w-3.5 h-3.5" />
+            <Sparkles className="w-4 h-4 text-slate-950" />
             VIP Visit
           </motion.button>
         </div>
@@ -224,7 +166,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenBrochure })
         {/* Mobile Menu Toggle Button with Minimum 48x48px Tap Target */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="xl:hidden w-12 h-12 rounded-2xl ultra-glass border-champagne-500/30 text-slate-800 hover:text-black flex items-center justify-center focus:outline-none cursor-pointer shadow-sm ml-2"
+          className="xl:hidden w-12 h-12 rounded-2xl ultra-glass border-champagne-500/30 text-slate-800 hover:text-black flex items-center justify-center focus:outline-none cursor-pointer shadow-sm ml-auto"
           aria-label={mobileMenuOpen ? "Close Mobile Navigation" : "Open Mobile Navigation"}
           aria-expanded={mobileMenuOpen}
         >
@@ -244,17 +186,17 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenBrochure })
           >
             {/* Top Bar inside Mobile Drawer */}
             <div className="p-4 sm:p-6 border-b border-champagne-500/20 flex items-center justify-between bg-white/90 backdrop-blur-md sticky top-0 z-20">
-              <div className="flex items-center gap-2.5">
+              <div className="flex items-center gap-3">
                 <img 
                   src="/logos/luxton-logo.jpg" 
                   alt="Luxton by Saheel Logo" 
-                  className="h-8 w-auto max-w-[110px] object-contain rounded-md shadow-sm shrink-0" 
+                  className="h-10 sm:h-12 w-auto max-w-[135px] sm:max-w-[160px] object-contain rounded-md shadow-sm shrink-0" 
                 />
-                <div className="h-6 w-px bg-slate-300 shrink-0" />
+                <div className="h-7 sm:h-8 w-px bg-slate-300 shrink-0" />
                 <img 
                   src="/logos/saheel-developer-logo.webp" 
-                  alt="Saheel Properties Logo" 
-                  className="h-5 w-auto max-w-[95px] object-contain shrink-0" 
+                  alt="Saheel Properties Developer Logo" 
+                  className="h-7 sm:h-9 w-auto max-w-[105px] sm:max-w-[130px] object-contain shrink-0" 
                 />
               </div>
 
@@ -289,28 +231,16 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenBrochure })
 
             {/* Direct Mobile Quick Actions Bar */}
             <div className="p-6 border-t border-champagne-500/20 bg-white/95 space-y-3 sticky bottom-0 z-20">
-              <div className="grid grid-cols-2 gap-2.5">
-                <button
-                  onClick={() => {
-                    setMobileMenuOpen(false);
-                    onOpenBrochure();
-                  }}
-                  className="min-h-[48px] btn-auric-outline rounded-2xl text-xs font-bold tracking-wider uppercase flex items-center justify-center gap-2 cursor-pointer"
-                >
-                  <Download className="w-4 h-4 text-champagne-600" />
-                  Brochure
-                </button>
-                <button
-                  onClick={() => {
-                    setMobileMenuOpen(false);
-                    onOpenBooking();
-                  }}
-                  className="min-h-[48px] btn-auric rounded-2xl text-xs font-extrabold tracking-wider uppercase flex items-center justify-center gap-2 shadow-gold-glow cursor-pointer text-slate-950"
-                >
-                  <Sparkles className="w-4 h-4" />
-                  VIP Visit
-                </button>
-              </div>
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  onOpenBooking();
+                }}
+                className="w-full min-h-[50px] btn-auric rounded-2xl text-xs font-black tracking-wider uppercase flex items-center justify-center gap-2 shadow-gold-glow cursor-pointer text-slate-950"
+              >
+                <Sparkles className="w-4 h-4 text-slate-950" />
+                Book VIP Site Visit
+              </button>
 
               {/* Direct Phone and WhatsApp */}
               <div className="grid grid-cols-2 gap-2.5">

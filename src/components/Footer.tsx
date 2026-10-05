@@ -74,19 +74,19 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking, onOpenBrochure })
                 window.scrollTo({ top: 0, behavior: 'smooth' }); 
                 window.history.replaceState(null, '', window.location.pathname); 
               }} 
-              className="flex items-center gap-3 group"
+              className="flex items-center gap-3.5 group"
               title="Luxton by Saheel Properties Wakad Pune"
             >
               <img 
                 src="/logos/luxton-logo.jpg" 
-                alt="Luxton by Saheel Logo" 
-                className="h-10 w-auto max-w-[130px] object-contain rounded-md shadow-sm" 
+                alt="Luxton By Saheel Logo" 
+                className="h-12 w-auto max-w-[160px] object-contain rounded-lg shadow-sm" 
               />
-              <div className="h-7 w-px bg-slate-300" />
+              <div className="h-9 w-px bg-slate-300" />
               <img 
                 src="/logos/saheel-developer-logo.webp" 
-                alt="Saheel Properties Logo" 
-                className="h-7 w-auto max-w-[120px] object-contain" 
+                alt="Saheel Properties Developer Logo" 
+                className="h-9 w-auto max-w-[140px] object-contain" 
               />
             </a>
 
