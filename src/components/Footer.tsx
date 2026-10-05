@@ -6,9 +6,11 @@ import { projectData } from '../data/projectData';
 interface FooterProps {
   onOpenBooking: () => void;
   onOpenBrochure: () => void;
+  onOpenMahaRERA?: () => void;
+  onOpenInvestorKit?: () => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ onOpenBooking, onOpenBrochure }) => {
+export const Footer: React.FC<FooterProps> = ({ onOpenBooking, onOpenBrochure, onOpenMahaRERA, onOpenInvestorKit }) => {
   return (
     <footer className="bg-[#FAF8F5] text-slate-600 text-xs border-t border-champagne-500/20 pt-16 pb-24 md:pb-12 relative overflow-hidden">
       
@@ -33,7 +35,8 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking, onOpenBrochure })
           <div className="flex items-center gap-4 text-center md:text-left">
             <motion.div 
               whileHover={{ rotate: 8, scale: 1.1 }}
-              className="w-14 h-14 rounded-2xl bg-champagne-200/80 border border-champagne-400 flex items-center justify-center text-champagne-800 shrink-0 shadow-sm"
+              className="w-14 h-14 rounded-2xl bg-champagne-200/80 border border-champagne-400 flex items-center justify-center text-champagne-800 shrink-0 shadow-sm cursor-pointer"
+              onClick={() => onOpenMahaRERA?.()}
             >
               <ShieldCheck className="w-8 h-8" />
             </motion.div>
@@ -50,16 +53,26 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking, onOpenBrochure })
             </div>
           </div>
 
-          <motion.a
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            href="https://maharera.mahaonline.gov.in"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-auric-outline px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-2 shrink-0"
-          >
-            Verify on MahaRERA Portal <ExternalLink className="w-3.5 h-3.5" />
-          </motion.a>
+          <div className="flex items-center gap-3 shrink-0 flex-wrap justify-center">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => onOpenMahaRERA?.()}
+              className="px-5 py-3 rounded-full bg-champagne-600 hover:bg-champagne-700 text-white text-xs font-bold uppercase tracking-wider shadow-sm cursor-pointer transition-colors"
+            >
+              Scan Official QR
+            </motion.button>
+            <motion.a
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              href="https://maharera.mahaonline.gov.in"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-auric-outline px-5 py-3 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-2"
+            >
+              Verify on Portal <ExternalLink className="w-3.5 h-3.5" />
+            </motion.a>
+          </div>
         </motion.div>
 
         {/* Main Footer 4-Column Grid */}

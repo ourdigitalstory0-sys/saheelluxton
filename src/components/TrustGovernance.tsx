@@ -6,9 +6,10 @@ import { projectData } from '../data/projectData';
 interface TrustGovernanceProps {
   onOpenBrochure: () => void;
   onOpenBooking: () => void;
+  onOpenMahaRERA?: () => void;
 }
 
-export const TrustGovernance: React.FC<TrustGovernanceProps> = ({ onOpenBrochure, onOpenBooking }) => {
+export const TrustGovernance: React.FC<TrustGovernanceProps> = ({ onOpenBrochure, onOpenBooking, onOpenMahaRERA }) => {
   const statutoryApprovals = [
     {
       title: "MahaRERA Registered",
@@ -139,14 +140,23 @@ export const TrustGovernance: React.FC<TrustGovernanceProps> = ({ onOpenBrochure
                   {item.certNo}
                 </div>
                 {item.link ? (
-                  <a
-                    href={item.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-champagne-700 hover:underline flex items-center gap-1 font-bold mt-2 text-[11px]"
-                  >
-                    Verify on Official Portal <ExternalLink className="w-3 h-3" />
-                  </a>
+                  <div className="flex items-center gap-3 mt-2">
+                    <button
+                      type="button"
+                      onClick={() => onOpenMahaRERA?.()}
+                      className="text-champagne-800 hover:text-champagne-950 font-bold flex items-center gap-1 text-[11px] bg-champagne-100 hover:bg-champagne-200 px-2.5 py-1 rounded-lg transition-colors cursor-pointer"
+                    >
+                      <span>Scan Official QR</span>
+                    </button>
+                    <a
+                      href={item.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-slate-600 hover:text-slate-900 hover:underline flex items-center gap-1 font-semibold text-[11px]"
+                    >
+                      Verify on Portal <ExternalLink className="w-3 h-3 text-champagne-600" />
+                    </a>
+                  </div>
                 ) : (
                   <span className="text-slate-400 text-[10px] block mt-1">Certified on record at sales gallery</span>
                 )}

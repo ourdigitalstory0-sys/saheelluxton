@@ -6,9 +6,11 @@ import { projectData } from '../data/projectData';
 interface NavbarProps {
   onOpenBooking: () => void;
   onOpenBrochure?: () => void;
+  onOpenMahaRERA?: () => void;
+  onOpenInvestorKit?: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenBrochure }) => {
+export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenBrochure, onOpenMahaRERA, onOpenInvestorKit }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -123,8 +125,19 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenBrochure })
           })}
         </nav>
 
-        {/* Right Desktop Action Suite: Phone Icon with Number Reveal + VIP Visit Button */}
-        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+        {/* Right Desktop Action Suite: Phone Icon + Investor Kit + VIP Visit Button */}
+        <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
+          {/* 4-in-1 Investor Kit Download CTA */}
+          <motion.button
+            whileHover={{ scale: 1.04, y: -1 }}
+            whileTap={{ scale: 0.96 }}
+            onClick={onOpenInvestorKit || onOpenBrochure}
+            className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full ultra-glass border border-champagne-500/50 bg-white/90 text-slate-900 hover:bg-champagne-50 text-[11px] font-bold uppercase tracking-wider transition-all shadow-xs min-h-[42px] cursor-pointer"
+          >
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            <span>4-in-1 Kit</span>
+          </motion.button>
+
           {/* Phone Icon with Number Reveal on Hover & Tap */}
           <motion.a
             whileHover={{ scale: 1.05 }}
@@ -149,7 +162,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenBrochure })
             whileHover={{ scale: 1.04, y: -1 }}
             whileTap={{ scale: 0.96 }}
             onClick={onOpenBooking}
-            className="btn-auric px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 rounded-full text-xs font-black tracking-wider uppercase flex items-center gap-1.5 sm:gap-2 cursor-pointer shadow-gold-glow min-h-[42px] text-slate-950 whitespace-nowrap"
+            className="btn-auric px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs font-black tracking-wider uppercase flex items-center gap-1.5 sm:gap-2 cursor-pointer shadow-gold-glow min-h-[42px] text-slate-950 whitespace-nowrap"
           >
             <Sparkles className="w-3.5 sm:w-4 h-3.5 sm:h-4 text-slate-950" />
             <span>VIP Visit</span>
@@ -224,22 +237,34 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenBrochure })
 
             {/* Direct Mobile Quick Actions Bar */}
             <div className="p-6 border-t border-champagne-500/20 bg-white/95 space-y-3 sticky bottom-0 z-20">
-              <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  onOpenBooking();
-                }}
-                className="w-full min-h-[50px] btn-auric rounded-2xl text-xs font-black tracking-wider uppercase flex items-center justify-center gap-2 shadow-gold-glow cursor-pointer text-slate-950"
-              >
-                <Sparkles className="w-4 h-4 text-slate-950" />
-                Book VIP Site Visit
-              </button>
+              <div className="grid grid-cols-2 gap-2.5">
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    onOpenBooking();
+                  }}
+                  className="min-h-[48px] btn-auric rounded-2xl text-[11px] font-black tracking-wider uppercase flex items-center justify-center gap-1.5 shadow-gold-glow cursor-pointer text-slate-950"
+                >
+                  <Sparkles className="w-3.5 h-3.5 text-slate-950" />
+                  VIP Visit
+                </button>
+
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    (onOpenInvestorKit || onOpenBrochure)?.();
+                  }}
+                  className="min-h-[48px] rounded-2xl bg-white border border-champagne-400 text-slate-900 text-[11px] font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 shadow-sm hover:bg-champagne-50"
+                >
+                  <span>4-in-1 Kit PDF</span>
+                </button>
+              </div>
 
               {/* Direct Phone and WhatsApp */}
               <div className="grid grid-cols-2 gap-2.5">
                 <a
                   href={`tel:${projectData.contactPhone}`}
-                  className="min-h-[48px] rounded-2xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-900 text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow-sm"
+                  className="min-h-[44px] rounded-2xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-900 text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow-sm"
                 >
                   <Phone className="w-4 h-4 text-champagne-600" />
                   Direct Call
@@ -248,23 +273,30 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenBrochure })
                   href={`https://wa.me/${projectData.whatsappPhone}?text=${encodeURIComponent("Hello Saheel Properties, I am interested in Luxton by Saheel Wakad.")}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="min-h-[48px] rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow-sm"
+                  className="min-h-[44px] rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow-sm"
                 >
                   <MessageCircle className="w-4 h-4" />
                   WhatsApp
                 </a>
               </div>
 
-              {/* RERA and Location Badge */}
-              <div className="p-2.5 rounded-xl bg-milky-50 border border-champagne-500/20 text-center text-xs text-slate-700 space-y-0.5">
+              {/* RERA and Location Badge (Clickable for QR Code Modal) */}
+              <button
+                type="button"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  onOpenMahaRERA?.();
+                }}
+                className="w-full p-2.5 rounded-xl bg-milky-50 hover:bg-champagne-100 border border-champagne-500/20 text-center text-xs text-slate-700 space-y-0.5 cursor-pointer transition-colors"
+              >
                 <div className="flex items-center justify-center gap-1.5 font-bold text-slate-900 text-[11px]">
                   <ShieldCheck className="w-3.5 h-3.5 text-champagne-600" />
-                  MahaRERA: <span className="font-mono text-champagne-800 font-bold">{projectData.reraNo}</span>
+                  MahaRERA: <span className="font-mono text-champagne-800 font-bold">{projectData.reraNo} (Tap to Verify QR)</span>
                 </div>
                 <div className="text-[10px] text-slate-500 flex items-center justify-center gap-1">
                   <MapPin className="w-3 h-3 text-champagne-600" /> S. No. 111, Near Phoenix Mall, Wakad
                 </div>
-              </div>
+              </button>
             </div>
 
           </motion.div>

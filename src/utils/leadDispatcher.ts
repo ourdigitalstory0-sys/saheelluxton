@@ -10,7 +10,7 @@ export interface LeadPayload {
   name: string;
   phone: string;
   email?: string;
-  leadType: 'VIP_VISIT' | 'BROCHURE_DOWNLOAD' | 'COST_SHEET_DOWNLOAD' | 'AI_CONCIERGE' | 'CALLBACK_REQUEST';
+  leadType: 'VIP_VISIT' | 'BROCHURE_DOWNLOAD' | 'COST_SHEET_DOWNLOAD' | 'AI_CONCIERGE' | 'CALLBACK_REQUEST' | 'INVESTOR_KIT_DOWNLOAD' | 'RERA_VERIFICATION';
   configuration?: string;
   preferredDate?: string;
   preferredTime?: string;

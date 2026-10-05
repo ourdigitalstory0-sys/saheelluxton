@@ -35,6 +35,8 @@ import { TrustGovernance } from './components/TrustGovernance';
 import { RealEstateGlossary } from './components/RealEstateGlossary';
 import { VastuSunlightSimulator } from './components/VastuSunlightSimulator';
 import { PrintableCostSheetModal } from './components/PrintableCostSheetModal';
+import { MahaRERAQRModal } from './components/MahaRERAQRModal';
+import { DigitalInvestorKitModal } from './components/DigitalInvestorKitModal';
 import { LuxuryConciergeChat } from './components/LuxuryConciergeChat';
 import { SmartExitIntentModal } from './components/SmartExitIntentModal';
 import { WhatsAppActionDeck } from './components/WhatsAppActionDeck';
@@ -48,6 +50,8 @@ export const App: React.FC = () => {
   const [isBrochureModalOpen, setIsBrochureModalOpen] = useState<boolean>(false);
   const [isVideoModalOpen, setIsVideoModalOpen] = useState<boolean>(false);
   const [isCostSheetOpen, setIsCostSheetOpen] = useState<boolean>(false);
+  const [isMahaRERAOpen, setIsMahaRERAOpen] = useState<boolean>(false);
+  const [isInvestorKitOpen, setIsInvestorKitOpen] = useState<boolean>(false);
   const [zoomedPlan, setZoomedPlan] = useState<UnitPlan | null>(null);
   const [selectedArticle, setSelectedArticle] = useState<SEOArticle | null>(null);
   const [currentPath, setCurrentPath] = useState<string>(window.location.pathname);
@@ -56,6 +60,8 @@ export const App: React.FC = () => {
   const openBrochure = () => setIsBrochureModalOpen(true);
   const openVideo = () => setIsVideoModalOpen(true);
   const openCostSheet = () => setIsCostSheetOpen(true);
+  const openMahaRERA = () => setIsMahaRERAOpen(true);
+  const openInvestorKit = () => setIsInvestorKitOpen(true);
 
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
@@ -81,6 +87,8 @@ export const App: React.FC = () => {
       <Navbar
         onOpenBooking={openBooking}
         onOpenBrochure={openBrochure}
+        onOpenMahaRERA={openMahaRERA}
+        onOpenInvestorKit={openInvestorKit}
       />
 
       {/* Dynamic Programmatic SEO Page Route vs Master Landing Page */}
@@ -101,6 +109,8 @@ export const App: React.FC = () => {
             onOpenBooking={openBooking}
             onOpenBrochure={openBrochure}
             onOpenVideo={openVideo}
+            onOpenMahaRERA={openMahaRERA}
+            onOpenInvestorKit={openInvestorKit}
           />
 
           {/* Main Content Sections */}
@@ -223,6 +233,7 @@ export const App: React.FC = () => {
             <TrustGovernance
               onOpenBooking={openBooking}
               onOpenBrochure={openBrochure}
+              onOpenMahaRERA={openMahaRERA}
             />
 
             {/* Real Estate Intelligence & Google Knowledge Entity Glossary */}
@@ -257,6 +268,8 @@ export const App: React.FC = () => {
       <Footer
         onOpenBooking={openBooking}
         onOpenBrochure={openBrochure}
+        onOpenMahaRERA={openMahaRERA}
+        onOpenInvestorKit={openInvestorKit}
       />
 
       {/* Sticky Floating Quick Actions HUD */}
@@ -280,6 +293,18 @@ export const App: React.FC = () => {
       <BrochureModal
         isOpen={isBrochureModalOpen}
         onClose={() => setIsBrochureModalOpen(false)}
+      />
+
+      <MahaRERAQRModal
+        isOpen={isMahaRERAOpen}
+        onClose={() => setIsMahaRERAOpen(false)}
+        onOpenBooking={openBooking}
+      />
+
+      <DigitalInvestorKitModal
+        isOpen={isInvestorKitOpen}
+        onClose={() => setIsInvestorKitOpen(false)}
+        onOpenBooking={openBooking}
       />
 
       <VideoModal

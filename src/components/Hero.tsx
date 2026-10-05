@@ -7,9 +7,11 @@ interface HeroProps {
   onOpenBooking: () => void;
   onOpenBrochure: () => void;
   onOpenVideo: () => void;
+  onOpenMahaRERA?: () => void;
+  onOpenInvestorKit?: () => void;
 }
 
-export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onOpenBrochure, onOpenVideo }) => {
+export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onOpenBrochure, onOpenVideo, onOpenMahaRERA, onOpenInvestorKit }) => {
   const [activeSlide, setActiveSlide] = useState(0);
 
   const heroSlides = [
@@ -104,7 +106,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onOpenBrochure, onOpe
             className="lg:col-span-6 space-y-6"
           >
             
-            {/* RERA and Launch Badge */}
+            {/* RERA and Launch Badge (Interactive QR Trigger) */}
             <motion.div 
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
@@ -114,9 +116,15 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onOpenBrochure, onOpe
               <span className="w-2.5 h-2.5 rounded-full bg-champagne-500 animate-ping"></span>
               <span className="font-extrabold text-slate-900 tracking-wider uppercase text-[11px]">Wakad's Ultimate Luxury Landmark</span>
               <span className="text-slate-300">•</span>
-              <span className="flex items-center gap-1 font-mono text-slate-700 font-bold text-[11px]">
+              <button
+                type="button"
+                onClick={() => onOpenMahaRERA?.()}
+                className="flex items-center gap-1 font-mono text-slate-700 hover:text-champagne-800 font-bold text-[11px] cursor-pointer hover:underline transition-colors"
+                title="Click to view official MahaRERA QR Certificate & government registration"
+              >
                 <ShieldCheck className="w-3.5 h-3.5 text-champagne-600" /> {projectData.reraNo}
-              </span>
+                <span className="text-[10px] bg-champagne-200/80 text-champagne-900 px-1.5 py-0.5 rounded ml-0.5 font-sans font-bold">QR</span>
+              </button>
             </motion.div>
 
             {/* Headline */}
