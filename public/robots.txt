@@ -16,6 +16,7 @@ Allow: /uploads/
 Allow: /site.webmanifest
 Allow: /opensearch.xml
 Allow: /llms.txt
+Allow: /llms-full.txt
 
 # --- Google Search Ecosystem Crawlers ---
 User-agent: Googlebot
