@@ -138,6 +138,20 @@ async function generateEdgeHtmlPages() {
               }
             },
             {
+              "@type": "WebPage",
+              "@id": `${canonicalUrl}#webpage`,
+              "url": canonicalUrl,
+              "name": title,
+              "description": metaDesc,
+              "speakable": {
+                "@type": "SpeakableSpecification",
+                "cssSelector": ["h1", "article p", ".faq-answer"]
+              },
+              "about": {
+                "@id": `${BASE_URL}/#apartmentComplex`
+              }
+            },
+            {
               "@type": "FAQPage",
               "@id": `${canonicalUrl}#faq`,
               "mainEntity": [
@@ -300,13 +314,23 @@ async function generateEdgeHtmlPages() {
 </div>`;
 
         // Inject customized meta tags & SSR HTML body into HTML template
+        const aiMetaTags = `
+    <meta name="llms:txt" content="${BASE_URL}/llms.txt" />
+    <meta name="llms:full" content="${BASE_URL}/llms-full.txt" />
+    <meta name="llms:json" content="${BASE_URL}/llms.json" />
+    <meta name="citation_title" content="${title}" />
+    <meta name="citation_publisher" content="Saheel Properties" />
+    <meta name="citation_online_date" content="${CURRENT_DATE}" />
+    <script type="application/ld+json">${JSON.stringify(schemaGraph)}</script>
+  </head>`;
+
         let customHtml = templateHtml
           .replace(/<title>.*?<\/title>/i, `<title>${title}</title>`)
           .replace(/<meta name="description" content=".*?" \/>/i, `<meta name="description" content="${metaDesc}" />`)
           .replace(/<link rel="canonical" href=".*?" \/>/i, `<link rel="canonical" href="${canonicalUrl}" />`)
           .replace(/<meta property="og:title" content=".*?" \/>/i, `<meta property="og:title" content="${title}" />`)
           .replace(/<meta property="og:url" content=".*?" \/>/i, `<meta property="og:url" content="${canonicalUrl}" />`)
-          .replace(/<\/head>/i, `<script type="application/ld+json">${JSON.stringify(schemaGraph)}</script></head>`)
+          .replace(/<\/head>/i, aiMetaTags)
           .replace(/<div id="root"><\/div>/i, ssrBodyHtml);
 
         fs.writeFileSync(path.join(outputFolder, 'index.html'), customHtml);
